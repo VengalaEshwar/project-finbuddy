@@ -1,4 +1,7 @@
 @import "tailwindcss";
+:root{
+  --primary-color : #D69ADE;
+}
 *{
   margin : 0;
   box-sizing: border-box;

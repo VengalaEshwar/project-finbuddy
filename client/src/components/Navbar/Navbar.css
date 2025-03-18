@@ -1,0 +1,11 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    height : 4rem;
+}
+.active{
+    color : rgb(249, 85, 85)
+}
