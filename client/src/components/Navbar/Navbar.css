@@ -1,11 +1,24 @@
-.navbar{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--primary-color);
-    color: #fff;
-    height : 4rem;
-}
+.navbar {
+    position: fixed;
+    height : 2rem;
+    background-color : var(--primary-color);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+  }
+  .nav-scrolled {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 12px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .nav-default {
+    background-color: transparent;
+    padding: 20px 0;
+  }
 .active{
     color : rgb(249, 85, 85)
 }
