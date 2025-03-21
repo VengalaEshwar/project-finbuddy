@@ -10,6 +10,7 @@ import Simulators from './pages/Simulators/Simulators'
 import Books from './pages/Books/Books'
 import Career from './pages/Career/Career'
 import Profile from './pages/Profile/Profile'
+import Auth from './pages/Auth/Auth';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -17,7 +18,7 @@ function App() {
     <div className='app'>
       <Navbar/>
       <AnimatePresence mode="wait">
-      <div className="space pt-24"></div>
+      <div className="space pt-21"></div>
      <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/news' element={<News />} />
@@ -25,6 +26,7 @@ function App() {
       <Route path='/books' element={<Books />} />
       <Route path='/career' element={<Career />} />
       <Route path='/profile' element={<Profile />} />
+      <Route path='/auth' element={<Auth/>} />
      </Routes>
     
       </AnimatePresence>

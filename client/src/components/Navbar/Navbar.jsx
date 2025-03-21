@@ -82,9 +82,9 @@ const Navbar = () => {
             </NavLink>
           </li>
         <li>
-          <NavLink to="/auth" onClick={closeMenu}>
+          { true && <NavLink to="/auth" onClick={closeMenu}>
             <button className="get-started">Get Started</button>
-          </NavLink>
+          </NavLink>}
         </li>
         </ul>
 
