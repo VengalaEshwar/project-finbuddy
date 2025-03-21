@@ -1,26 +1,96 @@
-import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import "./Navbar.css"
-function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false); 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  return (
-      <div className="navbar ">
-        <div className="logo">FinBuddy</div>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/news">News</NavLink>
-        <NavLink to="/simulators">Simulators</NavLink>
-        <NavLink to="/books">Books</NavLink>
-        <NavLink to="/career">Career</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
-      </div>
-  )
-}
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  FaHome, FaNewspaper, FaRobot, FaChartBar,
+  FaBook, FaGamepad, FaBriefcase, FaUser, FaBars, FaTimes
+} from "react-icons/fa";
+import "./Navbar.css";
 
-export default Navbar
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Toggle menu function
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  // Close menu when a link is clicked
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo */}
+        <div className="logo">
+          Fin<span className="bold">Buddy</span>
+        </div>
+
+        {/* Hamburger Menu Icon */}
+        <div className="menu-icon" onClick={toggleMenu}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+
+        {/* Navigation Links */}
+        <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <li>
+            <NavLink to="/" onClick={closeMenu}><FaHome />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/news" onClick={closeMenu}>
+              <FaNewspaper />
+              News
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/chatbot" onClick={closeMenu}>
+              <FaRobot />
+              chatbot
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/simulator" onClick={closeMenu}>
+              <FaChartBar />
+              Simulator
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/books" onClick={closeMenu}>
+              <FaBook />
+              Books
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/games" onClick={closeMenu}>
+              <FaGamepad />
+              Games
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/career" onClick={closeMenu}>
+              <FaBriefcase />
+              Career
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile" onClick={closeMenu}>
+              <FaUser />
+              Profile
+            </NavLink>
+          </li>
+        <li>
+          <NavLink to="/auth" onClick={closeMenu}>
+            <button className="get-started">Get Started</button>
+          </NavLink>
+        </li>
+        </ul>
+
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
