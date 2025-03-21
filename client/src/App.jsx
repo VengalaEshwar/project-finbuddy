@@ -11,6 +11,8 @@ import Books from './pages/Books/Books'
 import Career from './pages/Career/Career'
 import Profile from './pages/Profile/Profile'
 import Auth from './pages/Auth/Auth';
+import BookDetails from './pages/Books/BookDetails';
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -27,6 +29,7 @@ function App() {
       <Route path='/career' element={<Career />} />
       <Route path='/profile' element={<Profile />} />
       <Route path='/auth' element={<Auth/>} />
+      <Route path="/books/:bookId" element={<BookDetails />} />
      </Routes>
     
       </AnimatePresence>

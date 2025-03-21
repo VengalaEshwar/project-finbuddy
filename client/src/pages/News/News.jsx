@@ -6,7 +6,7 @@ const News = () => {
     <PageTransition>
       <div className="page-container">
         <h1 className="section-heading">Financial News</h1>
-        
+        .
         <div className="glass-card rounded-2xl p-6 mb-6">
           <p className="text-gray-600">
             Stay updated with the latest market trends and financial insights.
