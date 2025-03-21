@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import './App.css'
+import { AnimatePresence } from "framer-motion";
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
@@ -13,7 +15,9 @@ function App() {
 
   return (
     <div className='app'>
-      {/* <Navbar/> */}
+      <Navbar/>
+      <AnimatePresence mode="wait">
+      <div className="space pt-24"></div>
      <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/news' element={<News />} />
@@ -22,6 +26,8 @@ function App() {
       <Route path='/career' element={<Career />} />
       <Route path='/profile' element={<Profile />} />
      </Routes>
+    
+      </AnimatePresence>
     </div>
   )
 }

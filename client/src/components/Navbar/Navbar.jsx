@@ -52,7 +52,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/simulator" onClick={closeMenu}>
+            <NavLink to="/simulators" onClick={closeMenu}>
               <FaChartBar />
               Simulator
             </NavLink>
