@@ -10,6 +10,8 @@ import Simulators from './pages/Simulators/Simulators'
 import Books from './pages/Books/Books'
 import Career from './pages/Career/Career'
 import Profile from './pages/Profile/Profile'
+import BookDetails from './pages/Books/BookDetails';
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -25,6 +27,7 @@ function App() {
       <Route path='/books' element={<Books />} />
       <Route path='/career' element={<Career />} />
       <Route path='/profile' element={<Profile />} />
+      <Route path="/books/:bookId" element={<BookDetails />} />
      </Routes>
     
       </AnimatePresence>
