@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink ,useNavigate} from "react-router-dom";
 import {
   FaHome, FaNewspaper, FaRobot, FaChartBar,
   FaBook, FaGamepad, FaBriefcase, FaUser, FaBars, FaTimes
 } from "react-icons/fa";
 import "./Navbar.css";
 
+
 const Navbar = () => {
+
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Toggle menu function
@@ -18,7 +21,8 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
-
+  
+  
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -82,8 +86,8 @@ const Navbar = () => {
             </NavLink>
           </li>
         <li>
-          <NavLink to="/auth" onClick={closeMenu}>
-            <button className="get-started">Get Started</button>
+          <NavLink to="/login"  onClick={closeMenu}>
+            <button className="get-started" onClick={()=>navigate("/login")}>Get Started</button>
           </NavLink>
         </li>
         </ul>

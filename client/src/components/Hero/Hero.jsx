@@ -93,7 +93,7 @@ const Hero = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
-              to="/auth"
+              to="/login"
               className="finbuddy-button-primary w-full sm:w-auto group"
             >
               Get Started

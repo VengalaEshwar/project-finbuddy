@@ -1,0 +1,105 @@
+/* Login Page Styles */
+
+.login-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #8434d374 30%, #E5D9F2 100%);
+}
+
+
+.login-container {
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px 4px rgba(140, 64, 194, 0.578);
+    text-align: center;
+    width: 450px;
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+    backdrop-filter: blur(15px); /* Strong blur for glass effect */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Soft border for depth */
+}
+
+
+
+/* Title */
+.login-title {
+    margin-bottom: 20px;
+    color: #27242acf;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+/* Input Fields */
+.login-input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #b39ddb;
+    border-radius: 6px;
+    background: #f8f5ff;
+    font-size: 16px;
+    color: #4a148c;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.login-input:focus {
+    border-color: #6a27b2a3;
+    box-shadow: 0 0 8px 3px rgba(107, 39, 178, 0.3);
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #6a27b2b9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+    background: #5a1f95e8;
+    
+}
+
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Move arrow on hover */
+.login-btn:hover .arrow {
+    transform: translateX(10px);
+}
+
+
+
+/* Signup Link */
+.login-page .signup-link {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #4a148c;
+}
+
+.login-page .signup-link button {
+    background: none;
+    color: #6b27b2;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.signup-link button:hover {
+    text-decoration: none;
+    scale: 1.05;
+}

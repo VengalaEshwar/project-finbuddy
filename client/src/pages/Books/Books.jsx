@@ -1,84 +1,75 @@
+import { Link } from "react-router-dom";
 import PageTransition from "../../components/layouts/PageTransition/PageTransition";
 import { Button } from '../../components/ui/button';
 import { BookOpen, Star, UserRound } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from "react";
+
+const API_KEY = "AIzaSyBhHCnv-RVjTfrZIxIlDrajTryGfnmWy_c";
+const categories = ["finance", "investing", "business"];
 
 const Books = () => {
-  const books = [
-    {
-      title: "The Psychology of Money",
-      author: "Morgan Housel",
-      description: "Timeless lessons on wealth, greed, and happiness.",
-      rating: 4.8,
-      cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
-    },
-    {
-      title: "Rich Dad Poor Dad",
-      author: "Robert Kiyosaki",
-      description: "What the rich teach their kids about money.",
-      rating: 4.7,
-      cover: "bg-gradient-to-r from-blue-500 to-cyan-400"
-    },
-    {
-      title: "The Intelligent Investor",
-      author: "Benjamin Graham",
-      description: "The definitive book on value investing.",
-      rating: 4.9,
-      cover: "bg-gradient-to-r from-green-500 to-teal-400"
-    },
-    {
-      title: "Financial Freedom",
-      author: "Grant Sabatier",
-      description: "A proven path to all the money you will ever need.",
-      rating: 4.5,
-      cover: "bg-gradient-to-r from-orange-500 to-yellow-400"
-    },
-    {
-      title: "Your Money or Your Life",
-      author: "Vicki Robin",
-      description: "Transforming your relationship with money.",
-      rating: 4.6,
-      cover: "bg-gradient-to-r from-pink-500 to-rose-400"
-    },
-    {
-      title: "The Millionaire Next Door",
-      author: "Thomas J. Stanley",
-      description: "Surprising secrets of America's wealthy.",
-      rating: 4.7,
-      cover: "bg-gradient-to-r from-red-500 to-orange-500"
-    }
-  ];
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        let allBooks = new Map();
+
+        for (const category of categories) {
+          const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${category}&key=${API_KEY}`);
+          const data = await response.json();
+
+          if (data.items) {
+            data.items.forEach(book => {
+              const volume = book.volumeInfo;
+              const bookId = book.id;
+
+              if (!allBooks.has(bookId)) {
+                allBooks.set(bookId, {
+                  id: bookId,
+                  title: volume.title,
+                  author: volume.authors ? volume.authors.join(", ") : "Unknown",
+                  cover: volume.imageLinks?.thumbnail || "https://via.placeholder.com/200",
+                  rating: volume.averageRating || null,
+                });
+              }
+            });
+          }
+        }
+        const sortedBooks = Array.from(allBooks.values()).sort((a, b) => {
+          if (a.rating === null && b.rating !== null) return 1;
+          if (a.rating !== null && b.rating === null) return -1;
+          return b.rating - a.rating;
+        });
+
+        setBooks(sortedBooks);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+
+    fetchBooks();
+  }, []);
 
   return (
     <PageTransition>
       <div className="page-container">
-        <h1 className="section-heading">Financial Books & Resources</h1>
-        
-        <div className="glass-card rounded-2xl p-6 mb-8">
-          <p className="text-gray-600">
-            Expand your financial knowledge with our curated collection of books, guides, and resources
-            on personal finance, investing, and money management.
-          </p>
-        </div>
-        
+        <h1 className="section-heading">Popular Finance, Investing & Business Books</h1>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {books.map((book, index) => (
             <motion.div
-              key={index}
+              key={book.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                type: 'spring',
-                stiffness: 100,
-                damping: 20,
-                delay: index * 0.1,
-              }}
+              transition={{ type: 'spring', stiffness: 100, damping: 20, delay: index * 0.1 }}
               viewport={{ once: true, margin: '-50px' }}
               whileHover={{ y: -5 }}
               className="bg-white rounded-2xl shadow-md overflow-hidden"
             >
-              <div className={`${book.cover} h-40 flex items-center justify-center`}>
-                <BookOpen className="w-12 h-12 text-white" />
+              <div className="h-40 flex items-center justify-center">
+                <img src={book.cover} alt={book.title} className="h-full w-full object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-finbuddy-dark mb-1">{book.title}</h3>
@@ -86,18 +77,22 @@ const Books = () => {
                   <UserRound className="w-4 h-4 mr-1" />
                   <span>{book.author}</span>
                 </div>
-                <p className="text-gray-600 mb-4">{book.description}</p>
                 <div className="flex justify-between items-center">
                   <div className="flex items-center text-yellow-500">
-                    <Star className="w-4 h-4 mr-1 fill-current" />
-                    <span>{book.rating}/5</span>
+                    {book.rating !== null ? (
+                      <>
+                        <Star className="w-4 h-4 mr-1 fill-current" />
+                        <span>{book.rating.toFixed(1)}/5</span>
+                      </>
+                    ) : (
+                      <span className="text-gray-400 text-sm">No rating available</span>
+                    )}
                   </div>
-                  <Button 
-                    className="bg-finbuddy-purple hover:bg-finbuddy-purple/90"
-                    size="sm"
-                  >
-                    View
-                  </Button>
+                  <Link to={`/books/${book.id}`}>
+                    <Button className="bg-finbuddy-purple hover:bg-finbuddy-purple/90" size="sm">
+                      View
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
