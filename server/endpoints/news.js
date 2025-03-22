@@ -9,26 +9,26 @@ const latestNews = async (req, res) => {
             return res.status(500).json({ success: false, error: "No Such Category Exist" });
         }
 
-        // const url = `https://news-api14.p.rapidapi.com/v2/trendings?topic=${topic}&language=${lang}&country=${country}&limit=30`;
-        // const response = await fetch(url, {
-        //     method: 'GET',
-        //     headers: {
-        //         'x-rapidapi-key': process.env.RAPID_API_KEY,
-        //         'x-rapidapi-host': 'news-api14.p.rapidapi.com'
-        //     }
-        // });
+        const url = `https://news-api14.p.rapidapi.com/v2/trendings?topic=${topic}&language=${lang}&country=${country}&limit=30`;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': process.env.RAPID_API_KEY,
+                'x-rapidapi-host': 'news-api14.p.rapidapi.com'
+            }
+        });
 
-        // if (!response.ok) {
-        //     return res.status(response.status).json({ 
-        //         success: false, 
-        //         error: `API error: ${response.statusText}` 
-        //     });
-        // }
+        if (!response.ok) {
+            return res.status(response.status).json({ 
+                success: false, 
+                error: `API error: ${response.statusText}` 
+            });
+        }
 
-        // let result = await response.json(); 
-        // result = result["data"];
+        let result = await response.json(); 
+        result = result["data"];
 
-        const result = trendingNews;
+        // const result = trendingNews;
         
         res.status(200).json({ success: true, data: result });
     } catch (error) {
