@@ -11,6 +11,14 @@ import login,{validateLogin} from "./auth/login.js";
 
 dotenv.config();
 
+const app = express();
+// app.use(cors());
+// app.use(express.json());
+
+// mongoose.connect(process.env.DB_URL)
+//     .then(() => console.log('Connected to MongoDB'))
+//     .catch(err => console.error('Failed to connect to MongoDB', err));
+
 
 app.use(cors());
 app.use(express.json());
@@ -18,22 +26,6 @@ app.use(express.json());
 mongoose.connect(process.env.DB_URL)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB', err));
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-app.use(cors());
-app.use(express.json());
-
-mongoose.connect(process.env.DB_URL)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Failed to connect to MongoDB', err));
-
->>>>>>> 7282f9c1da721cd3ce10f34637cb6508c57eca58
-=======
->>>>>>> 7282f9c1da721cd3ce10f34637cb6508c57eca58
-
 
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -48,7 +40,7 @@ app.post("/login",validateLogin,login);
 app.post("/chat",chatbot);
 app.post("/news",latestNews);
 
-
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

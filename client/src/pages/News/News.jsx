@@ -79,7 +79,7 @@ const News = () => {
               </div>
             ))
           ) : (
-            <p className="no-news">No news available at the moment.</p>
+            <p className="no-news ">No news available at the moment.</p>
           )}
         </div>
       </div>

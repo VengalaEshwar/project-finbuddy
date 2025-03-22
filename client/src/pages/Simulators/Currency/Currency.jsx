@@ -1,15 +1,15 @@
 import React from 'react'
 import PageTransition from '../../../components/layouts/PageTransition/PageTransition'
 
-function Stocks() {
+function Currency() {
   return (
 
     <PageTransition>
     <div className="page-container glass-card">
-        This is stocks page
+        This is Currency page
     </div>
     </PageTransition>
   )
 }
 
-export default Stocks
+export default Currency

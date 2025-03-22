@@ -1,15 +1,15 @@
 import React from 'react'
 import PageTransition from '../../../components/layouts/PageTransition/PageTransition'
 
-function Stocks() {
+function Emi() {
   return (
 
     <PageTransition>
     <div className="page-container glass-card">
-        This is stocks page
+        This is EMI page
     </div>
     </PageTransition>
   )
 }
 
-export default Stocks
+export default Emi

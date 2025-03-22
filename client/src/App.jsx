@@ -15,6 +15,10 @@ import BookDetails from './pages/Books/BookDetails';
 import LogIn from "./pages/Auth/LogIn.jsx";
 import SignUp from './pages/Auth/Signup.jsx';
 import Chatbot from './pages/Chatbot/Chatbot.jsx';
+import Stocks from './pages/Simulators/Stocks/Stocks.jsx';
+import Currency from './pages/Simulators/Currency/Currency.jsx';
+import Emi from './pages/Simulators/Emi/Emi.jsx';
+import Savings from './pages/Simulators/Savings/Savings.jsx';
 
 function App() {
   
@@ -27,7 +31,11 @@ function App() {
      <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/news' element={<News />} />
-      <Route path='/simulators' element={<Simulators />} />
+      <Route path="/simulators" element={<Simulators />} />
+      <Route path="/simulators/stockmarket" element={<Stocks />} />
+      <Route path="/simulators/currency" element={<Currency/>} />
+      <Route path="/simulators/emi" element={<Emi/>} />
+      <Route path="/simulators/savings" element={<Savings/>} />
       <Route path='/books' element={<Books />} />
       <Route path='/career' element={<Career />} />
       <Route path='/profile' element={<Profile />} />
