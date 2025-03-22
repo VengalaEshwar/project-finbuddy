@@ -32,6 +32,7 @@ function SignUp() {
 
         navigate("/login"); 
       } else {
+        console.log(data);
         alert(data.error || "Signup failed! Please try again.");
       }
     } catch (error) {
