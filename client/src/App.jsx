@@ -13,6 +13,7 @@ import Profile from './pages/Profile/Profile'
 import BookDetails from './pages/Books/BookDetails';
 import LogIn from "./pages/Auth/LogIn.jsx";
 import SignUp from './pages/Auth/Signup.jsx';
+import Chatbot from './pages/Chatbot/Chatbot.jsx';
 
 function App() {
   
@@ -35,6 +36,7 @@ function App() {
      </Routes>
     
       </AnimatePresence>
+      <Chatbot/>
     </div>
   )
 }
