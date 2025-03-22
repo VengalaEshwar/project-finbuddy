@@ -56,12 +56,12 @@ const FeatureCards = () => {
       description: "Stay updated with the latest market trends and financial insights curated for beginners.",
       link: "/news"
     },
-    {
-      icon: <MessageCircle className="w-6 h-6" />,
-      title: "FinBuddy Chatbot",
-      description: "Get instant answers to your financial questions from our AI-powered assistant.",
-      link: "/chatbot"
-    },
+    // {
+    //   icon: <MessageCircle className="w-6 h-6" />,
+    //   title: "FinBuddy Chatbot",
+    //   description: "Get instant answers to your financial questions from our AI-powered assistant.",
+    //   link: "/chatbot"
+    // },
     {
       icon: <BookOpen className="w-6 h-6" />,
       title: "Learning Resources",

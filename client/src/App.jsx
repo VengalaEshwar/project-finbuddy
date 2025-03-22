@@ -12,15 +12,16 @@ import Career from './pages/Career/Career'
 import Profile from './pages/Profile/Profile'
 import Auth from './pages/Auth/Auth';
 import BookDetails from './pages/Books/BookDetails';
-import { MessageCircle } from 'lucide-react';
 import LogIn from "./pages/Auth/LogIn.jsx";
 import SignUp from './pages/Auth/Signup.jsx';
+import Chatbot from './pages/Chatbot/Chatbot.jsx';
+import { MessageCircle } from 'lucide-react';
 
 function App() {
   const [count, setCount] = useState(0)
 const navigate = useNavigate();
 
-  
+
 
   return (
     <div className='app'>
@@ -51,6 +52,7 @@ const navigate = useNavigate();
       >
       <MessageCircle className='sm:w-8 sm:h-8 w-4 h-4'/>
       </div>
+      <Chatbot/>
     </div>
   )
 }

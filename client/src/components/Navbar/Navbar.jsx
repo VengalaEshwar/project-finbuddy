@@ -8,16 +8,13 @@ import "./Navbar.css";
 
 
 const Navbar = () => {
-
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Toggle menu function
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // Close menu when a link is clicked
   const closeMenu = () => {
     setMenuOpen(false);
   };
@@ -26,20 +23,18 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo */}
         <div className="logo">
           Fin<span className="bold">Buddy</span>
         </div>
 
-        {/* Hamburger Menu Icon */}
         <div className="menu-icon" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
 
-        {/* Navigation Links */}
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
           <li>
-            <NavLink to="/" onClick={closeMenu}><FaHome />
+            <NavLink to="/" onClick={closeMenu}>
+              <FaHome />
               Home
             </NavLink>
           </li>
@@ -49,12 +44,7 @@ const Navbar = () => {
               News
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/chatbot" onClick={closeMenu}>
-              <FaRobot />
-              chatbot
-            </NavLink>
-          </li>
+
           <li>
             <NavLink to="/simulators" onClick={closeMenu}>
               <FaChartBar />
@@ -85,16 +75,12 @@ const Navbar = () => {
               Profile
             </NavLink>
           </li>
-        <li>
-          {/* { true && <NavLink to="/auth" onClick={closeMenu}>
-            <button className="get-started">Get Started</button>
-          </NavLink>} */}
-          <NavLink to="/login"  onClick={closeMenu}>
-            <button className="get-started" onClick={()=>navigate("/login")}>Get Started</button>
-          </NavLink>
-        </li>
+          <li>
+            <NavLink to="/login" onClick={closeMenu}>
+              <button className="get-started" onClick={() => navigate("/login")}>Get Started</button>
+            </NavLink>
+          </li>
         </ul>
-
       </div>
     </nav>
   );

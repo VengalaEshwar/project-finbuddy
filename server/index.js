@@ -19,6 +19,17 @@ mongoose.connect(process.env.DB_URL)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB', err));
 
+<<<<<<< HEAD
+=======
+
+app.use(cors());
+app.use(express.json());
+
+mongoose.connect(process.env.DB_URL)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Failed to connect to MongoDB', err));
+
+>>>>>>> 7282f9c1da721cd3ce10f34637cb6508c57eca58
 
 
 // Initialize Google Generative AI
