@@ -35,6 +35,7 @@ function LogIn() {
         setPassword("");
         alert(data.error || "Login failed! Please try again.");
       }
+      
     } catch (error) {
       console.error("Login error:", error);
       alert("An error occurred. Please try again later.");

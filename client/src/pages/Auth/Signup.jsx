@@ -5,7 +5,6 @@ import Cookies from 'js-cookie';
 //server url
 const BASE_URL="http://localhost:5000";
 
-
 function SignUp() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
