@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, NavLink ,useNavigate} from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaHome, FaNewspaper, FaRobot, FaChartBar,
   FaBook, FaGamepad, FaBriefcase, FaUser, FaBars, FaTimes

@@ -15,13 +15,9 @@ import BookDetails from './pages/Books/BookDetails';
 import LogIn from "./pages/Auth/LogIn.jsx";
 import SignUp from './pages/Auth/Signup.jsx';
 import Chatbot from './pages/Chatbot/Chatbot.jsx';
-import { MessageCircle } from 'lucide-react';
 
 function App() {
-  const [count, setCount] = useState(0)
-const navigate = useNavigate();
-
-
+  
 
   return (
     <div className='app'>
@@ -41,17 +37,6 @@ const navigate = useNavigate();
       <Route path="/signup" element={<SignUp/>} />
      </Routes>
       </AnimatePresence>
-      <div 
-      className="chat-icon bg-finbuddy-purple/50  
-      fixed bottom-1 right-1 p-3 rounded-4xl
-       text-finbuddy-purple cursor-pointer 
-       hover:scale-110 hover:bg-finbuddy-purple/70 
-       sm:bottom-10 sm:right-10 z-50"
-      
-       onClick={() => navigate("/chatbot")}
-      >
-      <MessageCircle className='sm:w-8 sm:h-8 w-4 h-4'/>
-      </div>
       <Chatbot/>
     </div>
   )
