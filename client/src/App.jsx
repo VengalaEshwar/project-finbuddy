@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import './App.css'
 import { AnimatePresence } from "framer-motion";
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
 import News from './pages/News/News'
@@ -12,10 +12,11 @@ import Career from './pages/Career/Career'
 import Profile from './pages/Profile/Profile'
 import Auth from './pages/Auth/Auth';
 import BookDetails from './pages/Books/BookDetails';
+import { MessageCircle } from 'lucide-react';
 
 function App() {
   const [count, setCount] = useState(0)
-
+const navigate = useNavigate();
   return (
     <div className='app'>
       <Navbar/>
@@ -31,8 +32,18 @@ function App() {
       <Route path='/auth' element={<Auth/>} />
       <Route path="/books/:bookId" element={<BookDetails />} />
      </Routes>
-    
       </AnimatePresence>
+      <div 
+      className="chat-icon bg-finbuddy-purple/50  
+      fixed bottom-1 right-1 p-3 rounded-4xl
+       text-finbuddy-purple cursor-pointer 
+       hover:scale-110 hover:bg-finbuddy-purple/70 
+       sm:bottom-10 sm:right-10 z-50"
+      
+       onClick={() => navigate("/chatbot")}
+      >
+      <MessageCircle className='sm:w-8 sm:h-8 w-4 h-4'/>
+      </div>
     </div>
   )
 }

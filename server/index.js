@@ -3,19 +3,19 @@ import cors from "cors";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-
-dotenv.config();
-const app = express();
-const PORT = 5000;
-
-
 import chatbot from "./endpoints/chatbot.js";
 import latestNews from "./endpoints/news.js";
 import signup,{validateSignup} from "./auth/signup.js";
 import verifyOtp from "./auth/verifyOtp.js";
 import login,{validateLogin} from "./auth/login.js";
 
+dotenv.config();
 
+const app = express();
+const PORT = 5000;
+
+
+//connecting to mongoDB
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -43,3 +43,7 @@ app.post("/news",latestNews);
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+//testing
+app.get("/",(req,res)=>{
+    res.send("Server is running");
+})

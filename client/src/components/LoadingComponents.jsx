@@ -2,7 +2,7 @@ import React from 'react'
 
 function LoadingComponents() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-fullwww">
       {[1, 2, 3, 4, 5, 6].map((item) => (
         <div key={item} className="feature-card">
           <div className="bg-gray-200 animate-pulse h-40 rounded-lg mb-4"></div>
