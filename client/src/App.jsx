@@ -13,10 +13,15 @@ import Profile from './pages/Profile/Profile'
 import Auth from './pages/Auth/Auth';
 import BookDetails from './pages/Books/BookDetails';
 import { MessageCircle } from 'lucide-react';
+import LogIn from "./pages/Auth/LogIn.jsx";
+import SignUp from './pages/Auth/Signup.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
 const navigate = useNavigate();
+
+  
+
   return (
     <div className='app'>
       <Navbar/>
@@ -31,6 +36,8 @@ const navigate = useNavigate();
       <Route path='/profile' element={<Profile />} />
       <Route path='/auth' element={<Auth/>} />
       <Route path="/books/:bookId" element={<BookDetails />} />
+      <Route path="/login" element={<LogIn/>} />
+      <Route path="/signup" element={<SignUp/>} />
      </Routes>
       </AnimatePresence>
       <div 

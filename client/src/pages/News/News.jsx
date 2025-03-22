@@ -1,7 +1,43 @@
-
+import React, { useEffect, useState } from "react";
 import PageTransition from "../../components/layouts/PageTransition/PageTransition";
+import defaultImage from "./defaultNewsImage.webp";
+import "./News.css";
+const BASE_URL = "http://localhost:5000";
+
 
 const News = () => {
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/news`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ topic: "finance" }),
+        });
+
+        const result = await response.json();
+        console.log(result);
+        if (result.success && Array.isArray(result.data)) {
+          setNews(result.data);
+        } else {
+          setNews([]);
+        }
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        setNews([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
   return (
     <PageTransition>
       <div className="page-container">
@@ -10,20 +46,41 @@ const News = () => {
         <div className="glass-card rounded-2xl p-6 mb-6">
           <p className="text-gray-600">
             Stay updated with the latest market trends and financial insights.
-            This page will feature curated news articles and market updates.
+            This page features curated news articles and market updates.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div key={item} className="feature-card">
-              <div className="bg-gray-200 animate-pulse h-40 rounded-lg mb-4"></div>
-              <div className="h-6 bg-gray-200 animate-pulse rounded mb-2 w-3/4"></div>
-              <div className="h-4 bg-gray-200 animate-pulse rounded mb-1"></div>
-              <div className="h-4 bg-gray-200 animate-pulse rounded mb-1 w-5/6"></div>
-              <div className="h-4 bg-gray-200 animate-pulse rounded w-4/6"></div>
-            </div>
-          ))}
+
+        <div className="news-grid">
+          {loading ? (
+            [...Array(6)].map((_, index) => (
+              <div key={index} className="feature-card">
+                <div className="loading-box"></div>
+                <div className="loading-text w-3/4"></div>
+                <div className="loading-text"></div>
+                <div className="loading-text w-5/6"></div>
+                <div className="loading-text w-4/6"></div>
+              </div>
+            ))
+          ) : news.length > 0 ? (
+            news.map((article, index) => (
+              <div key={index} className="news-card">
+                <img
+                  src={article.thumbnail}
+                  alt="News Thumbnail"
+                  className="news-thumbnail"
+                  onError={(e) => { e.target.src = defaultImage; }}
+                />
+
+                <h3 className="news-title">{article.title}</h3>
+                <p className="news-excerpt">{article.excerpt}</p>
+                <a href={article.url} target="_blank" rel="noopener noreferrer" className="news-link">
+                  Read More
+                </a>
+              </div>
+            ))
+          ) : (
+            <p className="no-news">No news available at the moment.</p>
+          )}
         </div>
       </div>
     </PageTransition>

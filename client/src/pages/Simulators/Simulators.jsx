@@ -7,47 +7,47 @@ import { motion } from 'framer-motion';
 const Simulators = () => {
   const books = [
     {
-      title: "The Psychology of Money",
+      title: "Stock",
       author: "Morgan Housel",
       description: "Timeless lessons on wealth, greed, and happiness.",
       rating: 4.8,
       cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
-    },
-    {
-      title: "Rich Dad Poor Dad",
-      author: "Robert Kiyosaki",
-      description: "What the rich teach their kids about money.",
-      rating: 4.7,
-      cover: "bg-gradient-to-r from-blue-500 to-cyan-400"
-    },
-    {
-      title: "The Intelligent Investor",
-      author: "Benjamin Graham",
-      description: "The definitive book on value investing.",
-      rating: 4.9,
-      cover: "bg-gradient-to-r from-green-500 to-teal-400"
-    },
-    {
-      title: "Financial Freedom",
-      author: "Grant Sabatier",
-      description: "A proven path to all the money you will ever need.",
-      rating: 4.5,
-      cover: "bg-gradient-to-r from-orange-500 to-yellow-400"
-    },
-    {
-      title: "Your Money or Your Life",
-      author: "Vicki Robin",
-      description: "Transforming your relationship with money.",
-      rating: 4.6,
-      cover: "bg-gradient-to-r from-pink-500 to-rose-400"
-    },
-    {
-      title: "The Millionaire Next Door",
-      author: "Thomas J. Stanley",
-      description: "Surprising secrets of America's wealthy.",
-      rating: 4.7,
-      cover: "bg-gradient-to-r from-red-500 to-orange-500"
     }
+    // {
+    //   title: "Rich Dad Poor Dad",
+    //   author: "Robert Kiyosaki",
+    //   description: "What the rich teach their kids about money.",
+    //   rating: 4.7,
+    //   cover: "bg-gradient-to-r from-blue-500 to-cyan-400"
+    // },
+    // {
+    //   title: "The Intelligent Investor",
+    //   author: "Benjamin Graham",
+    //   description: "The definitive book on value investing.",
+    //   rating: 4.9,
+    //   cover: "bg-gradient-to-r from-green-500 to-teal-400"
+    // },
+    // {
+    //   title: "Financial Freedom",
+    //   author: "Grant Sabatier",
+    //   description: "A proven path to all the money you will ever need.",
+    //   rating: 4.5,
+    //   cover: "bg-gradient-to-r from-orange-500 to-yellow-400"
+    // },
+    // {
+    //   title: "Your Money or Your Life",
+    //   author: "Vicki Robin",
+    //   description: "Transforming your relationship with money.",
+    //   rating: 4.6,
+    //   cover: "bg-gradient-to-r from-pink-500 to-rose-400"
+    // },
+    // {
+    //   title: "The Millionaire Next Door",
+    //   author: "Thomas J. Stanley",
+    //   description: "Surprising secrets of America's wealthy.",
+    //   rating: 4.7,
+    //   cover: "bg-gradient-to-r from-red-500 to-orange-500"
+    // }
   ];
 
   return (
@@ -94,10 +94,10 @@ const Simulators = () => {
                     <span>{book.rating}/5</span>
                   </div>
                   <Button 
-                    className="bg-finbuddy-purple hover:bg-finbuddy-purple/90"
+                    className="bg-finbuddy-purple hover:bg-finbuddy-purple/90 px-5 cursor-pointer active:scale-95"
                     size="sm"
                   >
-                    View
+                    try
                   </Button>
                 </div>
               </div>

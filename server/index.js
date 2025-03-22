@@ -11,24 +11,19 @@ import login,{validateLogin} from "./auth/login.js";
 
 dotenv.config();
 
-const app = express();
-const PORT = 5000;
 
+app.use(cors());
+app.use(express.json());
 
-//connecting to mongoDB
-mongoose.connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log('MongoDB connected successfully!'))
-  .catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.DB_URL)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch(err => console.error('Failed to connect to MongoDB', err));
+
 
 
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 export const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-app.use(cors());
-app.use(express.json());
 
 //auth 
 app.post("/signup",validateSignup,signup)
