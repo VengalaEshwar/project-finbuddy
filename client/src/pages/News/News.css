@@ -1,0 +1,164 @@
+/* Page Container */
+.page-container {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* Section Title */
+.section-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* Glass Effect Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.news-description {
+    color: #4a5568;
+}
+
+/* Grid Layout */
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Responsive Grid */
+@media (min-width: 768px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Feature Card */
+.feature-card {
+    padding: 16px;
+    border-radius: 12px;
+}
+
+/* Loading Placeholder */
+.loading-box {
+    height: 230px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #d1d5db, #f3f4f6);
+    animation: gradientPulse 1.5s infinite ease-in-out;
+}
+
+/* Loading Text Placeholder */
+.loading-text {
+    height: 16px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background: linear-gradient(90deg, #d1d5db, #f3f4f6);
+    animation: gradientPulse 1.5s infinite ease-in-out;
+}
+
+/* Gradient Pulse Animation */
+@keyframes gradientPulse {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.3;
+    }
+    35% {
+        background-position: 50% 50%;
+        opacity: 0.5;
+    }
+    75% {
+        background-position: 100% 50%;
+        opacity: 1;
+    }
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+}
+
+/* News Card */
+.news-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    height: 430px; 
+}
+
+.news-card:hover {
+    box-shadow: -6px 5px 15px 3px rgba(173, 67, 226, 0.727);
+    transform: scale(1.008);
+}
+
+/* News Image */
+.news-thumbnail {
+    width: 100%;
+    height: 230px; /* Set fixed height for consistency */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* News Content */
+.news-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* News Title */
+.news-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* News Excerpt */
+.news-excerpt {
+    font-size: small;
+    color: #4a5568;
+    margin: 8px 0;
+    height: 60px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;  /* Limits to 3 lines */
+    -webkit-box-orient: vertical;
+}
+
+
+/* Read More Link */
+.news-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+}
+
+/* No News Message */
+.no-news {
+    text-align: center;
+    font-size: 16px;
+    color: #6b7280;
+    margin-top: 20px;
+}
