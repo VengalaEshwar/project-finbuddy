@@ -23,6 +23,27 @@
 .news-description {
     color: #4a5568;
 }
+.news-card .img-container{
+    position: relative;
+}
+.news-card .img-container .news-source-link{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    padding: 2px 10px;
+    border-radius: 8px;
+    z-index: 1;
+    background-color: rgb(157, 78, 205);
+}
+.news-card .img-container .news-source-link:hover{
+    color: blue;
+    box-shadow: 0px 0px 20px 4px rgba(183, 133, 208, 0.522);
+}
+
+.block-cursor{
+    cursor:not-allowed;
+    background-color: rgba(189, 124, 230, 0.212);
+}
 
 /* Grid Layout */
 .news-grid {

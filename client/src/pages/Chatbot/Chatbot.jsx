@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import "./Chatbot.css";
@@ -15,6 +15,30 @@ const Chatbot = () => {
     const [loading, setLoading] = useState(false);
     const [sessionId, setSessionId] = useState(null);
 
+    useEffect(() => {
+        if (isOpen && messages.length === 0) {
+            sendInitialMessage();
+        }
+    }, [isOpen]);
+
+    const sendInitialMessage = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch(`${BASE_URL}/chat`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: "Hi", sessionId })
+            });
+            const data = await response.json();
+            setSessionId(data.sessionId);
+            setMessages([{ text: data.reply, sender: "bot" }]);
+        } catch (error) {
+            console.error("Error fetching chatbot response:", error);
+            setMessages([{ text: "Error getting response.", sender: "bot" }]);
+        }
+        setLoading(false);
+    };
+
     const sendMessage = async () => {
         if (!input.trim()) return;
 
@@ -27,7 +51,7 @@ const Chatbot = () => {
             const response = await fetch(`${BASE_URL}/chat`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: input, sessionId }),
+                body: JSON.stringify({ message: input, sessionId })
             });
             const data = await response.json();
             setSessionId(data.sessionId);
@@ -42,6 +66,7 @@ const Chatbot = () => {
     };
 
     return (
+        
         <div className="chatbot-container">
             {isOpen && (
                 <div className="chat-window">
