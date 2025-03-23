@@ -39,7 +39,8 @@ app.post("/login",validateLogin,login);
 //endpoints
 app.post("/chat",chatbot);
 app.post("/news",latestNews);
-
+//stock simulator
+// app.get("/stocks",)
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
