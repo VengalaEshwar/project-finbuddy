@@ -9,7 +9,7 @@ import News from './pages/News/News'
 import Simulators from './pages/Simulators/Simulators'
 import Books from './pages/Books/Books'
 import Career from './pages/Career/Career'
-import Profile from './pages/Profile/Profile'
+import Profile from './pages/Profile/Profile.jsx'
 import BookDetails from './pages/Books/BookDetails';
 import LogIn from "./pages/Auth/LogIn.jsx";
 import SignUp from './pages/Auth/Signup.jsx';

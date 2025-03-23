@@ -1,0 +1,42 @@
+.profile{
+    background:linear-gradient(to top,rgb(195, 160, 238),rgba(235, 209, 242, 0.236));
+    width: 100%;
+    padding-top: 120px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    height: 100%;
+    
+}
+
+.user-details{
+    width: 40%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.progress-profile{
+    overflow: hidden;
+    width: 50%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width:768px) {
+    .profile {
+        padding-top: 100px;
+      flex-direction: column;
+      height: max-content;
+    }
+    .user-details{
+        width: 100%;
+    }
+    .progress-profile{
+        width: 100%;
+    }
+  }

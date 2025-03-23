@@ -1,9 +1,16 @@
 import React from 'react'
-import "./Profile.css"
-function Profile() {
+import "./Profile.css";
+import UserDetailsCard from './UserDetailsCard';
+import UserProgress from './UserProgress';
+export default function Profile() {
   return (
-    <div>Profile</div>
+    <div className='profile'>
+      <div className="user-details">
+        <UserDetailsCard />
+      </div>
+      <div className="progress-profile">
+        <UserProgress />
+      </div>
+    </div>
   )
 }
-
-export default Profile
