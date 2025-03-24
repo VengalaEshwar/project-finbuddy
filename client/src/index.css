@@ -170,6 +170,9 @@
 @utility page-container {
   @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 animate-fade-in;
 }
+/* @utility page-container-sim{
+  @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 animate-fade-in bg-amber-300;
+} */
 
 @utility section-heading {
   @apply text-3xl md:text-4xl font-semibold text-finbuddy-dark mb-8;
@@ -255,4 +258,7 @@
 input:focus{
   border-color: #6e59a5;
   border-width: 3px;
+}
+*{
+  scrollbar-width: none;
 }

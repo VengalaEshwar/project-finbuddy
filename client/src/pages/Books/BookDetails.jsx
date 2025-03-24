@@ -58,7 +58,7 @@ const BookDetails = () => {
   if (!book) return <div className="text-center text-lg">Loading...</div>;
 
   return (
-    <div className="page-container glass-card rounded-xl  mx-auto p-6 bg-purple-100 mt-5">
+    <div className="page-container glass-card rounded-xl  mx-auto p-6 bg-purple-100 mt-5 overflow-y-scroll ">
       <div className="flex flex-col md:flex-row items-center gap-10 ">
         <motion.img src={book.cover} alt={book.title} 
         whileHover={{  y : -10}}
