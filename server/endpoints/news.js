@@ -9,7 +9,7 @@ const latestNews = async (req, res) => {
             return res.status(500).json({ success: false, error: "No Such Category Exist" });
         }
 
-        const url = `https://news-api14.p.rapidapi.com/v2/trendings?topic=${topic}&language=${lang}&country=${country}&limit=30`;
+        const url = `https://news-api14.p.rapidapi.com/v2/trendings?topic=${topic}&language=${lang}&country=${country}&page=1`;
         const response = await fetch(url, {
             method: 'GET',
             headers: {
