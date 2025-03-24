@@ -4,6 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import chatbot from "./endpoints/chatbot.js";
+import {getSymbols,getStockData} from "./endpoints/stocks.js";
 import latestNews from "./endpoints/news.js";
 import signup,{validateSignup} from "./auth/signup.js";
 import verifyOtp from "./auth/verifyOtp.js";
@@ -40,7 +41,8 @@ app.post("/login",validateLogin,login);
 app.post("/chat",chatbot);
 app.post("/news",latestNews);
 //stock simulator
-// app.get("/stocks",)
+app.get("/stocks/getSymbols",getSymbols);
+app.get("/stocks/getStockData/:symbol",getStockData);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
