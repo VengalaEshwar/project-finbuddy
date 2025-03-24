@@ -1,14 +1,12 @@
-
 import { v4 as uuidv4 } from "uuid";
 import dotenv from "dotenv";
 
-import { model } from '../index.js';
 dotenv.config();
 
-//to store the history
+// Store user chat history
 const sessions = {};
 
-const chatbot = async (req, res) => {
+const chatbot = async (req, res, systemChat) => {
     try {
         let { sessionId, message } = req.body;
         console.log(`Session: ${sessionId}, Message: ${message}`);
@@ -19,7 +17,7 @@ const chatbot = async (req, res) => {
         if (!sessionId) {
             sessionId = uuidv4();
             sessions[sessionId] = {
-                chat: model.startChat({ history: [] }),
+                chat: systemChat,  
                 history: [],
             };
         }
@@ -27,7 +25,7 @@ const chatbot = async (req, res) => {
         // Retrieve or create a chat instance for the session
         if (!sessions[sessionId]) {
             sessions[sessionId] = {
-                chat: model.startChat({ history: [] }),
+                chat: systemChat,
                 history: [],
             };
         }
@@ -50,6 +48,5 @@ const chatbot = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
-
 
 export default chatbot;

@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 import "./Navbar.css";
 
+
 const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +18,8 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
-
+  
+  
   return (
     <nav className="navbar">
       <div className="navbar-container">

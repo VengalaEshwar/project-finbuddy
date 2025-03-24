@@ -5,6 +5,7 @@ import "./News.css";
 const BASE_URL = "http://localhost:5000";
 
 
+
 const News = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,6 @@ const News = () => {
         });
 
         const result = await response.json();
-        console.log(result);
         if (result.success && Array.isArray(result.data)) {
           setNews(result.data);
         } else {
@@ -64,13 +64,17 @@ const News = () => {
           ) : news.length > 0 ? (
             news.map((article, index) => (
               <div key={index} className="news-card">
-                <img
-                  src={article.thumbnail}
-                  alt="News Thumbnail"
-                  className="news-thumbnail"
-                  onError={(e) => { e.target.src = defaultImage; }}
-                />
-
+                <div className="img-container">
+                  <img
+                    src={article.thumbnail}
+                    alt="News Thumbnail"
+                    className="news-thumbnail"
+                    onError={(e) => { e.target.src = defaultImage; }}
+                  />
+                  <a href={article.publisher.url} target="_blank" rel="noopener noreferrer" className={`${article.publisher.url?"news-source-link":" news-source-link block-cursor"}`} >
+                    {article.publisher.name || "Unknown"}
+                  </a>
+                </div>
                 <h3 className="news-title">{article.title}</h3>
                 <p className="news-excerpt">{article.excerpt}</p>
                 <a href={article.url} target="_blank" rel="noopener noreferrer" className="news-link">
@@ -79,7 +83,7 @@ const News = () => {
               </div>
             ))
           ) : (
-            <p className="no-news">No news available at the moment.</p>
+            <p className="no-news ">No news available at the moment.</p>
           )}
         </div>
       </div>

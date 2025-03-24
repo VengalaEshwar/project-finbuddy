@@ -4,15 +4,17 @@ import { Button } from '../../components/ui/button';
 import { BookOpen, Star, UserRound } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from "react";
+import LoadingComponents from "../../components/LoadingComponents";
 
 const API_KEY = "AIzaSyBhHCnv-RVjTfrZIxIlDrajTryGfnmWy_c";
 const categories = ["finance", "investing", "business"];
 
 const Books = () => {
   const [books, setBooks] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchBooks = async () => {
+      setLoading(true);
       try {
         let allBooks = new Map();
 
@@ -44,6 +46,7 @@ const Books = () => {
         });
 
         setBooks(sortedBooks);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching books:", error);
       }
@@ -56,8 +59,12 @@ const Books = () => {
     <PageTransition>
       <div className="page-container">
         <h1 className="section-heading">Popular Finance, Investing & Business Books</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="glass-card rounded-2xl p-6 mb-6">
+          <p className="text-gray-600">
+           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione eum alias et maxime dolorum, doloremque velit laboriosam nemo officiis id. Iste enim fugiat repellat iusto consectetur quae saepe eveniet soluta.
+          </p>
+        </div>
+        {loading?<LoadingComponents/> :<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {books.map((book, index) => (
             <motion.div
               key={book.id}
@@ -97,7 +104,7 @@ const Books = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </div>}
       </div>
     </PageTransition>
   );

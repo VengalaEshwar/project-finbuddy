@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -57,6 +58,7 @@ const BookDetails = () => {
   if (!book) return <div className="text-center text-lg">Loading...</div>;
 
   return (
+// <<<<<<< vamshii
     <div className="flex justify-center items-start min-h-screen w-screen bg-gray-100 mt-20 py-10 px-4 overflow-auto scroll-smooth">
       <div className="bg-white shadow-md hover:shadow-2xl hover:shadow-purple-500 transition-shadow duration-300 rounded-lg p-6 sm:p-8 w-full max-w-4xl sm:max-w-5xl md:max-w-6xl">
         <div className="flex flex-col md:flex-row items-center md:items-start">
@@ -88,6 +90,22 @@ const BookDetails = () => {
             <h4 className="text-md sm:text-lg font-semibold">About the Author:</h4>
             <p className="text-gray-600 text-sm sm:text-base">{authorBio}</p>
           </div>
+// =======
+//     <div className="page-container glass-card rounded-xl  mx-auto p-6 bg-purple-100 mt-5 overflow-y-scroll ">
+//       <div className="flex flex-col md:flex-row items-center gap-10 ">
+//         <motion.img src={book.cover} alt={book.title} 
+//         whileHover={{  y : -10}}
+//         className="w-48 h-auto rounded-lg shadow-lg" />
+//         <div className="md:ml-6 mt-4 md:mt-0 ">
+//           <h2 className="text-2xl font-bold text-finbuddy-purple">{book.title}</h2>
+//           <h3 className="text-lg font-semibold text-finbuddy-purple mt-2 ">By: {book.author}</h3>
+//           <p className="text-gray-600 mt-2">
+//             <strong className="text-finbuddy-purple">Summary:</strong>{" "}
+//             <span dangerouslySetInnerHTML={{ __html: book.description }} />
+//           </p>
+//           <h4 className="mt-4 font-semibold text-finbuddy-purple">About the Author:</h4>
+//           <p className="text-gray-600">{authorBio}</p>
+// >>>>>>> main
         </div>
       </div>
     </div>
