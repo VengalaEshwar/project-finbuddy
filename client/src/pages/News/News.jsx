@@ -23,6 +23,7 @@ const News = () => {
 
         const result = await response.json();
         if (result.success && Array.isArray(result.data)) {
+          console.log(result.data);
           setNews(result.data);
         } else {
           setNews([]);
@@ -71,7 +72,7 @@ const News = () => {
                     className="news-thumbnail"
                     onError={(e) => { e.target.src = defaultImage; }}
                   />
-                  <a href={article.publisher.url} target="_blank" rel="noopener noreferrer" className={`${article.publisher.url?"news-source-link":" news-source-link block-cursor"}`} >
+                  <a href={article.publisher.url} target="_blank" rel="noopener noreferrer" className={`${article.publisher.url ? "news-source-link" : " news-source-link block-cursor"}`} >
                     {article.publisher.name || "Unknown"}
                   </a>
                 </div>
