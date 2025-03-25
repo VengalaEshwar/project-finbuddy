@@ -34,7 +34,6 @@ function App() {
       <Route path="/login" element={<LogIn/>} />
       <Route path="/signup" element={<SignUp/>} />
      </Routes>
-    
       </AnimatePresence>
       <Chatbot/>
     </div>
