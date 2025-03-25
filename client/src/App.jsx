@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import './App.css'
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
@@ -19,7 +19,8 @@ import Stocks from './pages/Simulators/Stocks/Stocks.jsx';
 import Currency from './pages/Simulators/Currency/Currency.jsx';
 import Emi from './pages/Simulators/Emi/Emi.jsx';
 import Savings from './pages/Simulators/Savings/Savings.jsx';
-
+import {motion } from 'framer-motion';
+import {Toaster} from "react-hot-toast";
 function App() {
   
 
@@ -45,7 +46,12 @@ function App() {
       <Route path="/signup" element={<SignUp/>} />
      </Routes>
       </AnimatePresence>
-      <Chatbot/>
+      {/* <motion.div
+        drag
+      > */}
+        <Chatbot/>
+      {/* </motion.div> */}
+      <Toaster/>
     </div>
   )
 }

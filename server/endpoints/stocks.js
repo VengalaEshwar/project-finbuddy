@@ -4,7 +4,6 @@ export const getSymbols = async (req, res) => {
     try {
         // Wait for the response from the API
         const response = await axios.get(`https://www.alphavantage.co/query?function=LISTING_STATUS&date=2010-07-10&state=active&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
-        console.log(response?.data);
         const data = response?.data?.split("\n")
         const tokens = data[0]?.split(",")
         tokens[tokens.length-1]=tokens[tokens.length-1]?.slice(0,-1);

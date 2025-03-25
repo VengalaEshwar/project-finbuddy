@@ -39,6 +39,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../../components/ui/Table";
+import toast from "react-hot-toast";
 const Stocks = () => {
 
   //required states
@@ -49,8 +50,9 @@ const Stocks = () => {
   const [cash, setCash] = useState(10000);
   const [searchTerm, setSearchTerm] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [chartData, setChartData] = useState(chartDataa);
-  const [isLoading, setIsLoading] = useState(false);
+  const [chartData, setChartData] = useState([]); //
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingg, setIsLoadingg] = useState(false);
   const [stocks, setStocks] = useState([]);
   const [selectedStock, setSelectedStock] = useState(stocks[0]);
 
@@ -68,21 +70,28 @@ const Stocks = () => {
   //this useEffect fetches the stock symbols
   useEffect(() => {
     const fetchStocks = async () => {
+      setIsLoadingg(true);
       try {
-        // const response = await axios.get(LOCAL + "stocks/getSymbols");
-        // const data = response?.data?.data;
-        
-        const data = symbolsData;
-        
-        // console.log(data);
-        setStocks([...data]);
+        const response = await axios.get(LOCAL + "stocks/getSymbols");
+        const data = response?.data?.data || []; // Ensure it's an array
+  
+        console.log(data);
+  
+        setStocks(data); // Directly set the fetched data
+  
+        if (data.length > 0) {
+          handleStockSelect(data[0]); // Select the first stock only if data exists
+        }
       } catch (error) {
         console.error("Error fetching stocks:", error);
+      } finally {
+        setIsLoadingg(false); // Ensure loading state is updated even on failure
       }
     };
-    fetchStocks();
-  }, []);
-
+  
+    fetchStocks(); 
+  }, []); //setStocks
+  
   const filteredStocks = stocks.filter(
     (stock) =>
       stock.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -90,13 +99,13 @@ const Stocks = () => {
   );
 
   const handleStockSelect = async (stock) => {
-    // setSelectedStock(stock);
+    setSelectedStock(stock);
     setIsLoading(true);
-    // const receivedData = await axios.get(LOCAL + "stocks/getStockData/" + stock.symbol);
-    // const data = receivedData?.data?.data;
-    // setChartData(data);
+    const receivedData = await axios.get(LOCAL + "stocks/getStockData/" + stock?.symbol);
+    const data = receivedData?.data?.data;
+    setChartData(data?.chartData);
     // console.log(data);
-    setChartData(chartDataa);
+    // setChartData(chartDataa);
     setIsLoading(false);
   };
 
@@ -104,12 +113,7 @@ const Stocks = () => {
     const cost = selectedStock.price * quantity;
 
     if (cost > cash) {
-      windows.alert("You don't have enough cash to complete this purchase.");
-      // toast({
-      //   title: "Insufficient funds",
-      //   description: "You don't have enough cash to complete this purchase.",
-      //   variant: "destructive"
-      // });
+      toast.error("Insufficient funds");
       return;
     }
 
@@ -150,12 +154,7 @@ const Stocks = () => {
 
     // Deduct cash
     setCash(cash - cost);
-    window.alert("Purchase successful");
-    // toast({
-    //   title: "Purchase successful",
-    //   description: `You bought ${quantity} shares of ${selectedStock.symbol} for $${cost.toFixed(2)}.`
-    // });
-
+    toast.success("Purchase successful");
     setQuantity(1);
   };
 
@@ -165,22 +164,12 @@ const Stocks = () => {
     );
 
     if (!existingStock) {
-      window.alert(`You don't own any shares of ${selectedStock.symbol}.`);
-      // toast({
-      //   title: "No shares to sell",
-      //   description: `You don't own any shares of ${selectedStock.symbol}.`,
-      //   variant: "destructive"
-      // });
+      toast("No shares to sell");
       return;
     }
 
     if (quantity > existingStock.shares) {
-      window.alert(`You only have ${existingStock.shares} shares to sell.`);
-      // toast({
-      //   title: "Insufficient shares",
-      //   description: `You only have ${existingStock.shares} shares to sell.`,
-      //   variant: "destructive"
-      // });
+      toast.error("Insufficient shares");
       return;
     }
 
@@ -202,12 +191,7 @@ const Stocks = () => {
 
     // Add cash
     setCash(cash + saleProceeds);
-    window.alert("Sale successful");
-    // toast({
-    //   title: "Sale successful",
-    //   description: `You sold ${quantity} shares of ${selectedStock.symbol} for $${saleProceeds.toFixed(2)}.`
-    // });
-
+    toast.success("Sale successful");
     setQuantity(1);
   };
 
@@ -304,7 +288,11 @@ const Stocks = () => {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {filteredStocks.map((stock) => (
+                      {isLoadingg ? (
+                  <div className="h-[300px] flex items-center justify-center">
+                    <div className="animate-spin h-8 w-8 border-4 border-fin-purple border-t-transparent rounded-full"></div>
+                  </div>
+                ) :filteredStocks.map((stock) => (
                         <TableRow
                           key={stock.symbol}
                           className={`cursor-pointer ${
@@ -370,9 +358,9 @@ const Stocks = () => {
                   {selectedStock ? (
                     <div className="flex items-center mt-1">
                       <span className="text-lg font-bold mr-2">
-                        ${selectedStock.price.toFixed(2)}
+                        ${selectedStock?.price?.toFixed(2)}
                       </span>
-                      <span
+                      {/* <span
                         className={`flex items-center ${
                           selectedStock.change >= 0
                             ? "text-green-600"
@@ -385,7 +373,7 @@ const Stocks = () => {
                           <ArrowDown className="h-3 w-3 mr-1" />
                         )}
                         {Math.abs(selectedStock.change).toFixed(2)}%
-                      </span>
+                      </span> */}
                     </div>
                   ) : (
                     "Stock details will appear here"
@@ -402,7 +390,7 @@ const Stocks = () => {
                   <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart
-                        data={chartDataa} //need to change it later
+                        data={chartData} //need to change it later
                         margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
                       >
                         <defs>
@@ -480,7 +468,7 @@ const Stocks = () => {
                   </div>
                 )}
 
-                {(true || selectedStock )&& (
+                {selectedStock && (
                   <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <h3 className="text-sm font-medium text-gray-500 mb-1">
@@ -497,8 +485,8 @@ const Stocks = () => {
                           className="w-20"
                         />
                         <span className="text-sm">
-                          Shares × ${selectedStock?.price.toFixed(2)} = $
-                          {(selectedStock?.price * quantity).toFixed(2)}
+                          Shares × ${selectedStock?.price?.toFixed(2)} = $
+                          {(selectedStock?.price * quantity)?.toFixed(2)}
                         </span>
                       </div>
                       <div className="flex space-x-2">
@@ -633,7 +621,7 @@ const Stocks = () => {
                                 profit >= 0 ? "text-green-600" : "text-red-600"
                               }
                             >
-                              ${profit.toFixed(2)} ({profitPercent.toFixed(2)}%)
+                              ${profit.toFixed(2)} ({profitPercent?.toFixed(2)}%)
                             </TableCell>
                           </TableRow>
                         );
@@ -656,6 +644,7 @@ const Stocks = () => {
                 )}
               </CardContent>
             </Card>
+            
           </div>
         </div>
       </main>
