@@ -6,14 +6,14 @@ export const getSymbols = async (req, res) => {
         const response = await axios.get(`https://www.alphavantage.co/query?function=LISTING_STATUS&date=2010-07-10&state=active&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
         const data = response?.data?.split("\n")
         const tokens = data[0]?.split(",")
-        tokens[tokens.length-1]=tokens[tokens.length-1]?.slice(0,-1);
+        tokens[tokens.length - 1] = tokens[tokens.length - 1]?.slice(0, -1);
         const result = [];
-        for( let i = 1; i < data.length-1; i++){
-            const list ={}
+        for (let i = 1; i < data.length - 1; i++) {
+            const list = {}
             const row = data[i].split(",");
-            for(let j = 0; j < tokens.length; j++){
-                if(j === tokens.length-1) {
-                    row[tokens.length-1]=row[tokens.length-1]?.slice(0,-1);
+            for (let j = 0; j < tokens.length; j++) {
+                if (j === tokens.length - 1) {
+                    row[tokens.length - 1] = row[tokens.length - 1]?.slice(0, -1);
                 }
                 list[tokens[j]] = row[j];
             }
@@ -28,22 +28,23 @@ export const getSymbols = async (req, res) => {
 };
 export const getStockData = async (req, res) => {
     try {
+        console.log(req.params);
         // Wait for the response from the API
         const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${req.params.symbol}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
         const result1 = response.data["Time Series (Daily)"];
-        const chartData =[];
-        for(let key of Object.keys(result1)){
-            const row = {date:result1[key],price : result1[key]["4. close"]};
+        const chartData = [];
+        for (let key of Object.keys(result1)) {
+            const row = { date: result1[key]+" ", price: result1[key]["4. close"] };
             chartData.push(row);
         }
-        const displayData = {}
-        for(let key of Object.keys(result1)){
-            displayData ={
+        let displayData = {}
+        for (let key of Object.keys(result1)) {
+            displayData = {
                 ...result1[key]
             }
             break;
         }
-        result={chartData,displayData};
+        let result = { chartData, displayData };
         console.log(result);
         return res.status(200).json({ success: true, data: result });
     } catch (e) {
