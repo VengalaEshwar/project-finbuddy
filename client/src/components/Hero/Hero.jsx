@@ -59,6 +59,7 @@ const Hero = () => {
         <div className="absolute left-0 right-0 -top-40 h-80 rounded-full blur-3xl bg-finbuddy-softpurple/20 transform rotate-12"></div>
       </div>
 
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative">
         <motion.div
           className="max-w-4xl mx-auto text-center"
@@ -120,7 +121,7 @@ const Hero = () => {
             <motion.div
               key={index}
               variants={iconVariants}
-              className="absolute opacity-70"
+              className="absolute opacity-50"
               style={{
                 top: `${20 + Math.random() * 30}%`,
                 left: `${5 + (index * 25) + (Math.random() * 8)}%`,

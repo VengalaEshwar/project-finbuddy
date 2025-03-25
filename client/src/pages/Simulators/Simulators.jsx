@@ -3,53 +3,39 @@ import PageTransition from "../../components/layouts/PageTransition/PageTransiti
 import { Button } from '../../components/ui/button';
 import { BookOpen, Star, UserRound } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from "react-router-dom";
 
 const Simulators = () => {
-  const books = [
+  const simulators = [
     {
-      title: "The Psychology of Money",
-      author: "Morgan Housel",
-      description: "Timeless lessons on wealth, greed, and happiness.",
-      rating: 4.8,
-      cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
-    },
-    {
-      title: "Rich Dad Poor Dad",
-      author: "Robert Kiyosaki",
-      description: "What the rich teach their kids about money.",
-      rating: 4.7,
-      cover: "bg-gradient-to-r from-blue-500 to-cyan-400"
-    },
-    {
-      title: "The Intelligent Investor",
-      author: "Benjamin Graham",
-      description: "The definitive book on value investing.",
-      rating: 4.9,
-      cover: "bg-gradient-to-r from-green-500 to-teal-400"
-    },
-    {
-      title: "Financial Freedom",
-      author: "Grant Sabatier",
-      description: "A proven path to all the money you will ever need.",
-      rating: 4.5,
-      cover: "bg-gradient-to-r from-orange-500 to-yellow-400"
-    },
-    {
-      title: "Your Money or Your Life",
-      author: "Vicki Robin",
-      description: "Transforming your relationship with money.",
-      rating: 4.6,
-      cover: "bg-gradient-to-r from-pink-500 to-rose-400"
-    },
-    {
-      title: "The Millionaire Next Door",
-      author: "Thomas J. Stanley",
-      description: "Surprising secrets of America's wealthy.",
-      rating: 4.7,
-      cover: "bg-gradient-to-r from-red-500 to-orange-500"
-    }
+  title: "Stock Market",
+  description: "Learn how stock markets work, trade virtually, and analyze stocks before investing.",
+  imageURL: "https://images.pexels.com/photos/159888/pexels-photo-159888.jpeg",
+  path: "stockmarket"
+  // cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
+},
+{
+  title: "Currency Converter",
+  description: "Convert currencies in real time and understand the impact of exchange rates on global trade.",
+  imageURL: "https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg",
+  path: "currency"
+  // cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
+},
+{
+  title: "Virtual EMI",
+  description: "Calculate monthly EMI for loans and understand how interest rates impact your finances.",
+  imageURL: "https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg",
+  path: "emi"
+  // cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
+},
+{
+  title: "Investment & Saving Simulator",
+  description: "See how your money grows over time through savings and investments with compounding.",
+  imageURL: "https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg",
+  path: "savings"
+}
   ];
-
+  const navigate = useNavigate();
   return (
     <PageTransition>
       <div className="page-container">
@@ -62,7 +48,7 @@ const Simulators = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {books.map((book, index) => (
+          {simulators.map((sim, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -77,27 +63,22 @@ const Simulators = () => {
               whileHover={{ y: -5 }}
               className="bg-white rounded-2xl shadow-md overflow-hidden"
             >
-              <div className={`${book.cover} h-40 flex items-center justify-center`}>
-                <BookOpen className="w-12 h-12 text-white" />
+              <div className={`h-60 flex items-center justify-center overflow-hidden`}>
+                <img src={`${sim.imageURL}`} alt=""  class="w-full "/>
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-finbuddy-dark mb-1">{book.title}</h3>
-                <div className="flex items-center text-gray-500 mb-3">
-                  <UserRound className="w-4 h-4 mr-1" />
-                  <span>{book.author}</span>
-                </div>
-                <p className="text-gray-600 mb-4">{book.description}</p>
+                <h3 className="text-xl font-semibold text-finbuddy-dark mb-1">{sim.title}</h3>
+                <p className="text-gray-600 mb-4">{sim.description}</p>
                 <div className="flex justify-between items-center">
                   <div className="flex items-center text-yellow-500">
-                    <Star className="w-4 h-4 mr-1 fill-current" />
-                    <span>{book.rating}/5</span>
                   </div>
                   <Button 
-                    className="bg-finbuddy-purple hover:bg-finbuddy-purple/90"
+                    className="bg-finbuddy-purple hover:bg-finbuddy-purple/90 px-5 cursor-pointer active:scale-95"
                     size="sm"
+                    onClick={() =>navigate(`/simulators/${sim.path}`)}
                   >
-                    View
+                    try
                   </Button>
                 </div>
               </div>
@@ -110,3 +91,10 @@ const Simulators = () => {
 };
 
 export default Simulators;
+
+// cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
+//   cover: "bg-gradient-to-r from-blue-500 to-cyan-400"
+//   cover: "bg-gradient-to-r from-green-500 to-teal-400"
+//   cover: "bg-gradient-to-r from-orange-500 to-yellow-400"
+//   cover: "bg-gradient-to-r from-pink-500 to-rose-400"
+//   cover: "bg-gradient-to-r from-red-500 to-orange-500"

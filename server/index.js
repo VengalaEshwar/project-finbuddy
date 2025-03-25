@@ -10,7 +10,7 @@ import latestNews from "./endpoints/news.js";
 import signup, { validateSignup } from "./auth/signup.js";
 import verifyOtp from "./auth/verifyOtp.js";
 import login, { validateLogin } from "./auth/login.js";
-
+import {getSymbols, getStockData} from "./endpoints/stocks.js"
 dotenv.config();
 const app = express();
 const PORT = 5000;
@@ -42,6 +42,14 @@ app.post("/signup", validateSignup, signup);
 app.post("/verifyOtp", verifyOtp);
 app.post("/login", validateLogin, login);
 
+app.get("/stocks/getSymbols", getSymbols);
+app.get("/stocks/getStockData/:symbol", getStockData);
+
+
 app.listen(PORT, () => {
     console.log(` Server running on http://localhost:${PORT}`);
 });
+//testing
+app.get("/",(req,res)=>{
+    res.send("Server is running");
+})

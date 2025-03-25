@@ -5,7 +5,7 @@ import Hero from "../../components/Hero/Hero";
 import FeatureCards from "../../components/FeatureCards/FeatureCards";
 function Home() {
   return (
-    <div className="home">
+    <div className="home w-full">
       <PageTransition>
         <Hero/>
         <FeatureCards/>
