@@ -386,6 +386,274 @@
     "LBP": {
         "country": "Lebanon",
         "denominations": [100000, 50000, 20000, 10000, 5000, 1000, 500, 250, 100]
+    },
+    "LKR": {
+        "country": "Sri Lanka",
+        "denominations": [5000, 2000, 1000, 500, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "LRD": {
+        "country": "Liberia",
+        "denominations": [1000, 500, 100, 50, 20, 10, 5, 1]
+    },
+    "LSL": {
+        "country": "Lesotho",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "LYD": {
+        "country": "Libya",
+        "denominations": [50, 20, 10, 5, 1, 0.5, 0.25]
+    },
+    "MAD": {
+        "country": "Morocco",
+        "denominations": [200, 100, 50, 20, 10, 5, 1]
+    },
+    "MDL": {
+        "country": "Moldova",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "MGA": {
+        "country": "Madagascar",
+        "denominations": [20000, 10000, 5000, 2000, 1000, 500, 200, 100]
+    },
+    "MKD": {
+        "country": "North Macedonia",
+        "denominations": [5000, 2000, 1000, 500, 200, 100, 50, 10, 5, 2, 1]
+    },
+    "MMK": {
+        "country": "Myanmar",
+        "denominations": [10000, 5000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "MNT": {
+        "country": "Mongolia",
+        "denominations": [20000, 10000, 5000, 1000, 500, 100, 50, 20, 10, 5]
+    },
+    "MOP": {
+        "country": "Macau",
+        "denominations": [1000, 500, 100, 50, 20, 10, 5, 1]
+    },
+    "MRU": {
+        "country": "Mauritania",
+        "denominations": [200, 100, 50, 20, 10, 5, 1]
+    },
+    "MUR": {
+        "country": "Mauritius",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 25, 20, 10, 5, 1]
+    },
+    "MVR": {
+        "country": "Maldives",
+        "denominations": [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "MWK": {
+        "country": "Malawi",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "MYR": {
+        "country": "Malaysia",
+        "denominations": [100, 50, 20, 10, 5, 1]
+    },
+    "MZN": {
+        "country": "Mozambique",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "NAD": {
+        "country": "Namibia",
+        "denominations": [200, 100, 50, 20, 10, 5, 1]
+    },
+    "NIO": {
+        "country": "Nicaragua",
+        "denominations": [500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "NPR": {
+        "country": "Nepal",
+        "denominations": [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "OMR": {
+        "country": "Oman",
+        "denominations": [50, 20, 10, 5, 1, 0.5, 0.25, 0.1, 0.05]
+    },
+    "PAB": {
+        "country": "Panama",
+        "denominations": [100, 50, 20, 10, 5, 1]
+    },
+    "PEN": {
+        "country": "Peru",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "PGK": {
+        "country": "Papua New Guinea",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "PYG": {
+        "country": "Paraguay",
+        "denominations": [100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 100]
+    },
+    "QAR": {
+        "country": "Qatar",
+        "denominations": [500, 200, 100, 50, 10, 5, 1]
+    },
+    "RON": {
+        "country": "Romania",
+        "denominations": [500, 200, 100, 50, 10, 5, 1]
+    },
+    "RSD": {
+        "country": "Serbia",
+        "denominations": [5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "RWF": {
+        "country": "Rwanda",
+        "denominations": [5000, 2000, 1000, 500, 200, 100, 50]
+    },
+    "SBD": {
+        "country": "Solomon Islands",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "SCR": {
+        "country": "Seychelles",
+        "denominations": [500, 100, 50, 25, 10, 5, 1]
+    },
+    "SDG": {
+        "country": "Sudan",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "SHP": {
+        "country": "Saint Helena",
+        "denominations": [50, 20, 10, 5, 1]
+    },
+    "SLE": {
+        "country": "Sierra Leone",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "SLL": {
+        "country": "Sierra Leone",
+        "denominations": [10000, 5000, 2000, 1000, 500, 200, 100, 50]
+    },
+    "SOS": {
+        "country": "Somalia",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "SRD": {
+        "country": "Suriname",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "SSP": {
+        "country": "South Sudan",
+        "denominations": [100, 50, 20, 10, 5, 1]
+    },
+    "STP": {
+        "country": "São Tomé and Príncipe",
+        "denominations": [200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000, 500]
+    },
+    "STN": {
+        "country": "São Tomé and Príncipe",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "SYP": {
+        "country": "Syria",
+        "denominations": [5000, 2000, 1000, 500, 200, 100, 50, 25]
+    },
+    "SZL": {
+        "country": "Eswatini (Swaziland)",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "TJS": {
+        "country": "Tajikistan",
+        "denominations": [500, 200, 100, 50, 20, 10, 5, 3, 1]
+    },
+    "TMT": {
+        "country": "Turkmenistan",
+        "denominations": [500, 100, 50, 20, 10, 5, 1]
+    },
+    "TND": {
+        "country": "Tunisia",
+        "denominations": [50, 30, 20, 10, 5, 1]
+    },
+    "TOP": {
+        "country": "Tonga",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "TTD": {
+        "country": "Trinidad and Tobago",
+        "denominations": [100, 50, 20, 10, 5, 1]
+    },
+    "TVD": {
+        "country": "Tuvalu",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "TWD": {
+        "country": "Taiwan",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 10]
+    },
+    "TZS": {
+        "country": "Tanzania",
+        "denominations": [10000, 5000, 2000, 1000, 500, 200, 100, 50]
+    },
+    "UAH": {
+        "country": "Ukraine",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "UGX": {
+        "country": "Uganda",
+        "denominations": [50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100]
+    },
+    "UYU": {
+        "country": "Uruguay",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "UZS": {
+        "country": "Uzbekistan",
+        "denominations": [100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100]
+    },
+    "VES": {
+        "country": "Venezuela",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "VND": {
+        "country": "Vietnam",
+        "denominations": [500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000, 500]
+    },
+    "VUV": {
+        "country": "Vanuatu",
+        "denominations": [10000, 5000, 2000, 1000, 500, 200, 100]
+    },
+    "WST": {
+        "country": "Samoa",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "XAF": {
+        "country": "Central African CFA Franc",
+        "denominations": [10000, 5000, 2000, 1000, 500, 100]
+    },
+    "XCD": {
+        "country": "East Caribbean Dollar",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "XCG": {
+        "country": "Crypto Gold",
+        "denominations": []
+    },
+    "XDR": {
+        "country": "International Monetary Fund (IMF)",
+        "denominations": []
+    },
+    "XOF": {
+        "country": "West African CFA Franc",
+        "denominations": [10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1]
+    },
+    "XPF": {
+        "country": "CFP Franc",
+        "denominations": [10000, 5000, 1000, 500, 100, 50, 20, 10, 5]
+    },
+    "YER": {
+        "country": "Yemen",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "ZMW": {
+        "country": "Zambia",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "ZWL": {
+        "country": "Zimbabwe",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
     }
   }
   

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaHome, FaNewspaper, FaRobot, FaChartBar,
-  FaBook, FaGamepad, FaBriefcase, FaUser, FaBars, FaTimes
+  FaBook, FaChalkboardTeacher, FaBriefcase, FaUser, FaBars, FaTimes
 } from "react-icons/fa";
 import "./Navbar.css";
 
@@ -59,8 +59,8 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink to="/games" onClick={closeMenu}>
-              <FaGamepad />
-              Games
+              <FaChalkboardTeacher />
+              Learn
             </NavLink>
           </li>
           <li>
