@@ -47,10 +47,10 @@ function App() {
           <Route path="/books/:bookId" element={<BookDetails />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/games/quiz" element={<Quiz />} />
-          <Route path="/games/recommendedModules" element={<RecommendedModulesCard />} />
-          <Route path="/games/viewAllModules" element={<ViewAllModules />} />
+          <Route path="/learn" element={<Games />} />
+          <Route path="/learn/quiz" element={<Quiz />} />
+          <Route path="/learn/recommendedModules" element={<RecommendedModulesCard />} />
+          <Route path="/learn/viewAllModules" element={<ViewAllModules />} />
 
         </Routes>
       </AnimatePresence>

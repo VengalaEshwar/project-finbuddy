@@ -6,13 +6,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #9655d85e 30%, #eae7ed 100%);
+    /* background: linear-gradient(135deg, #9655d85e 30%, #eae7ed 100%); */
 }
 
 .login-container {
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 15px 4px rgba(140, 64, 194, 0.578);
+    box-shadow: 0 4px 15px 4px rgba(0, 0, 0, 0.578);
     text-align: center;
     width: 450px;
     background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */

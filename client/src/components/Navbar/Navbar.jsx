@@ -39,12 +39,11 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/news" onClick={closeMenu}>
-              <FaNewspaper />
-              News
+            <NavLink to="/learn" onClick={closeMenu}>
+              <FaChalkboardTeacher />
+              Learn
             </NavLink>
           </li>
-
           <li>
             <NavLink to="/simulators" onClick={closeMenu}>
               <FaChartBar />
@@ -52,15 +51,16 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/news" onClick={closeMenu}>
+              <FaNewspaper />
+              News
+            </NavLink>
+          </li>
+
+          <li>
             <NavLink to="/books" onClick={closeMenu}>
               <FaBook />
               Books
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/games" onClick={closeMenu}>
-              <FaChalkboardTeacher />
-              Learn
             </NavLink>
           </li>
           <li>

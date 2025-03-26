@@ -48,7 +48,7 @@ const FeatureCards = () => {
       icon: <BarChart3 className="w-6 h-6" />,
       title: "Stock Simulator",
       description: "Practice trading with virtual money in a risk-free environment to build investment skills.",
-      link: "/simulator"
+      link: "/simulators"
     },
     {
       icon: <Newspaper className="w-6 h-6" />,
@@ -70,9 +70,9 @@ const FeatureCards = () => {
     },
     {
       icon: <Gamepad2 className="w-6 h-6" />,
-      title: "Financial Games",
-      description: "Make learning fun with interactive games that teach important money concepts.",
-      link: "/games"
+      title: "Personalised Learning Paths",
+      description: "Make learning fun with interactive modules that teach important money concepts.",
+      link: "/learn"
     },
     {
       icon: <Briefcase className="w-6 h-6" />,

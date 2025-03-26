@@ -6,7 +6,7 @@ const LevelCard = ({ course }) => {
 
   return (
     <div className={`finance-card ${course.lock ? "locked" : ""}`} >
-      <NavLink to="/games/Quiz" state={{ level: course.level }}>
+      <NavLink to="/learn/Quiz" state={{ level: course.level }}>
         <div className="finance-icon-wrapper">
           <span role="img" aria-label="icon" className="finance-icon">🔗</span>
         </div>

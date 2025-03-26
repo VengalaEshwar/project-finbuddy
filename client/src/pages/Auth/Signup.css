@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #8434d374 30%, #E5D9F2 100%);
+  /* background: linear-gradient(135deg, #8434d374 30%, #E5D9F2 100%); */
 }
 
 
@@ -13,7 +13,7 @@
 .signup-container {
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0px 5px 15px 4px rgba(140, 64, 194, 0.668);
+  box-shadow: 0px 5px 15px 4px rgba(0, 0, 0, 0.668);
   text-align: center;
   width: 450px;
   background: rgba(255, 255, 255, 0.15); 
