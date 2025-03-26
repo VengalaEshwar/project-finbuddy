@@ -16,6 +16,10 @@ const ModuleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  course : {
+    type : mongoose.Types.ObjectId,
+    ref : "Course"
+  },
   questions: [{ type: mongoose.Types.ObjectId, ref: "Question" }],
 });
 

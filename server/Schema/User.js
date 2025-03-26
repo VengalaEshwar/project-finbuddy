@@ -32,33 +32,10 @@ const userSchema = new mongoose.Schema({
     type:Boolean,
     default:true
   },
-  modules: {
-    beginner: {
-      modules: [{ type: mongoose.Types.ObjectId, ref: "Module" }],
-      isLocked: { type: Boolean, default: false }, // Beginner is unlocked by default
-      currentQuestion: { type: Number, default: 0 },
-      isCompleted: { type: Boolean, default: false },
-    },
-    intermediate: {
-      modules: [{ type: mongoose.Types.ObjectId, ref: "Module" }],
-      isLocked: { type: Boolean, default: true }, // Locked initially
-      currentQuestion: { type: Number, default: 0 },
-      isCompleted: { type: Boolean, default: false },
-    },
-    advanced: {
-      modules: [{ type: mongoose.Types.ObjectId, ref: "Module" }],
-      isLocked: { type: Boolean, default: true }, // Locked initially
-      currentQuestion: { type: Number, default: 0 },
-      isCompleted: { type: Boolean, default: false },
-    },
-  },
-  currentModule: {
-    type: Number,
-    default: 0,
-  },
-  isNewUser :{
-    type : Boolean,
-    default : true
+  userCourseDetails : {
+    type : mongoose.Types.ObjectId,
+    ref : "UserCourseDetails",
+    require : true
   }
 });
 

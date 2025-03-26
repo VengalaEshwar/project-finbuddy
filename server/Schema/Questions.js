@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { modelNames } from "mongoose";
 
 const QuestionsSchema = new mongoose.Schema({
     question: {
@@ -22,13 +22,8 @@ const QuestionsSchema = new mongoose.Schema({
     explanation : {
         type : String
     },
-    questionType: {
-        type: String,
-        default: "quiz"
-    },
-    difficulty: { // Fixed typo
-        type: String, 
-        required: true
+    moduleType : {
+        type : mongoose.Types.ObjectId,ref: "Module"
     }
 });
 

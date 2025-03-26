@@ -2,6 +2,7 @@ import { check, validationResult } from 'express-validator';
 import User from '../Schema/User.js';
 import bcrypt from 'bcrypt';
 import sendOtp  from './sendOtp.js';
+import UserCourseDetails from '../Schema/UserCourseDetails.js';
 
 const salt = 10;
 // signupValidator (middleware)
@@ -47,11 +48,12 @@ const signup = async (req, res) => {
         }
         console.log('otp sent');
         const hashPassword = await bcrypt.hash(password, salt);
-
+        const userCourseDetails = await UserCourseDetails.create();
         const newUser = new User({
             username,
             email,
-            password: hashPassword
+            password: hashPassword,
+            userCourseDetails : userCourseDetails._id
         });
 
         await newUser.save();
