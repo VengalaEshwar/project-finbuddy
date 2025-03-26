@@ -23,7 +23,7 @@ const QuestionsSchema = new mongoose.Schema({
         type : String
     },
     moduleType : {
-        type : mongoose.Types.ObjectId,ref: "Module"
+        type : String,required : true
     }
 });
 
