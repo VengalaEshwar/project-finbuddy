@@ -1,0 +1,131 @@
+/* Quiz Container */
+.module-quiz-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #f8f9fd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Question Styling */
+.module-quiz-container h2 {
+    font-size: 22px;
+    color: #6b21a8; /* Deep Purple */
+    margin-bottom: 10px;
+}
+
+/* Question Text */
+.module-quiz-container p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Options */
+.module-quiz-container .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.module-quiz-container .option {
+    padding: 12px;
+    font-size: 16px;
+    background: white;
+    border: 2px solid #d3b5fc; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.module-quiz-container .option:hover {
+    background: #e7d8fc;
+}
+
+.module-quiz-container .option.selected {
+    background: #cfa2fd;
+    border-color: #6b21a8;
+    color: white;
+}
+
+.module-quiz-container .option.correct {
+    background: #28a745;
+    border-color: #1e7e34;
+    color: white;
+}
+
+.module-quiz-container .option.wrong {
+    background: #dc3545;
+    border-color: #a71d2a;
+    color: white;
+}
+
+/* Explanation */
+.module-quiz-container .explanation {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f8f9fd;
+    border-left: 5px solid #6b21a8;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Buttons */
+.module-quiz-container .quiz-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.module-quiz-container .btn-check,
+.module-quiz-container .btn-next {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.module-quiz-container .btn-check {
+    background: #6b21a8;
+    color: white;
+}
+
+.module-quiz-container .btn-check:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.module-quiz-container .btn-next {
+    background: #9543e7;
+    color: white;
+}
+
+.module-quiz-container .btn-next:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .module-quiz-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .module-quiz-container .option {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .module-quiz-container .btn-check,
+    .module-quiz-container .btn-next {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}

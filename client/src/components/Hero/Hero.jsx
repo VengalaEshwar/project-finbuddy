@@ -1,17 +1,17 @@
-
+import { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, BarChart, CreditCard, DollarSign, PiggyBank } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { UserDetailsContext } from "../../Context/UserDetails.jsx"; // ✅ Fixed import path
 
 const Hero = () => {
+  const { user } = useContext(UserDetailsContext);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
   };
 
@@ -28,10 +28,7 @@ const Hero = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.8,
-      },
+      transition: { staggerChildren: 0.1, delayChildren: 0.8 },
     },
   };
 
@@ -58,7 +55,6 @@ const Hero = () => {
         <div className="absolute left-0 right-0 top-0 h-[500px] bg-gradient-to-b from-finbuddy-softpurple/30 to-transparent"></div>
         <div className="absolute left-0 right-0 -top-40 h-80 rounded-full blur-3xl bg-finbuddy-softpurple/20 transform rotate-12"></div>
       </div>
-
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative">
         <motion.div
@@ -93,20 +89,17 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link
-              to="/login"
-              className="finbuddy-button-primary w-full sm:w-auto group"
-            >
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            <NavLink to={user ? "/games" : "/login"}>
+              <button className="get-started flex items-center gap-2">
+                {user ? "Start Learning" : "Get Started"}
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </NavLink>
 
-            <Link
-              to="/simulator"
-              className="finbuddy-button-secondary w-full sm:w-auto"
-            >
+
+            <NavLink to="/simulator" className="finbuddy-button-secondary w-full sm:w-auto">
               Try Simulator
-            </Link>
+            </NavLink>
           </motion.div>
         </motion.div>
 

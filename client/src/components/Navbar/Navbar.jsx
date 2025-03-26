@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { NavLink } from "react-router-dom";
 import {
-  FaHome, FaNewspaper, FaRobot, FaChartBar,
-  FaBook, FaGamepad, FaBriefcase, FaUser, FaBars, FaTimes
+  FaHome, FaNewspaper, FaChartBar, FaBook,
+  FaGamepad, FaBriefcase, FaUser, FaBars, FaTimes
 } from "react-icons/fa";
+import { UserDetailsContext } from  "../../Context/UserDetails.jsx";
 import "./Navbar.css";
 
-
 const Navbar = () => {
-  const navigate = useNavigate();
+  const { user } = useContext(UserDetailsContext); // Get user details
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,8 +18,7 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
-  
-  
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -44,7 +43,6 @@ const Navbar = () => {
               News
             </NavLink>
           </li>
-
           <li>
             <NavLink to="/simulators" onClick={closeMenu}>
               <FaChartBar />
@@ -76,8 +74,10 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/login" onClick={closeMenu}>
-              <button className="get-started" onClick={() => navigate("/login")}>Get Started</button>
+            <NavLink to={user ? "/games" : "/login"} onClick={closeMenu}>
+              <button className="get-started">
+                {user ? "Start Learning" : "Get Started"}
+              </button>
             </NavLink>
           </li>
         </ul>
