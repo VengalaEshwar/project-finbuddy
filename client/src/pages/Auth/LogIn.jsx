@@ -29,6 +29,8 @@ function LogIn() {
       const data = await response.json();
       if (data.success) {
         Cookies.set("finbuddy", data.token, { expires: 1, secure: true, sameSite: "Strict" });
+        localStorage.setItem("isLoggin","true");
+        
         navigate("/"); 
       } else {
         setEmailOrUsername("");

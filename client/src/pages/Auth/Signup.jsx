@@ -28,16 +28,18 @@ function SignUp() {
       const data = await response.json();
       if (data.success) {
         Cookies.set("finbuddy", data.otpToken, { expires: 1, secure: true, sameSite: "Strict" });
-
+        toast.success("sign up successful")
         navigate("/login"); 
       } else {
         console.log(data);
-        alert(data.error || "Signup failed! Please try again.");
+        toast.error("sign up  failed")
+        // alert(data.error || "Signup failed! Please try again.");
       }
     } catch (error) {
       setUsername("");
       setEmail("");
       setPassword("");
+      toast.error("Signup error")
       console.error("Signup error:", error);
     }
   };

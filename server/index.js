@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import moduleKnowledge from "./modularKnowledge.js"
-
+import {addQuestion,createModule,addQuestionToModule,moduleAllocation} from "./endpoints/learn.js"
 import chatbot from "./endpoints/chatbot.js";
 import latestNews from "./endpoints/news.js";
 import signup, { validateSignup } from "./auth/signup.js";
@@ -45,10 +45,15 @@ app.post("/login", validateLogin, login);
 app.get("/stocks/getSymbols", getSymbols);
 app.get("/stocks/getStockData/:symbol", getStockData);
 
-
 app.listen(PORT, () => {
     console.log(` Server running on http://localhost:${PORT}`);
 });
+
+//learn apis
+app.get("/learn/addQuestion",addQuestion);
+app.get("/learn/createModule",createModule);
+app.get("/learn/addQuestionToModule",addQuestionToModule);
+app.post("/learn/userPath/create/:level",moduleAllocation);
 //testing
 app.get("/",(req,res)=>{
     res.send("Server is running");

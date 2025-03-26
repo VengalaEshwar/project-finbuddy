@@ -55,7 +55,7 @@ const signup = async (req, res) => {
         });
 
         await newUser.save();
-        console.log(`${username} : new user added successfully!`);
+        console.log(`${username} : new user added successfully!`);       
         res.status(201).json({ message: 'User registered successfully!', otpToken: otpResponse.token ,success:true});
 
     }

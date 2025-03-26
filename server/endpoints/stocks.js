@@ -3,7 +3,8 @@ import axios from "axios";
 export const getSymbols = async (req, res) => {
     try {
         // Wait for the response from the API
-        const response = await axios.get(`https://www.alphavantage.co/query?function=LISTING_STATUS&date=2010-07-10&state=active&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
+        // const response = await axios.get(`https://www.alphavantage.co/query?function=LISTING_STATUS&date=2010-07-10&state=active&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
+        const response = await axios.get(`https://www.alphavantage.co/query?function=LISTING_STATUS&apikey=demo`);
         const data = response?.data?.split("\n")
         const tokens = data[0]?.split(",")
         tokens[tokens.length-1]=tokens[tokens.length-1]?.slice(0,-1);
@@ -29,21 +30,24 @@ export const getSymbols = async (req, res) => {
 export const getStockData = async (req, res) => {
     try {
         // Wait for the response from the API
-        const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${req.params.symbol}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
+        // const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${req.params.symbol}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
+        const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo`);
         const result1 = response.data["Time Series (Daily)"];
         const chartData =[];
         for(let key of Object.keys(result1)){
-            const row = {date:result1[key],price : result1[key]["4. close"]};
+            let temp = new Date(result1[key]);
+            console.log(key);
+            const row = {date: key,price : result1[key]["4. close"]};
             chartData.push(row);
         }
-        const displayData = {}
+        let displayData = {}
         for(let key of Object.keys(result1)){
             displayData ={
                 ...result1[key]
             }
             break;
         }
-        result={chartData,displayData};
+        const result={chartData,displayData};
         console.log(result);
         return res.status(200).json({ success: true, data: result });
     } catch (e) {
