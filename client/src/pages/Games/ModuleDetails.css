@@ -1,0 +1,210 @@
+/* General Styling */
+.module {
+  width: 100%;
+  padding-top: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Module Page Container */
+.module-detail-page {
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+}
+
+/* Title and Description */
+.module-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.module-description {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabs {
+  width: max-content;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border-bottom: 2px solid #ddd;
+  overflow-x: auto;
+}
+
+/* Ensure buttons fit inside */
+.tabs button {
+  
+  flex: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  transition: 0.3s;
+  text-align: center;
+}
+
+/* Active Tab Styling */
+.tabs button.active {
+  font-weight: bold;
+  background-color: rgb(168, 116, 217);
+  padding: 2px 10px;
+  border-radius: 5px;
+  color: #0c0c0cca;
+}
+
+/* Tab Content */
+.tab-content {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  min-height: 200px;
+  max-height: none;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.6;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+/* Markdown Styling */
+.module-content h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5317cb;
+  border-bottom: 2px solid #9d66ea;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.module-content h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #823de1;
+  border-left: 4px solid #a550e5;
+  padding-left: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.module-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #363532;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+/* Paragraph Styling */
+.module-content p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Bullet Points */
+.module-content ul {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.module-content li {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+/* Bold & Italic */
+.module-content strong {
+  color: #56dd3b;
+}
+
+.module-content em {
+  color: #823de1;
+}
+
+/* Next Button */
+.next-button {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #9d66ea;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.next-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.next-button:hover:not(:disabled) {
+  background: #823de1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .module-detail-page {
+    width: 100%; /* Full width on smaller screens */
+    padding: 15px;
+    border-radius: 0;
+  }
+
+  .tabs {
+    max-width: 100%;
+  }
+
+  .tabs button {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .tab-content {
+    font-size: 14px;
+  }
+
+  .next-button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .module-title {
+    font-size: 20px;
+  }
+
+  .module-description {
+    font-size: 14px;
+  }
+
+  .module-content p {
+    font-size: 14px;
+  }
+}

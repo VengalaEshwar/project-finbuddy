@@ -795,4 +795,105 @@ export const level3Quiz = [
     }
 ];
 
+export const moduleDetails = {
+    title: "Understanding Money & Personal Finance Basics",
+    description: "Gain a fundamental understanding of how money works, including earning, saving, spending, and investing wisely.",
+    content: `
+# Understanding Money & Personal Finance Basics
+
+## Introduction to Money Management  
+Money plays a crucial role in our daily lives, from covering basic needs to planning for the future. Understanding how to manage money effectively is the foundation of financial well-being.  
+
+## What is Personal Finance?  
+Personal finance refers to managing your financial resources, including **income, expenses, savings, investments, and debt**. It involves making informed decisions to achieve financial security and growth.  
+
+### 1. Income and Earnings  
+Income is the money you earn through **jobs, businesses, or investments**. Understanding different sources of income can help you diversify and increase financial stability.  
+
+### 2. Budgeting and Expense Tracking  
+Creating a **budget** helps you allocate income wisely, ensuring essential expenses are covered while leaving room for savings and investments.  
+
+### 3. The Importance of Saving  
+**Savings** act as a financial cushion for unexpected expenses and long-term goals. Setting aside a portion of income regularly can lead to financial independence.  
+
+### 4. Smart Spending Habits  
+Avoiding **impulse purchases**, tracking expenses, and prioritizing needs over wants can help maintain financial stability.  
+
+### 5. Understanding Debt and Credit  
+Managing debt responsibly and maintaining a **good credit score** ensures better financial opportunities, such as lower interest rates on loans.  
+
+### Conclusion  
+Mastering the basics of personal finance allows individuals to make informed decisions about their money, paving the way for a secure financial future.
+`,
+summary:``
+};
+
+
+export const  moduleQuizData = {
+    moduleTitle: "Financial Basics",
+    questions: [
+        {
+            id: 1,
+            question: "What is the primary purpose of a budget?",
+            options: [
+                "To track daily expenses",
+                "To plan and control income and expenses",
+                "To increase tax deductions",
+                "To eliminate all spending"
+            ],
+            correctAnswer: "To plan and control income and expenses",
+            explanation: "A budget helps individuals and businesses manage their income and expenses effectively to achieve financial goals."
+        },
+        {
+            id: 2,
+            question: "Which of the following is considered a fixed expense?",
+            options: [
+                "Groceries",
+                "Utility bills",
+                "Rent or mortgage payment",
+                "Entertainment expenses"
+            ],
+            correctAnswer: "Rent or mortgage payment",
+            explanation: "Fixed expenses are those that remain constant every month, like rent or mortgage payments."
+        },
+        {
+            id: 3,
+            question: "What is an emergency fund?",
+            options: [
+                "Money saved for vacations",
+                "A fund for unexpected expenses",
+                "A special investment account",
+                "A type of loan"
+            ],
+            correctAnswer: "A fund for unexpected expenses",
+            explanation: "An emergency fund is a financial buffer to cover unexpected expenses like medical emergencies or job loss."
+        },
+        {
+            id: 4,
+            question: "What does APR stand for in financial terms?",
+            options: [
+                "Annual Percentage Rate",
+                "Accumulated Profit Ratio",
+                "Annual Payment Requirement",
+                "Average Price Rating"
+            ],
+            correctAnswer: "Annual Percentage Rate",
+            explanation: "APR (Annual Percentage Rate) represents the yearly cost of borrowing money, including interest and fees."
+        },
+        {
+            id: 5,
+            question: "Which of the following is a benefit of investing early?",
+            options: [
+                "Higher interest rates",
+                "Lower risk of loss",
+                "Compound interest growth",
+                "Guaranteed profits"
+            ],
+            correctAnswer: "Compound interest growth",
+            explanation: "Investing early allows your money to grow over time due to the power of compound interest."
+        }
+    ]
+};
+
+
 

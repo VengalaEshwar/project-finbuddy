@@ -88,7 +88,7 @@ const Quiz = () => {
                             </button>
                         ) : (
                             <NavLink
-                                to="/games/recommendedModules"
+                                to="/learn/recommendedModules"
                                 state={{ recommendedModules, level }}
                             >
                                 <button className="btn-submit" disabled={!submitted}>
