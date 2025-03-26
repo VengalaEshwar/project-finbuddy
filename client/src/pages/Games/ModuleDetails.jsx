@@ -8,7 +8,7 @@ import ModuleQuiz from "./ModuleQuiz"; // Import Quiz Component
 
 const ModuleDetail = () => {
     
-    const module = moduleDetails;
+    const module = moduleDetails[0];
     const [activeTab, setActiveTab] = useState("module");
     const [quizCompleted, setQuizCompleted] = useState(false);
 

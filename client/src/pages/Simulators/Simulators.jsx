@@ -29,8 +29,8 @@ const Simulators = () => {
   // cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
 },
 {
-  title: "Investment & Saving Simulator",
-  description: "See how your money grows over time through savings and investments with compounding.",
+  title: "Self Budgeting",
+  description: "User can plan his savings and expenses, get monthly statistics and suggestions.  ",
   imageURL: "/images/investment.jpg",
   path: "savings"
 }

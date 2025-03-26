@@ -23,7 +23,7 @@ export const level1 = [
         level: "Beginner",
         category: "Budgeting",
         importanceScore: 5,
-        lock: true,
+        lock: false,
     },
     {
         id: 3,
@@ -36,7 +36,7 @@ export const level1 = [
         level: "Beginner",
         category: "Banking",
         importanceScore: 4,
-        lock: true,
+        lock: false,
     },
     {
         id: 4,
@@ -49,7 +49,7 @@ export const level1 = [
         level: "Beginner",
         category: "Loans & Credit",
         importanceScore: 5,
-        lock: true,
+        lock: false,
     },
     {
         id: 5,
@@ -62,7 +62,7 @@ export const level1 = [
         level: "Beginner",
         category: "Macroeconomics",
         importanceScore: 4,
-        lock: true,
+        lock: false,
     },
     {
         id: 6,
@@ -75,7 +75,7 @@ export const level1 = [
         level: "Beginner",
         category: "Taxation",
         importanceScore: 5,
-        lock: true,
+        lock: false,
     },
     {
         id: 7,
@@ -88,7 +88,7 @@ export const level1 = [
         level: "Beginner",
         category: "Fraud Awareness",
         importanceScore: 5,
-        lock: true,
+        lock: false,
     },
     {
         id: 8,
@@ -101,7 +101,7 @@ export const level1 = [
         level: "Beginner",
         category: "Debt Management",
         importanceScore: 4,
-        lock: true,
+        lock: false,
     },
     {
         id: 9,
@@ -474,30 +474,30 @@ export const level1Quiz = [
         module: "Understanding Money & Personal Finance Basics",
         explanation: "Money is anything that is widely accepted as a medium of exchange."
     },
-    // {
-    //     question: "What does the 50/30/20 rule represent?",
-    //     options: [
-    //         "A rule for stock investment",
-    //         "A budgeting strategy",
-    //         "A tax-saving scheme",
-    //         "A loan repayment method"
-    //     ],
-    //     correct: 1,
-    //     module: "Self-Budgeting & Expense Management",
-    //     explanation: "The 50/30/20 rule suggests allocating income into needs (50%), wants (30%), and savings (20%)."
-    // },
-    // {
-    //     question: "Which type of bank is responsible for regulating other banks in a country?",
-    //     options: [
-    //         "Commercial Bank",
-    //         "Cooperative Bank",
-    //         "Central Bank",
-    //         "Digital Bank"
-    //     ],
-    //     correct: 2,
-    //     module: "Banks & Their Working",
-    //     explanation: "The Central Bank regulates other banks and controls monetary policy."
-    // },
+    {
+        question: "What does the 50/30/20 rule represent?",
+        options: [
+            "A rule for stock investment",
+            "A budgeting strategy",
+            "A tax-saving scheme",
+            "A loan repayment method"
+        ],
+        correct: 1,
+        module: "Self-Budgeting & Expense Management",
+        explanation: "The 50/30/20 rule suggests allocating income into needs (50%), wants (30%), and savings (20%)."
+    },
+    {
+        question: "Which type of bank is responsible for regulating other banks in a country?",
+        options: [
+            "Commercial Bank",
+            "Cooperative Bank",
+            "Central Bank",
+            "Digital Bank"
+        ],
+        correct: 2,
+        module: "Banks & Their Working",
+        explanation: "The Central Bank regulates other banks and controls monetary policy."
+    },
     // {
     //     question: "Which type of interest leads to exponential growth over time?",
     //     options: [
@@ -558,30 +558,30 @@ export const level1Quiz = [
     //     module: "Loans & Money Lending: Good vs. Bad Debt",
     //     explanation: "Education loans are considered 'Good Debt' as they help in increasing earning potential."
     // },
-    {
-        question: "Why do countries buy gold?",
-        options: [
-            "To create more currency",
-            "For investment purposes",
-            "To increase their economic stability",
-            "To reduce inflation"
-        ],
-        correct: 2,
-        module: "Role of Gold & Dollar in Economy",
-        explanation: "Countries buy gold to increase their economic stability and strengthen their financial reserves."
-    },
-    {
-        question: "What was the key to a middle-class investor's financial success?",
-        options: [
-            "Winning the lottery",
-            "Smart investments and disciplined savings",
-            "High-paying job",
-            "Taking multiple loans"
-        ],
-        correct: 1,
-        module: "Case Study on a Successful Middle-Class Investor",
-        explanation: "Smart investments and disciplined savings are key factors in long-term financial success."
-    }
+    // {
+    //     question: "Why do countries buy gold?",
+    //     options: [
+    //         "To create more currency",
+    //         "For investment purposes",
+    //         "To increase their economic stability",
+    //         "To reduce inflation"
+    //     ],
+    //     correct: 2,
+    //     module: "Role of Gold & Dollar in Economy",
+    //     explanation: "Countries buy gold to increase their economic stability and strengthen their financial reserves."
+    // },
+    // {
+    //     question: "What was the key to a middle-class investor's financial success?",
+    //     options: [
+    //         "Winning the lottery",
+    //         "Smart investments and disciplined savings",
+    //         "High-paying job",
+    //         "Taking multiple loans"
+    //     ],
+    //     correct: 1,
+    //     module: "Case Study on a Successful Middle-Class Investor",
+    //     explanation: "Smart investments and disciplined savings are key factors in long-term financial success."
+    // }
 
 ];
 
@@ -862,137 +862,44 @@ export const  moduleQuizData = {
 
 
 
-export const moduleDetails = {
-    title: "Self-Budgeting and Expense Management",
-    description: "Learn how to take control of your finances by budgeting effectively, managing expenses, and building strong saving habits.",
-    content: `
-# Self Budgeting and Expense Management
+export const moduleDetails =[
+    {
+      "title": "The Role of Gold & Dollar in the Economy",
+      "description": "Understand why gold and the US dollar hold global financial power.",
+      "content": "# The Role of Gold & Dollar in the Economy – The Power Behind Money\n\n## Why Do Countries Buy Gold?\n\n- **Gold is a store of value** – It doesn’t lose purchasing power like paper money.\n- **Acts as economic protection** – Countries hold gold to safeguard against crises.\n- **Strengthens currency reserves** – More gold means better financial stability.\n\n## How the US Dollar Became the World's Reserve Currency\n\n- **After World War II (1944)** – The US had the largest gold reserves, making the dollar dominant.\n- **Petrodollar System (1970s)** – Oil-exporting countries agreed to trade in US dollars.\n- **Trust in the US Economy** – Stability makes the dollar widely accepted worldwide.\n\n## Case Study: Why India & China Are Increasing Gold Reserves\n\n- **Reducing dependency on the US dollar** to avoid currency risks.\n- **Strengthening financial security** by holding more gold.\n- **Preparing for global economic shifts** as countries move away from dollar reliance.\n\n## Final Takeaway: Think Like an Economist!\n\n- Gold is a **safe asset** during financial instability.\n- The US dollar dominates **global trade** but faces future challenges.\n- Countries are **diversifying reserves** to strengthen economic security.\n",
+      "summary": "### Summary: Gold & the Dollar – The Hidden Powers of the Economy\n\n✔ **Gold as a Safe Asset** – Protects against inflation & economic instability.\n✔ **The US Dollar Dominance** – Used in most global trade transactions.\n✔ **India & China’s Strategy** – Increasing gold reserves for financial security.\n✔ **Future Predictions** – Shift away from dollar dependence may reshape finance.\n",
+      "difficulty": "Medium"
+    },
+    {
+      "title": "Case Study: A Middle-Class Investor’s Financial Freedom",
+      "description": "Learn how one investor built wealth with smart strategies.",
+      "content": "# Case Study: How a Middle-Class Investor Achieved Financial Freedom\n\n## The Power of Early Investing\n\n- **Started with ₹5,000 per month** in mutual funds & stocks.\n- Focused on **long-term growth** rather than quick profits.\n- Used **Systematic Investment Plan (SIP)** to invest consistently.\n\n## Controlling Expenses & Avoiding Debt\n\n- Followed the **50/30/20 rule**:\n  - **50% Needs** – Rent, food, bills.\n  - **30% Wants** – Travel, entertainment.\n  - **20% Investments** – Stocks, real estate, gold.\n- Avoided **credit card debt & unnecessary EMIs**.\n\n## Smart Investment Strategy – Making Money Work for Him\n\n- **60% in stocks & mutual funds** – Invested in blue-chip companies.\n- **20% in real estate** – Bought rental property for passive income.\n- **20% in gold & fixed deposits** – For stability & emergency funds.\n\n## Final Takeaway: Follow the Formula for Wealth!\n\n- Start investing **early** – Time is the most powerful tool.\n- Diversify investments – Mix of **stocks, real estate, and gold**.\n- Avoid **debt traps** – Pay off credit cards and unnecessary loans.\n",
+      "summary": "### Summary: Lessons from a Successful Middle-Class Investor\n\n✔ **Invest Early** – Even small investments grow big over time.\n✔ **Budget Wisely** – Follow the 50/30/20 rule to manage finances.\n✔ **Diversify Investments** – Stocks, real estate, and gold for balance.\n✔ **Avoid Debt Traps** – Don’t spend on unnecessary EMIs or loans.\n✔ **Stay Patient** – Long-term investments yield the best results.\n",
+      "difficulty": "Easy"
+    },
+    {
+      "title": "Stock Market Basics & Investing Strategies",
+      "description": "Learn how the stock market works and how to invest smartly.",
+      "content": "# Stock Market Basics & Investing Strategies\n\n## What is the Stock Market?\n\n- A place where **companies sell shares** to raise money.\n- Investors buy shares to **own a piece of a company** and earn profits.\n\n## Types of Stocks\n\n- **Blue-Chip Stocks** – Large, stable companies (e.g., TCS, HDFC).\n- **Mid-Cap & Small-Cap Stocks** – Higher growth potential but riskier.\n- **Dividend Stocks** – Pay regular earnings to shareholders.\n\n## Investing vs. Trading\n\n- **Investing:** Holding stocks long-term for steady returns.\n- **Trading:** Buying & selling frequently for quick profits.\n\n## Common Investment Strategies\n\n- **SIP (Systematic Investment Plan)** – Invest small amounts regularly.\n- **Index Funds** – Low-risk investment tracking market performance.\n- **Value Investing** – Buying undervalued stocks and holding long-term.\n\n## Final Takeaway: Be a Smart Investor!\n\n- Research before buying stocks – **Understand company fundamentals**.\n- Start with low-risk investments like **index funds & SIPs**.\n- Avoid emotional decisions – **Stick to a strategy** and invest consistently.\n",
+      "summary": "### Summary: Stock Market & Smart Investing\n\n✔ **Stock Market Basics** – Companies sell shares, and investors buy ownership.\n✔ **Types of Stocks** – Blue-chip, mid-cap, small-cap, and dividend stocks.\n✔ **Investing vs. Trading** – Long-term investing vs. short-term trading.\n✔ **Investment Strategies** – SIPs, index funds, and value investing.\n✔ **Golden Rule** – Research before investing and stay consistent.\n",
+      "difficulty": "Medium"
+    },
+    {
+      "title": "Cryptocurrency & Blockchain Fundamentals",
+      "description": "Understand how cryptocurrencies work and their future potential.",
+      "content": "# Cryptocurrency & Blockchain Fundamentals\n\n## What is Cryptocurrency?\n\n- **Digital money** that operates without a central authority.\n- Uses **blockchain technology** to record transactions securely.\n\n## How Blockchain Works\n\n- A **decentralized ledger** that stores transaction records.\n- Data is **secure, transparent, and tamper-proof**.\n\n## Popular Cryptocurrencies\n\n- **Bitcoin (BTC)** – The first and most well-known cryptocurrency.\n- **Ethereum (ETH)** – Supports smart contracts and decentralized apps.\n- **Stablecoins** – Digital currencies pegged to real assets (e.g., USDT).\n\n## Benefits & Risks of Crypto\n\n- **Pros:**\n  - Secure and decentralized transactions.\n  - Low transaction fees for international payments.\n  - Potential for high returns.\n- **Cons:**\n  - Highly volatile market.\n  - Regulatory uncertainty.\n  - Risk of hacking & fraud.\n\n## Final Takeaway: Crypto is the Future, But Be Cautious\n\n- Research before investing – Crypto is **high-risk, high-reward**.\n- Secure your assets with **cold wallets** and strong passwords.\n- Keep track of government regulations and market trends.\n",
+      "summary": "### Summary: Understanding Cryptocurrency & Blockchain\n\n✔ **Cryptocurrency Basics** – Digital money without central control.\n✔ **How Blockchain Works** – Decentralized, secure transaction system.\n✔ **Popular Cryptos** – Bitcoin, Ethereum, and stablecoins.\n✔ **Pros & Cons** – High return potential but also volatile.\n✔ **Investment Tips** – Secure wallets, research, and track regulations.\n",
+      "difficulty": "Hard"
+    }
+  ]
+  
+  
+  
 
-## Why Budgeting is the Key to Financial Freedom
 
-Have you ever wondered why some people manage to save effortlessly while others struggle despite earning the same salary The secret lies in budgeting a simple yet powerful tool that helps you control your money instead of your money controlling you  
 
-A well planned budget ensures  
 
-- You always have money for essentials  
-- You can enjoy life without guilt  
-- You are prepared for emergencies  
-- You can grow wealth over time  
 
-Let us explore how you can master budgeting and expenses with proven methods  
-
----
-
-## The 50 30 20 Rule A Beginner's Guide to Budgeting
-
-One of the easiest ways to budget is the 50 30 20 rule a method used by financially successful individuals Here is how it works  
-
-- 50 percent Needs Essentials like rent food utilities transportation  
-- 30 percent Wants Entertainment dining out shopping travel  
-- 20 percent Savings and Investments Emergency fund debt repayment future investments  
-
-### Example If you earn 30000 per month  
-
-- 15000 50 percent goes to rent groceries bills  
-- 9000 30 percent for outings shopping movies  
-- 6000 20 percent saved for future security  
-
-Tip If your needs are taking up more than 50 percent try reducing unnecessary expenses or increasing your income through side hustles  
-
----
-
-## Zero Based Budgeting Give Every Rupee a Job
-
-Unlike the 50 30 20 rule where percentages are fixed zero based budgeting ensures that every rupee is accounted for before the month begins  
-
-### How does it work  
-
-1. Write down your total income for example 30000  
-2. List all your expenses including savings and allocate every rupee to a category  
-3. Adjust as needed until your Income minus Expenses equals zero nothing left unplanned  
-
-### Why is this powerful  
-
-- Helps track every rupee avoiding waste  
-- Works great for those with irregular incomes freelancers students  
-- Forces better planning and control over spending  
-
-Tip Use budgeting apps like YNAB or Goodbudget to automate tracking  
-
----
-
-## Fixed vs Variable Expenses Understanding Your Spending  
-
-Budgeting becomes easy when you understand your spending patterns Expenses are categorized as  
-
-- Fixed Expenses Stay the same every month rent EMIs insurance  
-- Variable Expenses Change based on lifestyle food shopping entertainment  
-
-### Example  
-
-- Fixed 10000 rent 2000 internet 3000 insurance  
-- Variable 4000 groceries 2500 dining out 3000 shopping  
-
-Pro Tip If money feels tight look at variable expenses first this is where you can cut back  
-
----
-
-## Smart Saving Habits Building Financial Security
-
-Why save money Because life is unpredictable A strong savings plan ensures you are never caught off guard  
-
-### Essential Saving Buckets  
-
-1. Emergency Fund Covers unexpected expenses medical bills job loss  
-
-   - Goal Save at least 3 to 6 months of living expenses  
-   - Best Place to Keep It High interest savings account  
-
-2. Sinking Funds Money set aside for planned expenses  
-
-   - Examples Vacation fund new laptop annual insurance premium  
-   - How to Save Set aside a fixed amount each month to avoid large one time financial shocks  
-
-Tip Automate savings with a recurring bank transfer to avoid the temptation of spending  
-
----
-
-## Case Study How a Student Saved 1 Lakh in a Year  
-
-Meet Ravi a college student earning 15000 from part time work Here is how he saved 1 lakh in just 12 months  
-
-- Created a strict budget Followed the 50 30 20 rule  
-- Cut unnecessary expenses Limited eating out and online shopping  
-- Used sinking funds Set 3000 per month aside for travel and future goals  
-- Picked a high interest savings account Earned extra returns on savings  
-
-### Result  
-
-8000 per month saved equals 96000 in a year plus 4000 in interest  
-
----
-
-## Your Action Plan Start Budgeting Today  
-
-- Choose a budgeting method 50 30 20 or zero based budgeting  
-- List your fixed and variable expenses  
-- Start saving with an emergency fund and sinking funds  
-- Track expenses using an app or simple spreadsheet  
-
-Remember Every rupee saved today is a step toward financial freedom tomorrow  
-`,
-    summary: `
-# Summary Self Budgeting and Expense Management  
-
-## Mastering Budgeting and Smart Spending  
-
-- 50 30 20 Rule 50 percent Needs 30 percent Wants 20 percent Savings  
-- Zero Based Budgeting Every rupee is assigned a purpose  
-- Fixed vs Variable Expenses Rent is fixed shopping is variable  
-- Smart Saving Habits Emergency Fund and Sinking Funds  
-- Case Study A student saved 1 lakh in a year by budgeting wisely  
-`
-};
 
 
 

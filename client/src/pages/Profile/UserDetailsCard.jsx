@@ -3,8 +3,8 @@ import "./UserDetailsCard.css";
 import { FaUser } from 'react-icons/fa';
 
 const userData = {
-    name: "John Doe",
-    role: "Financial Explorer",
+    name: "Vengala Eshwar",
+    role: "Student",
     financialKnowledge: 60,
     lessons: 12,
     badges: 5,

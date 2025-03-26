@@ -7,26 +7,26 @@ import UserCourseDetails from "../Schema/UserCourseDetails.js"
 export const addQuestion = async (req,res)=>{
 
     try{
-        let course = await Courses.find({level : "1"});
-        course = course[0]
-        // console.log(course)
-        let count=1;
-        for(let m of course.modules)
-        {
-            const mo = await Modules.findById(m);
-            const q = await Questions.find({moduleType : `1.${count}`});
-            const arr = []
-            for(let qq of q )
-                arr.push(qq._id);
-            mo.questions = arr;
-            mo.save();
-            count++;
-        }
-        // const arr = req.body;
-        // for(let item of arr)
+        // let course = await Courses.find({level : "1"});
+        // course = course[0]
+        // // console.log(course)
+        // let count=1;
+        // for(let m of course.modules)
         // {
-        //     const question = await Questions.create(item);
+        //     const mo = await Modules.findById(m);
+        //     const q = await Questions.find({moduleType : `1.${count}`});
+        //     const arr = []
+        //     for(let qq of q )
+        //         arr.push(qq._id);
+        //     mo.questions = arr;
+        //     mo.save();
+        //     count++;
         // }
+        const arr = req.body;
+        for(let item of arr)
+        {
+            const question = await Questions.create(item);
+        }
         return res.json({
             success : true,
             message : "Questions added successfully"

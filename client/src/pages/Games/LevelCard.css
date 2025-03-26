@@ -38,10 +38,10 @@
 }
 
 .view-all-btn{
-    background-color: rgba(0, 255, 179, 0.548);
+    background-color: rgb(154, 112, 216);
     padding: 5px 10px;
     border-radius: 5px;
-    color: rgb(144, 89, 225);
+    color: white;
 }
 .finance-description {
     font-size: 14px;
