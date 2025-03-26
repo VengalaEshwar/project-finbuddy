@@ -4,34 +4,43 @@ import { Button } from '../../components/ui/button';
 import { BookOpen, Star, UserRound } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
+import stockImage from "../../assets/images/stock1.jpg";
+import currencyconveter from "../../assets/images/currencyconverter.jpg";
+import emi from "../../assets/images/emi.jpg";
+import investment from "../../assets/images/investment.jpg";
 
 const Simulators = () => {
   const simulators = [
     {
   title: "Stock Market",
   description: "Learn how stock markets work, trade virtually, and analyze stocks before investing.",
-  imageURL: "https://images.pexels.com/photos/159888/pexels-photo-159888.jpeg",
+  imageURL: stockImage,
+  /* imageURL: "https://images.pexels.com/photos/159888/pexels-photo-159888.jpeg", */
   path: "stockmarket"
   // cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
 },
 {
   title: "Currency Converter",
   description: "Convert currencies in real time and understand the impact of exchange rates on global trade.",
-  imageURL: "https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg",
+  /* imageURL: "https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg", */
+  imageURL: currencyconveter,
+
   path: "currency"
   // cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
 },
 {
   title: "Virtual EMI",
   description: "Calculate monthly EMI for loans and understand how interest rates impact your finances.",
-  imageURL: "https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg",
+  imageURL:emi,
+  /* imageURL: "https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg", */
   path: "emi"
   // cover: "bg-gradient-to-r from-indigo-500 to-purple-600"
 },
 {
   title: "Investment & Saving Simulator",
   description: "See how your money grows over time through savings and investments with compounding.",
-  imageURL: "https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg",
+  imageURL: investment,
+  /* imageURL: "https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg", */
   path: "savings"
 }
   ];

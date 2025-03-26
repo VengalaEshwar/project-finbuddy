@@ -1,0 +1,391 @@
+{
+    "USD": {
+      "country": "United States",
+      "denominations": [100, 50, 20, 10, 5, 1, 0.25, 0.1, 0.05, 0.01]
+    },
+    "EUR": {
+      "country": "Eurozone",
+      "denominations": [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
+    },
+    "INR": {
+      "country": "India",
+      "denominations": [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "GBP": {
+      "country": "United Kingdom",
+      "denominations": [50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
+    },
+    "JPY": {
+      "country": "Japan",
+      "denominations": [10000, 5000, 2000, 1000, 500, 100, 50, 10, 5, 1]
+    },
+    "CAD": {
+      "country": "Canada",
+      "denominations": [100, 50, 20, 10, 5, 2, 1, 0.25, 0.1, 0.05, 0.01]
+    },
+    "AUD": {
+      "country": "Australia",
+      "denominations": [100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05]
+    },
+    "CNY": {
+      "country": "China",
+      "denominations": [100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1]
+    },
+    "SGD": {
+      "country": "Singapore",
+      "denominations": [1000, 500, 100, 50, 10, 5, 2, 1, 0.5, 0.2, 0.1]
+    },
+    "CHF": {
+      "country": "Switzerland",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1]
+    },
+    "BRL": {
+      "country": "Brazil",
+      "denominations": [200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.1]
+    },
+    "ZAR": {
+      "country": "South Africa",
+      "denominations": [200, 100, 50, 20, 10, 5, 2, 1, 0.5]
+    },
+    "AED": {
+      "country": "United Arab Emirates",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "MXN": {
+      "country": "Mexico",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "RUB": {
+      "country": "Russia",
+      "denominations": [5000, 2000, 1000, 500, 200, 100, 50, 10, 5, 1]
+    },
+    "KRW": {
+      "country": "South Korea",
+      "denominations": [50000, 10000, 5000, 1000, 500, 100, 50, 10]
+    },
+    "SEK": {
+      "country": "Sweden",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "NOK": {
+      "country": "Norway",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "NZD": {
+      "country": "New Zealand",
+      "denominations": [100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05]
+    },
+    "TRY": {
+      "country": "Turkey",
+      "denominations": [200, 100, 50, 20, 10, 5, 1, 0.5, 0.25]
+    },
+    "PLN": {
+      "country": "Poland",
+      "denominations": [500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "THB": {
+      "country": "Thailand",
+      "denominations": [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "SAR": {
+      "country": "Saudi Arabia",
+      "denominations": [500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "EGP": {
+      "country": "Egypt",
+      "denominations": [200, 100, 50, 20, 10, 5, 1]
+    },
+    "NGN": {
+      "country": "Nigeria",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "IDR": {
+      "country": "Indonesia",
+      "denominations": [100000, 50000, 20000, 10000, 5000, 2000, 1000, 500]
+    },
+    "PKR": {
+      "country": "Pakistan",
+      "denominations": [5000, 1000, 500, 100, 50, 20, 10, 5, 1]
+    },
+    "BDT": {
+      "country": "Bangladesh",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "PHP": {
+      "country": "Philippines",
+      "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "HUF": {
+      "country": "Hungary",
+      "denominations": [20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "AFN": {
+        "country": "Afghanistan",
+        "denominations": [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "ALL": {
+        "country": "Albania",
+        "denominations": [5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "AMD": {
+        "country": "Armenia",
+        "denominations": [10000, 5000, 1000, 500, 200, 100, 50, 10, 5, 1]
+    },
+    "ANG": {
+        "country": "Netherlands Antillean Guilder",
+        "denominations": [100, 50, 25, 10, 5, 1, 0.5]
+    },
+    "AOA": {
+        "country": "Angola",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 10, 5]
+    },
+    "ARS": {
+        "country": "Argentina",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "AWG": {
+        "country": "Aruba",
+        "denominations": [200, 100, 50, 25, 10, 5, 1]
+    },
+    "AZN": {
+        "country": "Azerbaijan",
+        "denominations": [200, 100, 50, 20, 10, 5, 1, 0.5]
+    },
+    "BAM": {
+        "country": "Bosnia and Herzegovina",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "BBD": {
+        "country": "Barbados",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "BGN": {
+        "country": "Bulgaria",
+        "denominations": [100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1]
+    },
+    "BHD": {
+        "country": "Bahrain",
+        "denominations": [50, 20, 10, 5, 1, 0.5, 0.25, 0.1]
+    },
+    "BIF": {
+        "country": "Burundi",
+        "denominations": [10000, 5000, 2000, 1000, 500, 100, 50, 10]
+    },
+    "BMD": {
+        "country": "Bermuda",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "BND": {
+        "country": "Brunei",
+        "denominations": [10000, 1000, 500, 100, 50, 20, 10, 5, 1]
+    },
+    "BOB": {
+        "country": "Bolivia",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "BSD": {
+        "country": "Bahamas",
+        "denominations": [100, 50, 20, 10, 5, 1, 0.5, 0.25, 0.1, 0.05]
+    },
+    "BTN": {
+        "country": "Bhutan",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "BWP": {
+        "country": "Botswana",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "BYN": {
+        "country": "Belarus",
+        "denominations": [500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "BZD": {
+        "country": "Belize",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "CDF": {
+        "country": "Democratic Republic of the Congo",
+        "denominations": [10000, 5000, 2000, 1000, 500, 200, 100, 50, 10, 5, 1]
+    },
+    "CLP": {
+        "country": "Chile",
+        "denominations": [20000, 10000, 5000, 2000, 1000, 500, 100]
+    },
+    "COP": {
+        "country": "Colombia",
+        "denominations": [100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100]
+    },
+    "CRC": {
+        "country": "Costa Rica",
+        "denominations": [50000, 20000, 10000, 5000, 2000, 1000, 500, 100, 50, 25, 10, 5, 1]
+    },
+    "CUP": {
+        "country": "Cuba",
+        "denominations": [100, 50, 20, 10, 5, 3, 1]
+    },
+    "CVE": {
+        "country": "Cape Verde",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "CZK": {
+        "country": "Czech Republic",
+        "denominations": [5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "DJF": {
+        "country": "Djibouti",
+        "denominations": [10000, 5000, 2000, 1000, 500, 100]
+    },
+    "DKK": {
+        "country": "Denmark",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "DOP": {
+        "country": "Dominican Republic",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "DZD": {
+        "country": "Algeria",
+        "denominations": [2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "ERN": {
+        "country": "Eritrea",
+        "denominations": [100, 50, 20, 10, 5, 1]
+    },
+    "ETB": {
+        "country": "Ethiopia",
+        "denominations": [200, 100, 50, 20, 10, 5, 1]
+    },
+    "FJD": {
+    "country": "Fiji",
+    "denominations": [100, 50, 20, 10, 5, 2, 1, 0.5]
+    },
+    "FKP": {
+        "country": "Falkland Islands",
+        "denominations": [50, 20, 10, 5, 2, 1, 0.5]
+    },
+    "FOK": {
+        "country": "Faroe Islands",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "GEL": {
+        "country": "Georgia",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "GGP": {
+        "country": "Guernsey",
+        "denominations": [50, 20, 10, 5, 1]
+    },
+    "GHS": {
+        "country": "Ghana",
+        "denominations": [200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "GIP": {
+        "country": "Gibraltar",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "GMD": {
+        "country": "Gambia",
+        "denominations": [200, 100, 50, 25, 10, 5, 1]
+    },
+    "GNF": {
+        "country": "Guinea",
+        "denominations": [20000, 10000, 5000, 1000, 500, 100]
+    },
+    "GTQ": {
+        "country": "Guatemala",
+        "denominations": [200, 100, 50, 20, 10, 5, 1]
+    },
+    "GYD": {
+        "country": "Guyana",
+        "denominations": [5000, 2000, 1000, 500, 100, 50, 20, 10, 5, 1]
+    },
+    "HKD": {
+        "country": "Hong Kong",
+        "denominations": [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "HNL": {
+        "country": "Honduras",
+        "denominations": [500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "HRK": {
+        "country": "Croatia",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "HTG": {
+        "country": "Haiti",
+        "denominations": [1000, 500, 250, 100, 50, 25, 10, 5, 1]
+    },
+    "ILS": {
+        "country": "Israel",
+        "denominations": [200, 100, 50, 20, 10, 5, 1]
+    },
+    "IMP": {
+        "country": "Isle of Man",
+        "denominations": [50, 20, 10, 5, 2, 1]
+    },
+    "IQD": {
+        "country": "Iraq",
+        "denominations": [50000, 25000, 10000, 5000, 1000, 500, 250, 100]
+    },
+    "IRR": {
+        "country": "Iran",
+        "denominations": [1000000, 500000, 200000, 100000, 50000, 20000, 10000, 5000, 2000, 1000]
+    },
+    "ISK": {
+        "country": "Iceland",
+        "denominations": [10000, 5000, 2000, 1000, 500, 100, 50, 10, 5, 1]
+    },
+    "JEP": {
+        "country": "Jersey",
+        "denominations": [50, 20, 10, 5, 2, 1]
+    },
+    "JMD": {
+        "country": "Jamaica",
+        "denominations": [5000, 1000, 500, 100, 50, 20, 10, 5, 1]
+    },
+    "JOD": {
+        "country": "Jordan",
+        "denominations": [50, 20, 10, 5, 1, 0.5, 0.25, 0.1]
+    },
+    "KES": {
+        "country": "Kenya",
+        "denominations": [1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "KGS": {
+        "country": "Kyrgyzstan",
+        "denominations": [5000, 1000, 500, 200, 100, 50, 20, 10, 5, 1]
+    },
+    "KHR": {
+        "country": "Cambodia",
+        "denominations": [100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 100]
+    },
+    "KID": {
+        "country": "Kiribati",
+        "denominations": [100, 50, 20, 10, 5, 2, 1]
+    },
+    "KMF": {
+        "country": "Comoros",
+        "denominations": [10000, 5000, 2000, 1000, 500, 100, 50, 20, 10, 5, 1]
+    },
+    "KWD": {
+        "country": "Kuwait",
+        "denominations": [20, 10, 5, 1, 0.5, 0.25, 0.1]
+    },
+    "KYD": {
+        "country": "Cayman Islands",
+        "denominations": [100, 50, 25, 10, 5, 1]
+    },
+    "KZT": {
+        "country": "Kazakhstan",
+        "denominations": [20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+    },
+    "LAK": {
+        "country": "Laos",
+        "denominations": [100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 100]
+    },
+    "LBP": {
+        "country": "Lebanon",
+        "denominations": [100000, 50000, 20000, 10000, 5000, 1000, 500, 250, 100]
+    }
+  }
+  
