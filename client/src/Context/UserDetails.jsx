@@ -4,7 +4,7 @@ export const UserDetailsContext = createContext();
 
 export const UserDetailsProvider = ({ children }) => {
 
-  const [user,setUser] = useState(null);
+  const [user,setUser] = useState();
   const [userDetails,setUserDetails] = useState(null);
   
   return (
