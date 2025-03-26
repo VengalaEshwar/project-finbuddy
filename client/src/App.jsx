@@ -1,8 +1,7 @@
-import { useState } from 'react'
+
 import './App.css'
-import './App.css'
-import { AnimatePresence, MotionConfig } from "framer-motion";
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { AnimatePresence } from "framer-motion";
+import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
 import News from './pages/News/News'
@@ -19,39 +18,44 @@ import Stocks from './pages/Simulators/Stocks/Stocks.jsx';
 import Currency from './pages/Simulators/Currency/Currency.jsx';
 import Emi from './pages/Simulators/Emi/Emi.jsx';
 import Savings from './pages/Simulators/Savings/Savings.jsx';
-import {motion } from 'framer-motion';
-import {Toaster} from "react-hot-toast";
+import Games from './pages/Games/Games.jsx';
+import { Toaster } from "react-hot-toast";
+import Quiz from './pages/Games/Quiz.jsx';
+import RecommendedModulesCard from './pages/Games/RecommendedModulesCard.jsx';
+import ViewAllModules from './pages/Games/ViewAllModules.jsx';
+
 function App() {
-  
+
 
   return (
     <div className='app'>
-      <Navbar/>
+      <Navbar />
       <AnimatePresence mode="wait">
-      <div className="space pt-21"></div>
-     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/news' element={<News />} />
-      <Route path="/simulators" element={<Simulators />} />
-      <Route path="/simulators/stockmarket" element={<Stocks />} />
-      <Route path="/simulators/currency" element={<Currency/>} />
-      <Route path="/simulators/emi" element={<Emi/>} />
-      <Route path="/simulators/savings" element={<Savings/>} />
-      <Route path='/books' element={<Books />} />
-      <Route path='/career' element={<Career />} />
-      <Route path='/profile' element={<Profile />} />
-      <Route path='/auth' element={<Auth/>} />
-      <Route path="/books/:bookId" element={<BookDetails />} />
-      <Route path="/login" element={<LogIn/>} />
-      <Route path="/signup" element={<SignUp/>} />
-     </Routes>
+        <div className="space pt-21"></div>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/news' element={<News />} />
+          <Route path="/simulators" element={<Simulators />} />
+          <Route path="/simulators/stockmarket" element={<Stocks />} />
+          <Route path="/simulators/currency" element={<Currency />} />
+          <Route path="/simulators/emi" element={<Emi />} />
+          <Route path="/simulators/savings" element={<Savings />} />
+          <Route path='/books' element={<Books />} />
+          <Route path='/career' element={<Career />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/auth' element={<Auth />} />
+          <Route path="/books/:bookId" element={<BookDetails />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/games" element={<Games />} />
+          <Route path="/games/quiz" element={<Quiz />} />
+          <Route path="/games/recommendedModules" element={<RecommendedModulesCard />} />
+          <Route path="/games/viewAllModules" element={<ViewAllModules />} />
+
+        </Routes>
       </AnimatePresence>
-      {/* <motion.div
-        drag
-      > */}
-        <Chatbot/>
-      {/* </motion.div> */}
-      <Toaster/>
+      <Chatbot />
+      <Toaster />
     </div>
   )
 }

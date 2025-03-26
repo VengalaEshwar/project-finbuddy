@@ -423,15 +423,8 @@ const Stocks = () => {
                           tick={{ fontSize: 12 }}
                           tickLine={false}
                           axisLine={false}
-                          tickFormatter={(value) => {
-                            const date = new Date(value);
-                            const month = String(date.getMonth() + 1).padStart(
-                              2,
-                              "0"
-                            ); // Converts to 2-digit month
-                            const day = String(date.getDate()).padStart(2, "0"); // Converts to 2-digit day
-                            return `${month}-${day}`;
-                          }}
+                          tickFormatter={(value)=>value} 
+                           
                         />
 
                         <YAxis
@@ -485,7 +478,7 @@ const Stocks = () => {
                           className="w-20"
                         />
                         <span className="text-sm">
-                          Shares × ${selectedStock?.price?.toFixed(2)} = $
+                          Shares × ${selectedStock?.price} = $
                           {(selectedStock?.price * quantity)?.toFixed(2)}
                         </span>
                       </div>

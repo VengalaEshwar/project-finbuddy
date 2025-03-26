@@ -1,0 +1,48 @@
+/* Page Wrapper */
+.modules-page {
+    width: 100%;
+    padding-top:100px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level-info {
+    width: 85%;
+    margin-bottom: 30px;
+}
+
+.level-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.level-description {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+
+/* Module Grid */
+.module-container {
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    .level-title {
+        font-size: 1.5rem;
+    }
+    .level-description {
+        font-size: 1rem;
+    }
+
+    .module-container{
+        width: 100%;
+    }
+}

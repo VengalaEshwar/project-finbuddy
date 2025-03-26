@@ -1,0 +1,124 @@
+
+/* Finance Card */
+.finance-card {
+
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0px 20px;
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.finance-card.locked {
+    background-color: #f0f0f0;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Icon */
+.finance-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #9b6bd6;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+}
+
+.finance-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 4px 0 5px 0;
+}
+
+.finance-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Difficulty Tags */
+.finance-difficulty-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.finance-difficulty-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.finance-difficulty-badge.easy {
+    background-color: #d4f8d4;
+    color: #1a7f1a;
+}
+
+.finance-difficulty-badge.medium {
+    background-color: #fff4cc;
+    color: #a67c00;
+}
+
+.finance-difficulty-badge.hard {
+    background-color: #ffd6d6;
+    color: #a60000;
+}
+
+/* Modules */
+.finance-modules {
+    margin-top: 15px;
+}
+
+.finance-modules h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.finance-modules ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.finance-module {
+    background: #d6abf142;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .finance-card {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 900px) {
+    .finance-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .games-heading {
+        font-size: 24px;
+    }
+
+    .games-description {
+        font-size: 14px;
+    }
+}

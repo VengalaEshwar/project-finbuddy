@@ -7,14 +7,14 @@ export const getSymbols = async (req, res) => {
         const response = await axios.get(`https://www.alphavantage.co/query?function=LISTING_STATUS&apikey=demo`);
         const data = response?.data?.split("\n")
         const tokens = data[0]?.split(",")
-        tokens[tokens.length-1]=tokens[tokens.length-1]?.slice(0,-1);
+        tokens[tokens.length - 1] = tokens[tokens.length - 1]?.slice(0, -1);
         const result = [];
-        for( let i = 1; i < data.length-1; i++){
-            const list ={}
+        for (let i = 1; i < data.length - 1; i++) {
+            const list = {}
             const row = data[i].split(",");
-            for(let j = 0; j < tokens.length; j++){
-                if(j === tokens.length-1) {
-                    row[tokens.length-1]=row[tokens.length-1]?.slice(0,-1);
+            for (let j = 0; j < tokens.length; j++) {
+                if (j === tokens.length - 1) {
+                    row[tokens.length - 1] = row[tokens.length - 1]?.slice(0, -1);
                 }
                 list[tokens[j]] = row[j];
             }
@@ -29,6 +29,7 @@ export const getSymbols = async (req, res) => {
 };
 export const getStockData = async (req, res) => {
     try {
+        console.log(req.params);
         // Wait for the response from the API
         // const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${req.params.symbol}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`);
         const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo`);
@@ -47,7 +48,7 @@ export const getStockData = async (req, res) => {
             }
             break;
         }
-        const result={chartData,displayData};
+        let result = { chartData, displayData };
         console.log(result);
         return res.status(200).json({ success: true, data: result });
     } catch (e) {
