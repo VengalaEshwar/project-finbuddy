@@ -21,6 +21,8 @@ import Savings from './pages/Simulators/Savings/Savings.jsx';
 import Games from './pages/Games/Games.jsx';
 import { Toaster } from "react-hot-toast";
 import Quiz from './pages/Games/Quiz.jsx';
+import RecommendedModulesCard from './pages/Games/RecommendedModulesCard.jsx';
+import ViewAllModules from './pages/Games/ViewAllModules.jsx';
 
 function App() {
 
@@ -47,12 +49,11 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/games" element={<Games />} />
           <Route path="/games/quiz" element={<Quiz />} />
-          
-
+          <Route path="/games/recommendedModules" element={<RecommendedModulesCard />} />
+          <Route path="/games/viewAllModules" element={<ViewAllModules />} />
 
         </Routes>
       </AnimatePresence>
-
       <Chatbot />
       <Toaster />
     </div>
