@@ -436,7 +436,7 @@ export const courses = [
             "International Economy & Trade Wars",
             "How the Rich Avoid Taxes Legally"
         ],
-        lock: false,
+        lock: true,
     },
     {
         level: "level3",
@@ -456,7 +456,7 @@ export const courses = [
             "Future of Money: AI, Digital Currencies & Web3 Finance",
             "Final Case Study: From Zero to Financial Freedom"
         ],
-        lock: false,
+        lock: true,
     }
 ];
 

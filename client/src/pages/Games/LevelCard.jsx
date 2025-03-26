@@ -3,9 +3,9 @@ import "./LevelCard.css";
 import { NavLink } from "react-router-dom";
 
 const LevelCard = ({ course }) => {
-
+  
   return (
-    <div className={`finance-card ${course.lock ? "locked" : ""}`} >
+    <div className={`finance-card ${course.lock ? "locked" : ""}`}>
       <NavLink to="/learn/Quiz" state={{ level: course.level }}>
         <div className="finance-icon-wrapper">
           <span role="img" aria-label="icon" className="finance-icon">🔗</span>
@@ -23,6 +23,13 @@ const LevelCard = ({ course }) => {
             </span>
           ))}
         </div>
+        <NavLink
+          to="/learn/viewAllModules"
+          state={{ level: course.level }}
+          className="view-all-btn"
+        >
+          View All Modules
+        </NavLink>
         <div className="finance-modules">
           <h4>Modules</h4>
           <ul>
@@ -34,6 +41,9 @@ const LevelCard = ({ course }) => {
           </ul>
         </div>
       </NavLink>
+
+
+
     </div>
   );
 };

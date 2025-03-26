@@ -6,7 +6,7 @@ import { level1, level2, level3 } from "./QuizData.js";
 
 const ViewAllModules = () => {
   const location = useLocation();
-  const { level } = location.state || {}; // Handle undefined state
+  const { level } = location.state || {}; 
   const [selectedCourse, setSelectedCourse] = useState([]);
 
   useEffect(() => {
