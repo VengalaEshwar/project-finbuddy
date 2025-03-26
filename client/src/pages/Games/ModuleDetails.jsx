@@ -7,6 +7,7 @@ import { moduleDetails } from "./QuizData";
 import ModuleQuiz from "./ModuleQuiz"; // Import Quiz Component
 
 const ModuleDetail = () => {
+    
     const module = moduleDetails;
     const [activeTab, setActiveTab] = useState("module");
     const [quizCompleted, setQuizCompleted] = useState(false);
@@ -72,7 +73,7 @@ const ModuleDetail = () => {
 
                     {activeTab === "summary" && (
                         <div className="module-summary">
-                            <h3>Summary</h3>
+                            <h2>Summary</h2>
                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                                 {module.summary || "No summary available for this module."}
                             </ReactMarkdown>

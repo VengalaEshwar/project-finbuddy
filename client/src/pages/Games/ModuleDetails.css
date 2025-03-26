@@ -86,7 +86,7 @@
 }
 
 /* Markdown Styling */
-.module-content h1 {
+.module-content h1 ,.module-summary h1{
   font-size: 24px;
   font-weight: bold;
   color: #5317cb;
@@ -95,7 +95,7 @@
   margin-bottom: 15px;
 }
 
-.module-content h2 {
+.module-content h2 ,.module-summary h2{
   font-size: 20px;
   font-weight: bold;
   color: #823de1;
@@ -105,7 +105,7 @@
   margin-bottom: 10px;
 }
 
-.module-content h3 {
+.module-content h3 ,.module-summary h3{
   font-size: 18px;
   font-weight: bold;
   color: #363532;
@@ -114,7 +114,7 @@
 }
 
 /* Paragraph Styling */
-.module-content p {
+.module-content p ,.module-summary p{
   font-size: 16px;
   color: #333;
   line-height: 1.6;
@@ -122,23 +122,23 @@
 }
 
 /* Bullet Points */
-.module-content ul {
+.module-content ul , .module-summary ul{
   padding-left: 20px;
   margin-bottom: 10px;
 }
 
-.module-content li {
+.module-content li ,.module-summary li{
   font-size: 16px;
   color: #444;
   margin-bottom: 5px;
 }
 
 /* Bold & Italic */
-.module-content strong {
+.module-content strong, .module-summary strong {
   color: #56dd3b;
 }
 
-.module-content em {
+.module-content em ,.module-summary em{
   color: #823de1;
 }
 

@@ -25,12 +25,14 @@ export const addQuestion = async (req,res)=>{
     }
     
 }
-
+import { moduleDetails } from "../../client/src/pages/Games/QuizData.js";
 
 //adds modules
 export const addModule = async (req,res)=>{
     try{
-        const arr = req.body;
+        // const arr = req.body;
+        const moduleData =   moduleDetails;        
+        const arr = [moduleData];
         for(let item of arr)
         {
             const module = await Modules.create(item);

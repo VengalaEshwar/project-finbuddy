@@ -794,41 +794,6 @@ export const level3Quiz = [
         explanation: "Smart planning, patience, and disciplined investments contribute to financial success."
     }
 ];
-
-export const moduleDetails = {
-    title: "Understanding Money & Personal Finance Basics",
-    description: "Gain a fundamental understanding of how money works, including earning, saving, spending, and investing wisely.",
-    content: `
-# Understanding Money & Personal Finance Basics
-
-## Introduction to Money Management  
-Money plays a crucial role in our daily lives, from covering basic needs to planning for the future. Understanding how to manage money effectively is the foundation of financial well-being.  
-
-## What is Personal Finance?  
-Personal finance refers to managing your financial resources, including **income, expenses, savings, investments, and debt**. It involves making informed decisions to achieve financial security and growth.  
-
-### 1. Income and Earnings  
-Income is the money you earn through **jobs, businesses, or investments**. Understanding different sources of income can help you diversify and increase financial stability.  
-
-### 2. Budgeting and Expense Tracking  
-Creating a **budget** helps you allocate income wisely, ensuring essential expenses are covered while leaving room for savings and investments.  
-
-### 3. The Importance of Saving  
-**Savings** act as a financial cushion for unexpected expenses and long-term goals. Setting aside a portion of income regularly can lead to financial independence.  
-
-### 4. Smart Spending Habits  
-Avoiding **impulse purchases**, tracking expenses, and prioritizing needs over wants can help maintain financial stability.  
-
-### 5. Understanding Debt and Credit  
-Managing debt responsibly and maintaining a **good credit score** ensures better financial opportunities, such as lower interest rates on loans.  
-
-### Conclusion  
-Mastering the basics of personal finance allows individuals to make informed decisions about their money, paving the way for a secure financial future.
-`,
-summary:``
-};
-
-
 export const  moduleQuizData = {
     moduleTitle: "Financial Basics",
     questions: [
@@ -894,6 +859,142 @@ export const  moduleQuizData = {
         }
     ]
 };
+
+
+
+export const moduleDetails = {
+    title: "Self-Budgeting and Expense Management",
+    description: "Learn how to take control of your finances by budgeting effectively, managing expenses, and building strong saving habits.",
+    content: `
+# Self Budgeting and Expense Management
+
+## Why Budgeting is the Key to Financial Freedom
+
+Have you ever wondered why some people manage to save effortlessly while others struggle despite earning the same salary The secret lies in budgeting a simple yet powerful tool that helps you control your money instead of your money controlling you  
+
+A well planned budget ensures  
+
+- You always have money for essentials  
+- You can enjoy life without guilt  
+- You are prepared for emergencies  
+- You can grow wealth over time  
+
+Let us explore how you can master budgeting and expenses with proven methods  
+
+---
+
+## The 50 30 20 Rule A Beginner's Guide to Budgeting
+
+One of the easiest ways to budget is the 50 30 20 rule a method used by financially successful individuals Here is how it works  
+
+- 50 percent Needs Essentials like rent food utilities transportation  
+- 30 percent Wants Entertainment dining out shopping travel  
+- 20 percent Savings and Investments Emergency fund debt repayment future investments  
+
+### Example If you earn 30000 per month  
+
+- 15000 50 percent goes to rent groceries bills  
+- 9000 30 percent for outings shopping movies  
+- 6000 20 percent saved for future security  
+
+Tip If your needs are taking up more than 50 percent try reducing unnecessary expenses or increasing your income through side hustles  
+
+---
+
+## Zero Based Budgeting Give Every Rupee a Job
+
+Unlike the 50 30 20 rule where percentages are fixed zero based budgeting ensures that every rupee is accounted for before the month begins  
+
+### How does it work  
+
+1. Write down your total income for example 30000  
+2. List all your expenses including savings and allocate every rupee to a category  
+3. Adjust as needed until your Income minus Expenses equals zero nothing left unplanned  
+
+### Why is this powerful  
+
+- Helps track every rupee avoiding waste  
+- Works great for those with irregular incomes freelancers students  
+- Forces better planning and control over spending  
+
+Tip Use budgeting apps like YNAB or Goodbudget to automate tracking  
+
+---
+
+## Fixed vs Variable Expenses Understanding Your Spending  
+
+Budgeting becomes easy when you understand your spending patterns Expenses are categorized as  
+
+- Fixed Expenses Stay the same every month rent EMIs insurance  
+- Variable Expenses Change based on lifestyle food shopping entertainment  
+
+### Example  
+
+- Fixed 10000 rent 2000 internet 3000 insurance  
+- Variable 4000 groceries 2500 dining out 3000 shopping  
+
+Pro Tip If money feels tight look at variable expenses first this is where you can cut back  
+
+---
+
+## Smart Saving Habits Building Financial Security
+
+Why save money Because life is unpredictable A strong savings plan ensures you are never caught off guard  
+
+### Essential Saving Buckets  
+
+1. Emergency Fund Covers unexpected expenses medical bills job loss  
+
+   - Goal Save at least 3 to 6 months of living expenses  
+   - Best Place to Keep It High interest savings account  
+
+2. Sinking Funds Money set aside for planned expenses  
+
+   - Examples Vacation fund new laptop annual insurance premium  
+   - How to Save Set aside a fixed amount each month to avoid large one time financial shocks  
+
+Tip Automate savings with a recurring bank transfer to avoid the temptation of spending  
+
+---
+
+## Case Study How a Student Saved 1 Lakh in a Year  
+
+Meet Ravi a college student earning 15000 from part time work Here is how he saved 1 lakh in just 12 months  
+
+- Created a strict budget Followed the 50 30 20 rule  
+- Cut unnecessary expenses Limited eating out and online shopping  
+- Used sinking funds Set 3000 per month aside for travel and future goals  
+- Picked a high interest savings account Earned extra returns on savings  
+
+### Result  
+
+8000 per month saved equals 96000 in a year plus 4000 in interest  
+
+---
+
+## Your Action Plan Start Budgeting Today  
+
+- Choose a budgeting method 50 30 20 or zero based budgeting  
+- List your fixed and variable expenses  
+- Start saving with an emergency fund and sinking funds  
+- Track expenses using an app or simple spreadsheet  
+
+Remember Every rupee saved today is a step toward financial freedom tomorrow  
+`,
+    summary: `
+# Summary Self Budgeting and Expense Management  
+
+## Mastering Budgeting and Smart Spending  
+
+- 50 30 20 Rule 50 percent Needs 30 percent Wants 20 percent Savings  
+- Zero Based Budgeting Every rupee is assigned a purpose  
+- Fixed vs Variable Expenses Rent is fixed shopping is variable  
+- Smart Saving Habits Emergency Fund and Sinking Funds  
+- Case Study A student saved 1 lakh in a year by budgeting wisely  
+`
+};
+
+
 
 
 

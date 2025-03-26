@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const ModuleSchema = new mongoose.Schema({
-  topic: {
+  title: {
     type: String,
     required: true,
   },
@@ -14,7 +14,7 @@ const ModuleSchema = new mongoose.Schema({
   },
   imageUrl: {
     type: String,
-    required: true,
+    // required: true,
   },
   course : {
     type : mongoose.Types.ObjectId,
