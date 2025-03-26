@@ -2,6 +2,8 @@ import React from 'react'
 import LevelCard from './LevelCard.jsx';
 import "./Games.css";
 import { courses } from "./QuizData.js";
+
+
 export default function Games() {
 
 
@@ -13,7 +15,7 @@ export default function Games() {
 
                 <div className="glass-card">
                     <p className="games-description">
-                        Master these 15 levels to become financially literate. Each level has three difficulty stages to progress through.
+                        Master these 3 levels to become financially literate. Each level has three difficulty stages to progress through.
                     </p>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 import { check, validationResult } from 'express-validator';
-import User from '../Schema/User.js';
 import bcrypt from 'bcrypt';
-import sendOtp  from './sendOtp.js';
+import User from '../Schema/User.js';
 import UserCourseDetails from '../Schema/UserCourseDetails.js';
 
-const salt = 10;
-// signupValidator (middleware)
+const SALT_ROUNDS = 10;
+
+// Signup Validator (middleware)
 export const validateSignup = [
     check('username')
         .isLength({ min: 3, max: 30 }).withMessage('Name must be between 3 and 30 characters')
@@ -21,48 +21,50 @@ export const validateSignup = [
         .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/)
         .withMessage('Password must contain at least one letter, one number, and one special character')
 ];
-
 const signup = async (req, res) => {
-    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ errors: errors.array(), success: false });
     }
 
     const { username, email, password } = req.body;
     if (!username || !email || !password) {
-        return res.status(400).json({ error: 'All fields are required' });
+        return res.status(400).json({ error: 'All fields are required', success: false });
     }
 
     try {
-        const userExist = await User.findOne({ $or: [{ email: email }, { username: username }] });
+        const userExist = await User.findOne({ $or: [{ email }, { username }] });
 
         if (userExist) {
-            return res.status(400).json({ error: 'User already exists',success:false });
+            return res.status(400).json({ error: 'User already exists', success: false });
         }
 
-        // Generate and send OTP
-        const otpResponse = await sendOtp(email);
-        if (!otpResponse.success) {
-            return res.status(500).json({ error: otpResponse.error ,success:false});
-        }
-        console.log('otp sent');
+        // Hash password securely
+        const salt = await bcrypt.genSalt(SALT_ROUNDS);
         const hashPassword = await bcrypt.hash(password, salt);
-        const userCourseDetails = await UserCourseDetails.create();
+
+        // First, create userCourseDetails
+        const userCourseDetails = await UserCourseDetails.create({});
+
+        // Now, create the user with the userCourseDetails reference
         const newUser = new User({
             username,
             email,
             password: hashPassword,
-            userCourseDetails : userCourseDetails._id
+            userCourseDetails: userCourseDetails._id 
         });
 
         await newUser.save();
-        console.log(`${username} : new user added successfully!`);       
-        res.status(201).json({ message: 'User registered successfully!', otpToken: otpResponse.token ,success:true});
 
-    }
-    catch (error) {
-        res.status(500).json({ error: 'Internal server error' ,success:false});
+        userCourseDetails.userId = newUser._id;
+        await userCourseDetails.save();
+
+        console.log(`${username}: new user added successfully!`);
+        res.status(201).json({ message: 'User registered successfully!', success: true });
+
+    } catch (error) {
+        console.error('Signup error:', error);
+        res.status(500).json({ error: 'Internal server error', success: false });
     }
 };
 

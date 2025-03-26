@@ -34,7 +34,7 @@ function SignUp() {
     
         Cookies.set("finbuddy", data.otpToken, { expires: 1, secure: true, sameSite: "Strict" });
         toast.success("Sign Up Success !");
-        
+        navigate("/login");
       } else {
         console.log(data);
         toast.error("User Already Exist");

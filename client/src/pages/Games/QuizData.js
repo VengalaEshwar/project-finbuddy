@@ -399,7 +399,7 @@ export const level3 = [
 
 export const courses = [
     {
-        level: "level1",
+        level: "1",
         title: "Introduction to Finance",
         description:
             "Understand the basics of finance and why financial literacy matters in everyday life.",
@@ -419,7 +419,7 @@ export const courses = [
         lock: false,
     },
     {
-        level: "level2",
+        level: "2",
         title: "Intermediate Finance & Investment",
         description:
             "Dive deeper into investment strategies, economic policies, and business finance.",
@@ -439,7 +439,7 @@ export const courses = [
         lock: true,
     },
     {
-        level: "level3",
+        level: "3",
         title: "Advanced Finance & Global Economy",
         description:
             "Master high-level finance concepts, trading strategies, and the global economic system.",

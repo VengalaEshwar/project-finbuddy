@@ -89,7 +89,7 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <NavLink to={user ? "/games" : "/login"}>
+            <NavLink to={user ? "/learn" : "/login"}>
               <button className="get-started flex items-center gap-2">
                 {user ? "Start Learning" : "Get Started"}
                 <ArrowRight className="w-5 h-5" />

@@ -10,9 +10,9 @@ const ViewAllModules = () => {
   const [selectedCourse, setSelectedCourse] = useState([]);
 
   useEffect(() => {
-    if (level === "level1") setSelectedCourse(level1);
-    else if (level === "level2") setSelectedCourse(level2);
-    else if (level === "level3") setSelectedCourse(level3);
+    if (level === "1") setSelectedCourse(level1);
+    else if (level === "2") setSelectedCourse(level2);
+    else if (level === "3") setSelectedCourse(level3);
   }, [level]);
 
   return (

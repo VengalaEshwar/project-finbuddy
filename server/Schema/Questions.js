@@ -23,7 +23,8 @@ const QuestionsSchema = new mongoose.Schema({
         type : String
     },
     moduleType : {
-        type : String,required : true
+        type : String,
+        required:true
     }
 });
 

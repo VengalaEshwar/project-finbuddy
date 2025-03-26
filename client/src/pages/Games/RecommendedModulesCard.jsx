@@ -1,41 +1,67 @@
-import React from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import Module from "./Module.jsx";
-import { level1, level2, level3 } from "./QuizData.js";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import Module from "./Module.jsx"; // Import Module component
 import "./RecommendedModulesCard.css";
+
+const BASE_URL = "http://localhost:5000/learn"; // Change if necessary
 
 const RecommendedModulesCard = () => {
     const location = useLocation();
-    const navigate = useNavigate();
-    const { recommendedModules = [],level ="level1"} = location.state || {};
+    const { wrongModuleIds = [], level = "1" } = location.state || {};
 
-    // Combine all levels into a single list for lookup
-    const allModules = [...level1, ...level2, ...level3];
+    const [recommendedModules, setRecommendedModules] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Find actual module data
-    const matchedModules = allModules.filter(module =>
-        recommendedModules.includes(module.title)
-    );
+    useEffect(() => {
+        if (wrongModuleIds.length === 0) {
+            setLoading(false);
+            return;
+        }
+
+        const fetchRecommendedModules = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/recommendModules`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ wrongModuleIds }),
+                });
+
+                const data = await response.json();
+                if (response.ok && data.success) {
+                    setRecommendedModules(data.data); // Store the fetched module data
+                } else {
+                    setError(data.message || "Failed to fetch recommended modules.");
+                }
+            } catch (err) {
+                setError("Error fetching modules.");
+                console.error("Fetch error:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchRecommendedModules();
+    }, [wrongModuleIds]);
+
+    if (loading) return <p>Loading recommended modules...</p>;
+    if (error) return <p>Error: {error}</p>;
 
     return (
         <div className="recommended-modules-container">
-
             <h2>Recommended Modules</h2>
-            <NavLink  to="/games/viewAllModules" state={{level}}>
-                <button >
-                    View All Modules
-                </button>
+            <NavLink to="/games/viewAllModules" state={{ level }}>
+                <button>View All Modules</button>
             </NavLink>
-            {matchedModules.length > 0 ? (
+            {recommendedModules.length > 0 ? (
                 <div className="module-container">
-                    {matchedModules.map((module, index) => (
-                        <Module key={index} module={module} />
+                    {recommendedModules.map((module) => (
+                        <Module key={module._id} module={module} />
                     ))}
                 </div>
             ) : (
                 <p>No recommended modules. Review all modules!</p>
             )}
-
         </div>
     );
 };
