@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
   userCourseDetails : {
     type : mongoose.Types.ObjectId,
     ref : "UserCourseDetails",
-    require : true
+    required : true
   }
 });
 

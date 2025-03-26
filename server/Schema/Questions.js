@@ -24,7 +24,7 @@ const QuestionsSchema = new mongoose.Schema({
     },
     moduleType : {
         type : String,
-        require:true
+        required:true
     }
 });
 

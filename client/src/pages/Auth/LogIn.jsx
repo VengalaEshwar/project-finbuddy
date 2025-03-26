@@ -4,11 +4,11 @@ import Cookies from "js-cookie";
 import "./LogIn.css";
 import { UserDetailsContext } from "../../Context/UserDetails";
 
-// Server URL
 const BASE_URL = "http://localhost:5000";
 
 function LogIn() {
-  const { setUser } = useContext(UserDetailsContext);
+  const {user,setUser} = useContext(UserDetailsContext);
+
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,7 +18,10 @@ function LogIn() {
     const verifyToken = async () => {
       const token = Cookies.get("finbuddy");
 
-      if (!token) return;
+      if (!token) {
+        console.log("No token found, redirecting to login.");
+        return;
+      }
 
       try {
         const response = await fetch(`${BASE_URL}/verifyToken`, {
@@ -32,22 +35,19 @@ function LogIn() {
         const data = await response.json();
 
         if (response.ok && data.success) {
-          // If verification is successful, set user and update token if provided
           setUser(data.user);
-          
+
+          // Refresh token if the server sends a new one
           if (data.token) {
-            Cookies.set("finbuddy", data.token, { expires: 1, secure: true, sameSite: "Strict" });
+            Cookies.set("finbuddy", data.token, { expires: 1, sameSite: "Strict" });
           }
-          
+          setUser(data.user);
           navigate("/");
         } else {
-          // If verification fails, redirect to login
-          Cookies.remove("finbuddy");
-          navigate("/login");
+          console.warn("Token verification failed:", data.error);
         }
       } catch (error) {
         console.error("Error verifying token:", error);
-        
       }
     };
 
@@ -56,7 +56,6 @@ function LogIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = { emailOrUsername, password };
 
     try {
@@ -71,7 +70,7 @@ function LogIn() {
       const data = await response.json();
 
       if (data.success) {
-        Cookies.set("finbuddy", data.token, { expires: 1, secure: true, sameSite: "Strict" });
+        Cookies.set("finbuddy", data.token, { expires: 1, sameSite: "Strict" });
         setUser(data.user);
         navigate("/");
       } else {

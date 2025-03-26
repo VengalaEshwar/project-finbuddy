@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import moduleKnowledge from "./modularKnowledge.js"
-import {addQuestion,addModule,addQuestionToModule,getQuiz,addCourse, allocateModule, getModules, markLevel,getQuestions} from "./endpoints/learn.js"
+import {addQuestion,addModule,addQuestionToModule,getQuiz,addCourse, recommendedModules, getModules, markLevel,getQuestions} from "./endpoints/learn.js"
 import chatbot from "./endpoints/chatbot.js";
 import latestNews from "./endpoints/news.js";
 import signup, { validateSignup } from "./auth/signup.js";
@@ -36,8 +36,8 @@ async function initializeSystemChat() {
 }
 
 
-
 initializeSystemChat();
+
 
 app.post("/chat", (req, res) => chatbot(req, res, systemChat));
 
@@ -60,10 +60,10 @@ app.post("/learn/createModule",addModule);
 app.post("/learn/addQuestionToModule",addQuestionToModule);
 app.post("/learn/addCourse",addCourse);
 //----------------------------------------
-app.post("/learn/userPath/quiz/:level",getQuiz); //this one send quiz questions;
-app.post("/learn/userPath/allocateModule/:level",allocateModule);
+app.post("/learn/quiz/:level",getQuiz); 
+app.post("/learn/recommendModules",recommendedModules);
 app.get("/learn/getModules/:moduleId",getModules);
-app.get("/learn/getQuestions/:moduleId",getQuestions);
+app.post("/learn/getQuestions",getQuestions);
 app.post("/learn/marklevel/:userId/:level",markLevel);
 //testing
 app.get("/",(req,res)=>{
