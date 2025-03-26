@@ -3,6 +3,7 @@ import Courses from "../Schema/Courses.js";
 import Questions from "../Schema/Questions.js";
 import UserCourseDetails from "../Schema/UserCourseDetails.js"
 //adds questions 
+import User from "../Schema/User.js";
 export const addQuestion = async (req,res)=>{
 
     try{
@@ -122,16 +123,21 @@ export const getCourses =async  (req,res)=>{
             success : false
       })}
 }
+
 export const getQuiz = async (req,res)=>{
     try{
         const level = req.params.level;
-    const userDetails = await User.findOne({username : req.body.username});
-    if(Object.keys(userDetails).length === 0){
+    const user = await User.findOne({username : req.body.username});
+    console.log(user);
+    if(Object.keys(user).length === 0){
         return res.json({
             success : false,
             mesage : "user not available"
         });
     }
+    console.log(user.userCourseDetails)
+    const userDetails = await UserCourseDetails.findById(user.userCourseDetails);
+    console.log(userDetails)
     const {isLevel1,isLevel2,isLevel3}= userDetails;
     if(level==2 && !isLevel1){
         return res.json({
@@ -159,7 +165,7 @@ export const getQuiz = async (req,res)=>{
     })
     }
     catch(e){
-        console.log(e);
+        console.log(e?.message);
         return res.json({
             error : e?.message,
             success : false

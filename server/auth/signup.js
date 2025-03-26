@@ -1,7 +1,7 @@
 import { check, validationResult } from 'express-validator';
 import User from '../Schema/User.js';
 import bcrypt from 'bcrypt';
-import sendOtp  from './sendOtp.js';
+
 import UserCourseDetails from '../Schema/UserCourseDetails.js';
 
 const salt = 10;
@@ -41,12 +41,12 @@ const signup = async (req, res) => {
             return res.status(400).json({ error: 'User already exists',success:false });
         }
 
-        // Generate and send OTP
-        const otpResponse = await sendOtp(email);
-        if (!otpResponse.success) {
-            return res.status(500).json({ error: otpResponse.error ,success:false});
-        }
-        console.log('otp sent');
+        // // Generate and send OTP
+        // const otpResponse = await sendOtp(email);
+        // if (!otpResponse.success) {
+        //     return res.status(500).json({ error: otpResponse.error ,success:false});
+        // }
+        // console.log('otp sent');
         const hashPassword = await bcrypt.hash(password, salt);
         const userCourseDetails = await UserCourseDetails.create();
         const newUser = new User({
@@ -58,7 +58,7 @@ const signup = async (req, res) => {
 
         await newUser.save();
         console.log(`${username} : new user added successfully!`);       
-        res.status(201).json({ message: 'User registered successfully!', otpToken: otpResponse.token ,success:true});
+        res.status(201).json({ message: 'User registered successfully!' ,success:true});
 
     }
     catch (error) {
