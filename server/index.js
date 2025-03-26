@@ -11,6 +11,8 @@ import signup, { validateSignup } from "./auth/signup.js";
 import verifyOtp from "./auth/verifyOtp.js";
 import login, { validateLogin } from "./auth/login.js";
 import {getSymbols, getStockData} from "./endpoints/stocks.js"
+
+import { verifyToken } from "./auth/verifyToken.js";
 dotenv.config();
 const app = express();
 const PORT = 5000;
@@ -33,6 +35,8 @@ async function initializeSystemChat() {
     console.log(" Module knowledge sent to Gemini at startup.");
 }
 
+
+
 initializeSystemChat();
 
 app.post("/chat", (req, res) => chatbot(req, res, systemChat));
@@ -41,7 +45,7 @@ app.post("/news", latestNews);
 app.post("/signup", validateSignup, signup);
 app.post("/verifyOtp", verifyOtp);
 app.post("/login", validateLogin, login);
-
+app.post("/verifyToken",verifyToken);
 app.get("/stocks/getSymbols", getSymbols);
 app.get("/stocks/getStockData/:symbol", getStockData);
 

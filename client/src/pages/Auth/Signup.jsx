@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import Cookies from 'js-cookie';
@@ -6,7 +6,10 @@ import {toast} from 'react-hot-toast';
 //server url
 const BASE_URL="http://localhost:5000";
 
+import { UserDetailsContext } from "../../Context/UserDetails";
+
 function SignUp() {
+  const {user,setUser} = useContext(UserDetailsContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +31,7 @@ function SignUp() {
 
       const data = await response.json();
       if (data.success) {
+    
         Cookies.set("finbuddy", data.otpToken, { expires: 1, secure: true, sameSite: "Strict" });
         toast.success("Sign Up Success !");
         

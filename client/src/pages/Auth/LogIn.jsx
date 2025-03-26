@@ -1,16 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./LogIn.css";
+import { UserDetailsContext } from "../../Context/UserDetails";
 
-//server url
+// Server URL
 const BASE_URL = "http://localhost:5000";
 
-
 function LogIn() {
+  const { setUser } = useContext(UserDetailsContext);
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  // Verify token on component mount
+  useEffect(() => {
+    const verifyToken = async () => {
+      const token = Cookies.get("finbuddy");
+
+      if (!token) return;
+
+      try {
+        const response = await fetch(`${BASE_URL}/verifyToken`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          // If verification is successful, set user and update token if provided
+          setUser(data.user);
+          
+          if (data.token) {
+            Cookies.set("finbuddy", data.token, { expires: 1, secure: true, sameSite: "Strict" });
+          }
+          
+          navigate("/");
+        } else {
+          // If verification fails, redirect to login
+          Cookies.remove("finbuddy");
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error("Error verifying token:", error);
+        
+      }
+    };
+
+    verifyToken();
+  }, [setUser, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,17 +69,16 @@ function LogIn() {
       });
 
       const data = await response.json();
+
       if (data.success) {
         Cookies.set("finbuddy", data.token, { expires: 1, secure: true, sameSite: "Strict" });
-        localStorage.setItem("isLoggin","true");
-        
-        navigate("/"); 
+        setUser(data.user);
+        navigate("/");
       } else {
         setEmailOrUsername("");
         setPassword("");
         alert(data.error || "Login failed! Please try again.");
       }
-      
     } catch (error) {
       console.error("Login error:", error);
       alert("An error occurred. Please try again later.");
@@ -65,7 +106,9 @@ function LogIn() {
             required
             className="login-input"
           />
-          <button type="submit" className="login-btn"><span>Log In </span><span className="arrow">➜</span> </button>
+          <button type="submit" className="login-btn">
+            <span>Log In </span><span className="arrow">➜</span>
+          </button>
         </form>
         <p className="signup-link">
           Don't have an account?{" "}
