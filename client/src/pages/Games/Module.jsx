@@ -11,7 +11,7 @@ const Module = ({ module }) => {
       e.preventDefault(); // Prevent navigation for locked modules
       alert("This module is locked. Complete previous modules to unlock it.");
     } else {
-      navigate("/games/moduleDetails", { state: { module } });
+      navigate("/learn/moduleDetails", { state: { module } });
     }
   };
 

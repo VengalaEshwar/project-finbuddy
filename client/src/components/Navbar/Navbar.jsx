@@ -56,7 +56,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/games" onClick={closeMenu}>
+            <NavLink to="/learn" onClick={closeMenu}>
               <FaGamepad />
               Games
             </NavLink>
@@ -74,7 +74,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={user ? "/games" : "/login"} onClick={closeMenu}>
+            <NavLink to={user ? "/learn" : "/login"} onClick={closeMenu}>
               <button className="get-started">
                 {user ? "Start Learning" : "Get Started"}
               </button>
