@@ -4,10 +4,7 @@ export const UserDetailsContext = createContext();
 
 export const UserDetailsProvider = ({ children }) => {
 
-  const [user,setUser] = useState({
-    "username":"ankith",
-    "eamil":"ankithkumar9618@gmail.com"
-  });
+  const [user,setUser] = useState(null);
   const [userDetails,setUserDetails] = useState(null);
   
   return (
