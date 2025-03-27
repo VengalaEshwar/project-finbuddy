@@ -29,7 +29,6 @@ const Quiz = () => {
                 });
 
                 let  data = await response.json();
-                data.data = [data.data[0]]
                 if (response.ok && data.success) {
                     setQuestions(data.data.map(q => ({ ...q, selectedAnswer: null })));
                     console.log(data.data);

@@ -4,11 +4,14 @@ import rehypeRaw from "rehype-raw";
 import "./ModuleDetails.css";
 
 import { moduleDetails } from "./QuizData";
+import { useLocation } from "react-router-dom";
 import ModuleQuiz from "./ModuleQuiz"; // Import Quiz Component
 
 const ModuleDetail = () => {
-    
-    const module = moduleDetails[0];
+    const location = useLocation();
+    const module = location.state;
+    // console.log(location.state)
+    // console.log(module,"from 000");
     const [activeTab, setActiveTab] = useState("module");
     const [quizCompleted, setQuizCompleted] = useState(false);
 
@@ -71,7 +74,7 @@ const ModuleDetail = () => {
                         <ModuleQuiz module={module} nextTab={() => setQuizCompleted(true)} />
                     )}
 
-                    {activeTab === "summary" && (
+                    {activeTab === "summary"  &&  (
                         <div className="module-summary">
                             <h2>Summary</h2>
                             <ReactMarkdown rehypePlugins={[rehypeRaw]}>

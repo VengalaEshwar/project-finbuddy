@@ -235,7 +235,7 @@ const Books = () => {
         <h1 className="section-heading">Popular Finance, Investing & Business Books</h1>
         <div className="glass-card rounded-2xl p-6 mb-6">
           <p className="text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione eum alias et maxime dolorum, doloremque velit laboriosam nemo officiis id. Iste enim fugiat repellat iusto consectetur quae saepe eveniet soluta.
+          Financial books provide valuable insights into money management, investing, budgeting, and wealth creation. Whether you're a beginner learning the basics or an expert refining your strategies, these books offer timeless lessons to help you achieve financial freedom and make informed decisions
           </p>
         </div>
         {loading ? (

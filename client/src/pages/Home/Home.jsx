@@ -7,6 +7,7 @@ import Hero from "../../components/Hero/Hero";
 import FeatureCards from "../../components/FeatureCards/FeatureCards";
 import { UserDetailsContext } from "../../Context/UserDetails"; 
 import toast from "react-hot-toast";
+import Footer from "../../components/Footer/Footer";
 
 const BASE_URL = "http://localhost:5000";
 
@@ -64,6 +65,7 @@ function Home() {
       <PageTransition>
         <Hero />
         <FeatureCards />
+        <Footer/>
       </PageTransition>
     </div>
   );

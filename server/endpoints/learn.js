@@ -2,7 +2,7 @@ import Modules from "../Schema/Modules.js";
 import Courses from "../Schema/Courses.js";
 import Questions from "../Schema/Questions.js";
 import UserCourseDetails from "../Schema/UserCourseDetails.js"
-
+import mongoose from "mongoose"
 import Course from "../Schema/Courses.js";
 import User from "../Schema/User.js";
 //adds questions 
@@ -241,17 +241,32 @@ export const getQuiz = async (req, res) => {
     }
 };
 
-export const recommendedModules =  async (req, res) => {
+ // Ensure the correct path to your model
+
+export const recommendedModules = async (req, res) => {
     try {
         const { wrongModuleIds } = req.body; // Get array of module _id from the request body
 
-        if (!wrongModuleIds || wrongModuleIds.length === 0) {
+        // console.log("Request Body:", req.body);
+        console.log("Wrong Module IDs:", wrongModuleIds);
+
+        if (!Array.isArray(wrongModuleIds) || wrongModuleIds.length === 0) {
             return res.json({ success: false, message: "No incorrect modules provided." });
         }
 
-        // Fetch modules based on the wrong module IDs
-        const recommendedModules = await Modules.find({ _id: { $in: wrongModuleIds } });
+        // Validate and convert IDs to ObjectId safely
+        const validModuleIds = wrongModuleIds
+            .filter(id => mongoose.Types.ObjectId.isValid(id)) // Ensure IDs are valid
+            .map(id => new mongoose.Types.ObjectId(id)); // Convert to ObjectId
 
+        if (validModuleIds.length === 0) {
+            return res.json({ success: false, message: "No valid module IDs provided." });
+        }
+
+        // Fetch modules based on the valid module IDs
+        const recommendedModules = await Modules.find({ _id: { $in: validModuleIds } });
+
+        console.log("Recommended Modules:", recommendedModules);
         res.json({ success: true, data: recommendedModules });
     } catch (error) {
         console.error("Error fetching recommended modules:", error);
@@ -259,24 +274,46 @@ export const recommendedModules =  async (req, res) => {
     }
 };
 
+
+
 export const getModules = async (req, res) => {
     try {
         const { moduleId } = req.params;
+
+        // Validate if moduleId is a valid ObjectId
+        if (!mongoose.Types.ObjectId.isValid(moduleId)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid module ID format.",
+            });
+        }
+
+        // Fetch module by ID
         const module = await Modules.findById(moduleId);
+
+        if (!module) {
+            return res.status(404).json({
+                success: false,
+                message: "Module not found.",
+            });
+        }
+
         return res.json({
             success: true,
-            message: "module loaded",
-            data: module
-        })
-    }
-    catch (e) {
-        console.log(e);
+            message: "Module loaded successfully.",
+            data: module,
+        });
+
+    } catch (error) {
+        console.error("Error fetching module:", error);
         return res.status(500).json({
-            error: e?.message,
-            success: false
+            success: false,
+            message: "Server error while fetching module.",
+            error: error.message,
         });
     }
-}
+};
+
 export const markLevel = async (req, res) => {
     try {
         const { level, userId } = req.params;

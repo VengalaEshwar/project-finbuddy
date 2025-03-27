@@ -36,19 +36,43 @@ const sendOtp = async (receiverEmail) => {
             subject: 'DevQuery - Verify email',
             replyTo: process.env.EMAIL,
             html: `
-            <div style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
-                <h2 style="color: #333;">🔐 DevQuery Email Verification</h2>
-                <p style="font-size: 16px; color: #555;">
-                    Your One-Time Password (OTP) for verifying your email is:
-                </p>
-                <p style="font-size: 24px; font-weight: bold; color: #000; border: 2px dashed #333; display: inline-block; padding: 10px;">
-                    ${OTP}
-                </p>
-                <p style="font-size: 14px; color: #777;">
-                    This OTP is valid for <strong>5 minutes</strong>. Please do not share it with anyone.
-                </p>
-                <p style="font-size: 12px; color: #aaa;">If you didn't request this, please ignore this email.</p>
+           <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+
+    <div style="width: 100%; padding: 20px; background-color: #f4f4f4; text-align: center;">
+        <div style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: auto;">
+            
+            <!-- Logo -->
+            <div style="margin-bottom: 20px;">
+                <img src="https://yourlogo.com/finbuddy-logo.png" alt="FinBuddy Logo" width="120">
             </div>
+
+            <!-- Welcome Message -->
+            <div>
+                <h1 style="color: #2a9d8f; margin: 0;">🎉 Congratulations, [User Name]!</h1>
+                <p style="font-size: 16px; color: #333; margin: 10px 0;">
+                    Welcome to <strong>FinBuddy</strong> – your trusted guide to financial literacy and smart money management.
+                </p>
+                <p style="font-size: 16px; color: #333; margin: 10px 0;">
+                    We're excited to have you onboard! Get ready to explore our interactive financial learning platform and improve your financial skills.
+                </p>
+            </div>
+
+            <!-- CTA Button -->
+            <div style="margin-top: 20px;">
+                <a href="https://finbuddy.com/dashboard" style="display: inline-block; padding: 12px 24px; font-size: 16px; color: #fff; background-color: #2a9d8f; text-decoration: none; border-radius: 5px;">
+                    Go to Dashboard
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div style="margin-top: 20px; font-size: 14px; color: #777; padding-top: 20px;">
+                <p>If you have any questions, feel free to contact us at 
+                    <a href="mailto:support@finbuddy.com" style="color: #2a9d8f; text-decoration: none;">support@finbuddy.com</a>
+                </p>
+                <p>© 2025 FinBuddy. All rights reserved.</p>
+            </div>
+
+        </div>
         `
         });
         return { success: true, token };

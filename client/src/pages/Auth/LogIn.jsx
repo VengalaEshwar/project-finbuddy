@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./LogIn.css";
 import { UserDetailsContext } from "../../Context/UserDetails";
-
+import toast from "react-hot-toast";
 const BASE_URL = "http://localhost:5000";
 
 function LogIn() {
@@ -76,11 +76,11 @@ function LogIn() {
       } else {
         setEmailOrUsername("");
         setPassword("");
-        alert(data.error || "Login failed! Please try again.");
+        toast(data.error || "Login failed! Please try again.");
       }
     } catch (error) {
       console.error("Login error:", error);
-      alert("An error occurred. Please try again later.");
+      toast("An error occurred. Please try again later.");
     }
   };
 

@@ -2,7 +2,7 @@ const moduleKnowledge = `
 tell your name at the start of conversation -finbuddy
 
 # FinBuddy - Your AI-Powered Financial Guide 🤖💰  
-Welcome to **FinBuddy**, your go-to AI assistant for financial knowledge. FinBuddy helps users learn about finance, investment strategies, banking, and market trends.  
+Welcome to **FinBuddy**, your go-to AI assistant for financial knowledge. FinVerse helps users learn about finance, investment strategies, banking, and market trends.  
 
 ---
 

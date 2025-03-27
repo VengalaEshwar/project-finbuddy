@@ -36,7 +36,7 @@ const signup = async (req, res) => {
         const userExist = await User.findOne({ $or: [{ email }, { username }] });
 
         if (userExist) {
-            return res.status(400).json({ error: 'User already exists', success: false });
+            return res.status(400).json({ error: 'try again', success: false });
         }
 
         // Hash password securely
@@ -53,7 +53,7 @@ const signup = async (req, res) => {
             password: hashPassword,
             userCourseDetails: userCourseDetails._id 
         });
-
+        
         await newUser.save();
 
         userCourseDetails.userId = newUser._id;

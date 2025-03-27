@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 import { UserDetailsContext } from  "../../Context/UserDetails.jsx";
 import "./Navbar.css";
-
+import Cookies from "js-cookie"; // Import js-cookie
 const Navbar = () => {
   const { user } = useContext(UserDetailsContext); // Get user details
   const [menuOpen, setMenuOpen] = useState(false);
@@ -69,17 +69,27 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/profile" onClick={closeMenu}>
+            {user && <NavLink to="/profile" onClick={closeMenu}>
               <FaUser />
               Profile
-            </NavLink>
+            </NavLink>}
           </li>
           <li>
-            <NavLink to={user ? "/learn" : "/login"} onClick={closeMenu}>
-              <button className="get-started">
-                {user ? "Start Learning" : "Get Started"}
-              </button>
-            </NavLink>
+          <NavLink
+            to={user ? "/" : "/login"} // Redirect to home if logging out, else to login
+            onClick={() => {
+              if (user) {
+                Cookies.remove("finbuddy"); // Remove the cookie
+                window.location.reload(); // Refresh page to reflect logout
+              }
+              closeMenu();
+            }}
+          >
+            <button className="get-started">
+              {user ? "Log Out" : "Get Started"}
+            </button>
+          </NavLink>
+
           </li>
         </ul>
       </div>

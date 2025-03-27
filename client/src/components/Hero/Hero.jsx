@@ -97,7 +97,7 @@ const Hero = () => {
             </NavLink>
 
 
-            <NavLink to="/simulator" className="finbuddy-button-secondary w-full sm:w-auto">
+            <NavLink to="/simulators" className="finbuddy-button-secondary w-full sm:w-auto">
               Try Simulator
             </NavLink>
           </motion.div>

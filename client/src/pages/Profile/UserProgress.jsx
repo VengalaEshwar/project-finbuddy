@@ -47,10 +47,9 @@ const UserProgress = () => {
                     <div className="content">
                         <h2>Your Learning Progress</h2>
                         <p>Track your progress across different financial topics</p>
-                        {renderProgressBar("Budgeting Basics", 100)}
-                        {renderProgressBar("Investment Fundamentals", 65)}
-                        {renderProgressBar("Credit Management", 80)}
-                        {renderProgressBar("Retirement Planning", 30)}
+                        {renderProgressBar("Beginner : Coin-Explorer", 80)}
+                        {renderProgressBar("Intermediate : Finance-Falcon",0 )}
+                        {renderProgressBar("Advance : Money-Maestro", 0)}
                     </div>
                 );
             case "achievements":

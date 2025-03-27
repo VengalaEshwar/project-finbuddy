@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./UserDetailsCard.css";
 import { FaUser } from 'react-icons/fa';
-
-const userData = {
-    name: "Vengala Eshwar",
-    role: "Student",
-    financialKnowledge: 60,
-    lessons: 12,
-    badges: 5,
-};
+import { UserDetailsContext } from "../../Context/UserDetails";
 
 const ProfileCard = () => {
+    const {user} = useContext(UserDetailsContext);
+    const userData = {
+        name: user?.username,
+        role: "Student",
+        financialKnowledge: 20,
+        lessons: 0,
+        badges: 0,
+    };
     return (
         <div className="profile-card">
             <div className="avatar" >

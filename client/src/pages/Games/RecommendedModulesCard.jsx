@@ -7,14 +7,12 @@ const BASE_URL = "http://localhost:5000/learn"; // Change if necessary
 
 const RecommendedModulesCard = () => {
     const location = useLocation();
-    const { wrongModuleIds = [], level = "1" } = location.state || {};
-
+    const { questions, level } = location?.state;
     const [recommendedModules, setRecommendedModules] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
     useEffect(() => {
-        if (wrongModuleIds.length === 0) {
+        if (questions.length === 0) {
             setLoading(false);
             return;
         }
@@ -24,10 +22,10 @@ const RecommendedModulesCard = () => {
                 const response = await fetch(`${BASE_URL}/recommendModules`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ wrongModuleIds }),
+                    body: JSON.stringify({wrongModuleIds : questions.map(item=>item.moduleType) }),
                 });
-
-                const data = await response.json();
+                const data = (await response.json());
+                console.log(data,"data received from ___");
                 if (response.ok && data.success) {
                     setRecommendedModules(data.data); // Store the fetched module data
                 } else {
@@ -42,7 +40,7 @@ const RecommendedModulesCard = () => {
         };
 
         fetchRecommendedModules();
-    }, [wrongModuleIds]);
+    }, []);
 
     if (loading) return <p>Loading recommended modules...</p>;
     if (error) return <p>Error: {error}</p>;
