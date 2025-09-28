@@ -24,10 +24,12 @@ import RecommendedModulesCard from './pages/Games/RecommendedModulesCard.jsx';
 import ViewAllModules from './pages/Games/ViewAllModules.jsx';
 import ModuleDetail from './pages/Games/ModuleDetails.jsx';
 import { UserDetailsProvider } from "./Context/UserDetails.jsx"
+import { CoursesProvider } from './Context/Courses.jsx';
 
 function App() {
   return (
     <UserDetailsProvider>
+    <CoursesProvider>
       <div className='app'>
         <Navbar />
         <AnimatePresence mode="wait">
@@ -57,6 +59,7 @@ function App() {
         <Chatbot />
         <Toaster />
       </div>
+      </CoursesProvider>
     </UserDetailsProvider>
   );
 }

@@ -10,7 +10,6 @@ import ModuleQuiz from "./ModuleQuiz"; // Import Quiz Component
 const ModuleDetail = () => {
     const location = useLocation();
     const module = location.state;
-    // console.log(location.state)
     // console.log(module,"from 000");
     const [activeTab, setActiveTab] = useState("module");
     const [quizCompleted, setQuizCompleted] = useState(false);

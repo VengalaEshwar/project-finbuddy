@@ -4,7 +4,6 @@ import "./Module.css";
 import { FaLock } from "react-icons/fa"; 
 
 const Module = ({ module }) => {
-  console.log(module,"module");
   const navigate = useNavigate();
   // const handleStartClick = (e) => {
   //   if (module?.lock) {

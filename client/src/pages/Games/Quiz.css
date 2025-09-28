@@ -9,7 +9,7 @@
 }
 
 .quiz-container {
-    width: 85%;
+    min-width : 50rem;
     padding: 20px;
     background: rgba(227, 175, 235, 0.689);
     border-radius: 8px;

@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import moduleKnowledge from "./modularKnowledge.js"
-import {addQuestion,addModule,addQuestionToModule,getQuiz,addCourse, recommendedModules, getModules, markLevel,getQuestions} from "./endpoints/learn.js"
+import {addQuestion,addModule,addQuestionToModule,getQuiz,addCourse, recommendedModules, getModules, markLevel,getQuestions, getCourses} from "./endpoints/learn.js"
 import chatbot from "./endpoints/chatbot.js";
 import latestNews from "./endpoints/news.js";
 import signup, { validateSignup } from "./auth/signup.js";
@@ -26,7 +26,7 @@ mongoose.connect(process.env.DB_URL)
 
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-export const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 //  Send Module Knowledge to Gemini at Startup**
 let systemChat;
@@ -60,7 +60,9 @@ app.post("/learn/createModule",addModule);
 app.post("/learn/addQuestionToModule",addQuestionToModule);
 app.post("/learn/addCourse",addCourse);
 //----------------------------------------
+
 app.post("/learn/quiz/:level",getQuiz); 
+app.get("/learn/courses",getCourses); 
 app.post("/learn/recommendModules",recommendedModules);
 app.get("/learn/getModules/:moduleId",getModules);
 app.post("/learn/getQuestions",getQuestions);

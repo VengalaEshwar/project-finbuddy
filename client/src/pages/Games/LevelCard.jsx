@@ -30,7 +30,7 @@ const LevelCard = ({ course }) => {
         <ul>
           {course.modules.map((module, i) => (
             <li key={i} className="finance-module">
-              {module} {course.lock && <span className="lock-icon">🔒</span>}
+              {module.title} {course.lock && <span className="lock-icon">🔒</span>}
             </li>
           ))}
         </ul>

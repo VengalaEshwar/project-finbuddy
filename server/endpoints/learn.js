@@ -108,6 +108,23 @@ export const addCourse = async (req, res) => {
         })
     }
 }
+export const getQuestions = async (req, res) => {
+  try {
+    const { questionIds } = req.body; // expect array of question ObjectIds
+
+    if (!questionIds || questionIds.length === 0) {
+      return res.status(400).json({ success: false, message: "No questions provided." });
+    }
+
+    const questions = await Questions.find({ _id: { $in: questionIds } });
+
+    return res.json({ success: true, data: questions });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
 export const addQuestionToModule = async (req, res) => {
     try {
         const questions = await Questions.find({});
@@ -138,33 +155,41 @@ export const addQuestionToModule = async (req, res) => {
     }
 }
 
+
 export const getCourses = async (req, res) => {
-    try {
-        const courses = await Courses.find({});
-        for (let c of courses) {
-            const moduleObjects = await Modules.find({ course: c._id });
-            const modules = [];
-            for (let m of moduleObjects) {
-                modules.push(m.topic);
-            };
-            c.modules = modules;
-        }
-        return res.json({
-            success: true,
-            courses
-        })
-    } catch (e) {
-        console.log(e);
-        return res.json({
-            error: e?.message,
-            success: false
-        })
+  try {
+    const courses = await Courses.find({});
+    const result = [];
+    for (let c of courses) {
+      // Fetch module titles for each module ID
+      let modules = [];
+      for(let id of c.modules) {
+        const module = await Modules.findById(id);
+        // console.log(module);
+        modules.push(module);
+      }
+      c={...c._doc, modules: modules};
+      console.log(c);result.push(c);
     }
-}
+
+    return res.json({
+      success: true,
+      courses : result,
+    });
+  } catch (e) {
+    console.error(e);
+    return res.json({
+      success: false,
+      error: e?.message,
+    });
+  }
+};
+
 
 
 export const getQuiz = async (req, res) => {
     try {
+        console.log("got request for quiz")
         const level = Number(req.params.level); // Ensure level is treated as a number
         
         // Find the user by username
@@ -334,39 +359,39 @@ export const markLevel = async (req, res) => {
     }
 
 }
-export const getQuestions = async (req, res) => {
-    try {
-        const { moduleId } = req.body; // Extract moduleId from request body
+// export const getQuestions = async (req, res) => {
+//     try {
+//         const { moduleId } = req.body; // Extract moduleId from request body
 
-        if (!moduleId) {
-            return res.status(400).json({
-                success: false,
-                message: "Module ID is required."
-            });
-        }
+//         if (!moduleId) {
+//             return res.status(400).json({
+//                 success: false,
+//                 message: "Module ID is required."
+//             });
+//         }
 
-        const module = await Modules.findById(moduleId);
-        if (!module) {
-            return res.status(404).json({
-                success: false,
-                message: "Module not found."
-            });
-        }
+//         const module = await Modules.findById(moduleId);
+//         if (!module) {
+//             return res.status(404).json({
+//                 success: false,
+//                 message: "Module not found."
+//             });
+//         }
 
-        const questions = await Questions.find({ _id: { $in: module.questions } });
+//         const questions = await Questions.find({ _id: { $in: module.questions } });
 
-        return res.json({
-            success: true,
-            data: questions
-        });
+//         return res.json({
+//             success: true,
+//             data: questions
+//         });
 
-    } catch (e) {
-        console.error("Error fetching questions:", e);
-        res.status(500).json({
-            success: false,
-            message: e?.message || "Internal Server Error"
-        });
-    }
-};
+//     } catch (e) {
+//         console.error("Error fetching questions:", e);
+//         res.status(500).json({
+//             success: false,
+//             message: e?.message || "Internal Server Error"
+//         });
+//     }
+// };
 
 // export const 
