@@ -4,7 +4,8 @@ import Cookies from "js-cookie";
 import "./LogIn.css";
 import { UserDetailsContext } from "../../Context/UserDetails";
 import toast from "react-hot-toast";
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://project-finbuddy.onrender.com";
+
 
 function LogIn() {
   const {user,setUser} = useContext(UserDetailsContext);

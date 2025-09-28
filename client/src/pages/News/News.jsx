@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import PageTransition from "../../components/layouts/PageTransition/PageTransition";
 import defaultImage from "./defaultNewsImage.webp";
 import "./News.css";
-const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://project-finbuddy.onrender.com/learn";
 
 
 

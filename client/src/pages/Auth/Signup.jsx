@@ -4,7 +4,8 @@ import "./Signup.css";
 import Cookies from "js-cookie";
 import { toast } from "react-hot-toast";
 //server url
-const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://project-finbuddy.onrender.com";
 
 import { UserDetailsContext } from "../../Context/UserDetails";
 

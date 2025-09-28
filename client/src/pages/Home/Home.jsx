@@ -9,7 +9,8 @@ import { UserDetailsContext } from "../../Context/UserDetails";
 import toast from "react-hot-toast";
 import Footer from "../../components/Footer/Footer";
 
-const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://project-finbuddy.onrender.com";
 
 function Home() {
   const { setUser } = useContext(UserDetailsContext);

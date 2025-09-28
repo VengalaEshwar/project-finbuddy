@@ -3,8 +3,8 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import "./ModuleQuiz.css";
 
-const BASE_URL = "http://localhost:5000/learn"; // Change if necessary
-
+// const BASE_URL = "http://localhost:5000/learn"; // Change if necessary
+const BASE_URL = "https://project-finbuddy.onrender.com/learn";
 const ModuleQuiz = ({ module, nextTab }) => {
     const [quizQuestions, setQuizQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -16,16 +16,10 @@ const ModuleQuiz = ({ module, nextTab }) => {
     useEffect(() => {
         const fetchQuizQuestions = async () => {
             try {
-                if (!module?.questions || module.questions.length === 0) {
-                    setError("No questions found for this module.");
-                    setLoading(false);
-                    return;
-                }
-
                 const response = await fetch(`${BASE_URL}/getQuestions`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ questionIds: module.questions })
+                    body: JSON.stringify({ moduleId: module._id })
                 });
 
                 const data = await response.json();
@@ -42,8 +36,11 @@ const ModuleQuiz = ({ module, nextTab }) => {
             }
         };
 
-        if (module) {
+        if (module && module._id) {
             fetchQuizQuestions();
+        } else {
+            setError("Module ID is missing.");
+            setLoading(false);
         }
     }, [module]);
 
@@ -84,7 +81,7 @@ const ModuleQuiz = ({ module, nextTab }) => {
                         className={`option ${submitted
                             ? index === question.correctAnswer ? "correct" : index === selectedAnswer ? "wrong" : ""
                             : index === selectedAnswer ? "selected" : ""
-                        }`}
+                            }`}
                         onClick={() => handleSelect(index)}
                     >
                         {option}
@@ -92,28 +89,13 @@ const ModuleQuiz = ({ module, nextTab }) => {
                 ))}
             </div>
 
-            {submitted && question.explanation && (
-                <p className="explanation">
-                    Explanation:<br />
-                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                        {question.explanation}
-                    </ReactMarkdown>
-                </p>
-            )}
+            {submitted && <p className="explanation">Explanation:<br /><ReactMarkdown rehypePlugins={[rehypeRaw]}>{question.explanation}</ReactMarkdown></p>}
 
             <div className="quiz-buttons">
-                <button
-                    className="btn-check"
-                    onClick={handleSubmit}
-                    disabled={submitted || selectedAnswer === null}
-                >
+                <button className="btn-check" onClick={handleSubmit} disabled={submitted || selectedAnswer === null}>
                     Check Answer
                 </button>
-                <button
-                    className="btn-next"
-                    onClick={handleNext}
-                    disabled={!submitted}
-                >
+                <button className="btn-next" onClick={handleNext} disabled={!submitted}>
                     {isLastQuestion ? "View Summary" : "Next Question"}
                 </button>
             </div>

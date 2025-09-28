@@ -3,8 +3,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import Module from "./Module.jsx"; // Import Module component
 import "./RecommendedModulesCard.css";
 
-const BASE_URL = "http://localhost:5000/learn"; // Change if necessary
-
+// const BASE_URL = "http://localhost:5000/learn"; // Change if necessary
+const BASE_URL = "https://project-finbuddy.onrender.com/learn";
 const RecommendedModulesCard = () => {
     const location = useLocation();
     const { questions, level } = location?.state;

@@ -5,6 +5,7 @@ import { UserDetailsContext } from "../../Context/UserDetails";
 import { NavLink } from "react-router-dom";
 import PageTransition from "../../components/layouts/PageTransition/PageTransition";
 const BASE_URL = "http://localhost:5000/learn";
+// const BASE_URL = "https://project-finbuddy.onrender.com/learn";
 import Loader from "../../components/Loader/Loader"
 const Quiz = () => {
   const location = useLocation();

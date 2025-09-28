@@ -6,7 +6,8 @@ import chatbotIcon from './chatbot.webp';
 import { FaTimes } from "react-icons/fa";
 import Loader from "../../components/Loader/Loader.jsx";
 
-const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://project-finbuddy.onrender.com";
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);

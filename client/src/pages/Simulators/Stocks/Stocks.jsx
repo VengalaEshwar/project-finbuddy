@@ -1,97 +1,52 @@
-//imports
 import axios from "axios";
 import { chartDataa, symbolsData } from "./data";
 import { Button } from "../../../components/ui/Button";
 import { Input } from "../../../components/ui/Input";
 import { useState, useEffect } from "react";
-import {
-  ArrowDown,
-  ArrowUp,
-  Briefcase,
-  DollarSign,
-  LineChart,
-  RefreshCw,
-  Search,
-TrendingUp,
-} from "lucide-react";
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts"; //TooltipProps
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../../../components/ui/Card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../../../components/ui/Table";
+import { ArrowDown, ArrowUp, Briefcase, DollarSign, TrendingUp } from "lucide-react";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/Card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../../components/ui/Table";
 import toast from "react-hot-toast";
+
 const Stocks = () => {
-
-  //required states
-
-  //portfolio
   const [portfolio, setPortfolio] = useState([]);
   const [portfolioValue, setPortfolioValue] = useState(0);
   const [cash, setCash] = useState(10000);
   const [searchTerm, setSearchTerm] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [chartData, setChartData] = useState([]); //
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingg, setIsLoadingg] = useState(false);
-  const [stocks, setStocks] = useState([]);
-  const [selectedStock, setSelectedStock] = useState(stocks[0]);
+  const [chartData, setChartData] = useState([]);
+  const [isLoadingStock, setIsLoadingStock] = useState(true);
+  const [isLoadingSymbols, setIsLoadingSymbols] = useState(false);
+  const [stocks, setStocks] = useState(symbolsData);
+  const [selectedStock, setSelectedStock] = useState(null);
 
-  // Calculate portfolio value whenever portfolio changes
+  const LOCAL = "https://project-finbuddy.onrender.com";
+
   useEffect(() => {
-    const value = portfolio.reduce(
-      (sum, item) => sum + item.shares * item.currentPrice,
-      0
-    );
+    const fetchStocks = async () => {
+      setIsLoadingSymbols(true);
+      try {
+        const response = await axios.get(`${LOCAL}/stocks/getSymbols`);
+        const data = response?.data?.data || symbolsData;
+        setStocks(data);
+        if (data.length > 0) handleStockSelect(data[0]);
+      } catch (error) {
+        console.error("Error fetching stocks:", error);
+        toast.error("Failed to fetch stocks");
+      } finally {
+        setIsLoadingSymbols(false);
+      }
+    };
+
+    fetchStocks();
+  }, []);
+
+  useEffect(() => {
+    const value = portfolio.reduce((sum, item) => sum + item.shares * item.currentPrice, 0);
     setPortfolioValue(value);
   }, [portfolio]);
 
-
-  const LOCAL = "http://localhost:5000/";
-  //this useEffect fetches the stock symbols
-  useEffect(() => {
-    const fetchStocks = async () => {
-      setIsLoadingg(true);
-      try {
-        const response = await axios.get(LOCAL + "stocks/getSymbols");
-        const data = response?.data?.data || []; // Ensure it's an array
-  
-        console.log(data);
-  
-        setStocks(data); // Directly set the fetched data
-  
-        if (data.length > 0) {
-          handleStockSelect(data[0]); // Select the first stock only if data exists
-        }
-      } catch (error) {
-        console.error("Error fetching stocks:", error);
-      } finally {
-        setIsLoadingg(false); // Ensure loading state is updated even on failure
-      }
-    };
-  
-    fetchStocks(); 
-  }, []); //setStocks
-  
   const filteredStocks = stocks.filter(
     (stock) =>
       stock.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -100,96 +55,59 @@ const Stocks = () => {
 
   const handleStockSelect = async (stock) => {
     setSelectedStock(stock);
-    setIsLoading(true);
-    const receivedData = await axios.get(LOCAL + "stocks/getStockData/" + stock?.symbol);
-    const data = receivedData?.data?.data;
-    setChartData(data?.chartData);
-    // console.log(data);
-    // setChartData(chartDataa);
-    setIsLoading(false);
+    setIsLoadingStock(true);
+    try {
+      const response = await axios.get(`${LOCAL}/stocks/getStockData/${stock.symbol}`);
+      const data = response?.data?.data;
+      setChartData(data?.chartData || []);
+    } catch (error) {
+      console.error("Error fetching stock data:", error);
+      toast.error("Failed to fetch stock data");
+    } finally {
+      setIsLoadingStock(false);
+    }
   };
 
   const handleBuy = () => {
+    if (!selectedStock) return;
     const cost = selectedStock.price * quantity;
+    if (cost > cash) return toast.error("Insufficient funds");
 
-    if (cost > cash) {
-      toast.error("Insufficient funds");
-      return;
-    }
-
-    // Check if stock already in portfolio
-    const existingStock = portfolio.find(
-      (item) => item.symbol === selectedStock.symbol
-    );
-
+    const existingStock = portfolio.find((item) => item.symbol === selectedStock.symbol);
     if (existingStock) {
-      // Update existing position
-      const newAvgCost =
-        (existingStock.avgCost * existingStock.shares + cost) /
-        (existingStock.shares + quantity);
-
+      const newAvgCost = (existingStock.avgCost * existingStock.shares + cost) / (existingStock.shares + quantity);
       setPortfolio(
         portfolio.map((item) =>
           item.symbol === selectedStock.symbol
-            ? {
-                ...item,
-                shares: item.shares + quantity,
-                avgCost: parseFloat(newAvgCost.toFixed(2)),
-              }
+            ? { ...item, shares: item.shares + quantity, avgCost: parseFloat(newAvgCost.toFixed(2)) }
             : item
         )
       );
     } else {
-      // Add new position
       setPortfolio([
         ...portfolio,
-        {
-          symbol: selectedStock.symbol,
-          shares: quantity,
-          avgCost: selectedStock.price,
-          currentPrice: selectedStock.price,
-        },
+        { symbol: selectedStock.symbol, shares: quantity, avgCost: selectedStock.price, currentPrice: selectedStock.price },
       ]);
     }
-
-    // Deduct cash
     setCash(cash - cost);
     toast.success("Purchase successful");
     setQuantity(1);
   };
 
   const handleSell = () => {
-    const existingStock = portfolio.find(
-      (item) => item.symbol === selectedStock.symbol
-    );
-
-    if (!existingStock) {
-      toast("No shares to sell");
-      return;
-    }
-
-    if (quantity > existingStock.shares) {
-      toast.error("Insufficient shares");
-      return;
-    }
+    if (!selectedStock) return;
+    const existingStock = portfolio.find((item) => item.symbol === selectedStock.symbol);
+    if (!existingStock) return toast.error("No shares to sell");
+    if (quantity > existingStock.shares) return toast.error("Insufficient shares");
 
     const saleProceeds = selectedStock.price * quantity;
-
-    // Update portfolio
-    const updatedPortfolio = portfolio
-      .map((item) =>
-        item.symbol === selectedStock.symbol
-          ? {
-              ...item,
-              shares: item.shares - quantity,
-            }
-          : item
-      )
-      .filter((item) => item.shares > 0);
-
-    setPortfolio(updatedPortfolio);
-
-    // Add cash
+    setPortfolio(
+      portfolio
+        .map((item) =>
+          item.symbol === selectedStock.symbol ? { ...item, shares: item.shares - quantity } : item
+        )
+        .filter((item) => item.shares > 0)
+    );
     setCash(cash + saleProceeds);
     toast.success("Sale successful");
     setQuantity(1);
@@ -199,25 +117,20 @@ const Stocks = () => {
     <div className="min-h-screen w-full flex flex-col">
       <main className="flex-grow pt-24 pb-16">
         <div className="container mx-auto px-4">
-          {/* This is page header */}
+          {/* Page Header */}
           <div className="text-center mb-10">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              Virtual Stock Simulator
-            </h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">Virtual Stock Simulator</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Practice trading stocks in a risk-free environment with virtual
-              cash. Learn how the market works before investing real money.
+              Practice trading stocks in a risk-free environment with virtual cash.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Portfolio summary */}
+            {/* Portfolio Summary */}
             <Card className="lg:col-span-3 animate-slide-down">
               <CardHeader>
                 <CardTitle>Your Portfolio Summary</CardTitle>
-                <CardDescription>
-                  Current virtual assets and performance
-                </CardDescription>
+                <CardDescription>Current virtual assets and performance</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -237,9 +150,7 @@ const Stocks = () => {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Portfolio Value</p>
-                      <p className="text-xl font-bold">
-                        ${portfolioValue.toFixed(2)}
-                      </p>
+                      <p className="text-xl font-bold">${portfolioValue.toFixed(2)}</p>
                     </div>
                   </div>
 
@@ -249,26 +160,18 @@ const Stocks = () => {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Total Assets</p>
-                      <p className="text-xl font-bold">
-                        ${(cash + portfolioValue).toFixed(2)}
-                      </p>
+                      <p className="text-xl font-bold">${(cash + portfolioValue).toFixed(2)}</p>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Stock list */}
+            {/* Market */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex justify-between items-center">
-                  <span>Market</span>
-                  {/* <Button variant="outline" size="icon" className="h-8 w-8">
-                    <RefreshCw className="h-4 w-4" />
-                  </Button> */}
-                </CardTitle>
+                <CardTitle>Market</CardTitle>
                 <div className="relative">
-                  <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                   <Input
                     placeholder="Search stocks..."
                     value={searchTerm}
@@ -279,166 +182,77 @@ const Stocks = () => {
               </CardHeader>
               <CardContent>
                 <div className="h-[500px] overflow-y-auto pr-2">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Symbol</TableHead>
-                        {/* <TableHead>Price</TableHead>
-                        <TableHead>Change</TableHead> */}
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {isLoadingg ? (
-                  <div className="h-[300px] flex items-center justify-center">
-                    <div className="animate-spin h-8 w-8 border-4 border-fin-purple border-t-transparent rounded-full"></div>
-                  </div>
-                ) :filteredStocks.map((stock) => (
-                        <TableRow
-                          key={stock.symbol}
-                          className={`cursor-pointer ${
-                            selectedStock?.symbol === stock?.symbol
-                              ? "bg-fin-purple/10"
-                              : ""
-                          } hover:bg-fin-gray-100 transition-colors`}
-                          onClick={() => handleStockSelect(stock)}
-                        >
-                          <TableCell className="font-medium">
-                            <div>
-                              <div>{stock?.symbol}</div>
-                              <div className="text-xs text-gray-500">
-                                {stock?.name}
-                              </div>
-                            </div>
-                          </TableCell>
-                          {/* <TableCell>
-                            ${"N/A" stock?.price.toFixed(2)}
-                          </TableCell> */}
-                          {/* <TableCell
-                            className={
-                              stock?.change >= 0
-                                ? "text-green-600"
-                                : "text-red-600"
-                            }
-                          >
-                            <div className="flex items-center">
-                              {stock.change >= 0 ? (
-                                <ArrowUp className="h-3 w-3 mr-1" />
-                              ) : (
-                                <ArrowDown className="h-3 w-3 mr-1" />
-                              )}
-                              {"N/A" Math.abs(stock?.change).toFixed(2)}%
-                            </div>
-                          </TableCell> */}
-                        </TableRow>
-                      ))}
-
-                      {filteredStocks.length === 0 && (
+                  {isLoadingSymbols ? (
+                    <div className="h-[300px] flex items-center justify-center">
+                      <div className="animate-spin h-8 w-8 border-4 border-fin-purple border-t-transparent rounded-full"></div>
+                    </div>
+                  ) : (
+                    <Table>
+                      <TableHeader>
                         <TableRow>
-                          <TableCell
-                            colSpan={3}
-                            className="text-center py-8 text-gray-500"
-                          >
-                            No stocks found matching "{searchTerm}"
-                          </TableCell>
+                          <TableHead>Symbol</TableHead>
                         </TableRow>
-                      )}
-                    </TableBody>
-                  </Table>
+                      </TableHeader>
+                      <TableBody>
+                        {filteredStocks.length > 0 ? (
+                          filteredStocks.map((stock) => (
+                            <TableRow
+                              key={stock.symbol}
+                              className={`cursor-pointer ${
+                                selectedStock?.symbol === stock?.symbol ? "bg-fin-purple/10" : ""
+                              } hover:bg-fin-gray-100 transition-colors`}
+                              onClick={() => handleStockSelect(stock)}
+                            >
+                              <TableCell className="font-medium">
+                                <div>
+                                  <div>{stock.symbol}</div>
+                                  <div className="text-xs text-gray-500">{stock.name}</div>
+                                </div>
+                              </TableCell>
+                            </TableRow>
+                          ))
+                        ) : (
+                          <TableRow>
+                            <TableCell colSpan={1} className="text-center py-8 text-gray-500">
+                              No stocks found matching "{searchTerm}"
+                            </TableCell>
+                          </TableRow>
+                        )}
+                      </TableBody>
+                    </Table>
+                  )}
                 </div>
               </CardContent>
             </Card>
 
-            {/* Stock details */}
+            {/* Stock Details */}
             <Card className="lg:col-span-2">
               <CardHeader>
-                <CardTitle>
-                  {selectedStock ? selectedStock.name : "Select a stock"}
-                </CardTitle>
+                <CardTitle>{selectedStock?.name || "Select a stock"}</CardTitle>
                 <CardDescription>
-                  {selectedStock ? (
-                    <div className="flex items-center mt-1">
-                      <span className="text-lg font-bold mr-2">
-                        ${selectedStock?.price?.toFixed(2)}
-                      </span>
-                      {/* <span
-                        className={`flex items-center ${
-                          selectedStock.change >= 0
-                            ? "text-green-600"
-                            : "text-red-600"
-                        }`}
-                      >
-                        {selectedStock.change >= 0 ? (
-                          <ArrowUp className="h-3 w-3 mr-1" />
-                        ) : (
-                          <ArrowDown className="h-3 w-3 mr-1" />
-                        )}
-                        {Math.abs(selectedStock.change).toFixed(2)}%
-                      </span> */}
-                    </div>
-                  ) : (
-                    "Stock details will appear here"
-                  )}
+                  {selectedStock && <div className="text-lg font-bold">${selectedStock.price}</div>}
                 </CardDescription>
               </CardHeader>
-
               <CardContent>
-                {isLoading ? (
+                {isLoadingStock ? (
                   <div className="h-[300px] flex items-center justify-center">
                     <div className="animate-spin h-8 w-8 border-4 border-fin-purple border-t-transparent rounded-full"></div>
                   </div>
                 ) : (
                   <div className="h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart
-                        data={chartData} //need to change it later
-                        margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
-                      >
+                      <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                         <defs>
-                          <linearGradient
-                            id="colorPrice"
-                            x1="0"
-                            y1="0"
-                            x2="0"
-                            y2="1"
-                          >
-                            <stop
-                              offset="5%"
-                              stopColor="#8B5CF6"
-                              stopOpacity={0.4}
-                            />
-                            <stop
-                              offset="95%"
-                              stopColor="#8B5CF6"
-                              stopOpacity={0}
-                            />
+                          <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.4} />
+                            <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0} />
                           </linearGradient>
                         </defs>
-                        <CartesianGrid
-                          strokeDasharray="3 3"
-                          vertical={false}
-                          stroke="#f0f0f0"
-                        />
-                        <XAxis
-                          dataKey="date"
-                          tick={{ fontSize: 12 }}
-                          tickLine={false}
-                          axisLine={false}
-                          tickFormatter={(value)=>value} 
-                           
-                        />
-
-                        <YAxis
-                          domain={["auto", "auto"]}
-                          tick={{ fontSize: 12 }}
-                          tickLine={false}
-                          axisLine={false}
-                          tickFormatter={(value) => `$${value}`}
-                        />
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                        <XAxis dataKey="date" tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
+                        <YAxis domain={["auto", "auto"]} tick={{ fontSize: 12 }} tickLine={false} axisLine={false} tickFormatter={(val) => `$${val}`} />
                         <Tooltip
-                          formatter={(value) => [
-                            `$${Number(value).toFixed(2)}`,
-                            "Price",
-                          ]}
+                          formatter={(value) => [`$${Number(value).toFixed(2)}`, "Price"]}
                           labelFormatter={(label) => `Date: ${label}`}
                           contentStyle={{
                             backgroundColor: "white",
@@ -448,196 +262,13 @@ const Stocks = () => {
                             border: "none",
                           }}
                         />
-                        <Area
-                          type="monotone"
-                          dataKey="price"
-                          stroke="#8B5CF6"
-                          strokeWidth={2}
-                          fillOpacity={1}
-                          fill="url(#colorPrice)"
-                        />
+                        <Area type="monotone" dataKey="price" stroke="#8B5CF6" strokeWidth={2} fillOpacity={1} fill="url(#colorPrice)" />
                       </AreaChart>
                     </ResponsiveContainer>
                   </div>
                 )}
-
-                {selectedStock && (
-                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <h3 className="text-sm font-medium text-gray-500 mb-1">
-                        Trade
-                      </h3>
-                      <div className="flex items-center space-x-2 mb-4">
-                        <Input
-                          type="number"
-                          min="1"
-                          value={quantity}
-                          onChange={(e) =>
-                            setQuantity(parseInt(e.target.value) || 1)
-                          }
-                          className="w-20"
-                        />
-                        <span className="text-sm">
-                          Shares × ${selectedStock?.price} = $
-                          {(selectedStock?.price * quantity)?.toFixed(2)}
-                        </span>
-                      </div>
-                      <div className="flex space-x-2">
-                        <Button
-                          onClick={handleBuy}
-                          className="flex-1 bg-green-600 hover:bg-green-700"
-                        >
-                          Buy
-                        </Button>
-                        <Button
-                          onClick={handleSell}
-                          className="flex-1 bg-red-600 hover:bg-red-700"
-                          variant="destructive"
-                        >
-                          Sell
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="text-sm font-medium text-gray-500 mb-2">
-                        Your Position
-                      </h3>
-                      {portfolio.find(
-                        (item) => item.symbol === selectedStock.symbol
-                      ) ? (
-                        <div>
-                          {portfolio
-                            .filter(
-                              (item) => item.symbol === selectedStock.symbol
-                            )
-                            .map((item) => {
-                              const marketValue =
-                                item.shares * item.currentPrice;
-                              const profit =
-                                marketValue - item.shares * item.avgCost;
-                              const profitPercent =
-                                (profit / (item.shares * item.avgCost)) * 100;
-
-                              return (
-                                <div
-                                  key={item.symbol}
-                                  className="glass-card p-3"
-                                >
-                                  <div className="flex justify-between mb-1">
-                                    <span className="text-sm font-medium">
-                                      Shares:
-                                    </span>
-                                    <span>{item.shares}</span>
-                                  </div>
-                                  <div className="flex justify-between mb-1">
-                                    <span className="text-sm font-medium">
-                                      Avg Cost:
-                                    </span>
-                                    <span>${item.avgCost.toFixed(2)}</span>
-                                  </div>
-                                  <div className="flex justify-between mb-1">
-                                    <span className="text-sm font-medium">
-                                      Market Value:
-                                    </span>
-                                    <span>${marketValue.toFixed(2)}</span>
-                                  </div>
-                                  <div className="flex justify-between">
-                                    <span className="text-sm font-medium">
-                                      Profit/Loss:
-                                    </span>
-                                    <span
-                                      className={
-                                        profit >= 0
-                                          ? "text-green-600"
-                                          : "text-red-600"
-                                      }
-                                    >
-                                      ${profit.toFixed(2)} (
-                                      {profitPercent.toFixed(2)}%)
-                                    </span>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                        </div>
-                      ) : (
-                        <div className="text-sm text-gray-500 py-3">
-                          You don't own any shares of {selectedStock?.symbol}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
               </CardContent>
             </Card>
-
-            {/* Portfolio holdings */}
-            <Card className="lg:col-span-3">
-              <CardHeader>
-                <CardTitle>Your Holdings</CardTitle>
-                <CardDescription>Current portfolio positions</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {portfolio.length > 0 ? (
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Symbol</TableHead>
-                        <TableHead>Shares</TableHead>
-                        <TableHead>Avg Cost</TableHead>
-                        <TableHead>Current Price</TableHead>
-                        <TableHead>Market Value</TableHead>
-                        <TableHead>Profit/Loss</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {portfolio.map((item, index) => {
-                        const marketValue = item.shares * item.currentPrice;
-                        const profit = marketValue - item.shares * item.avgCost;
-                        const profitPercent =
-                          (profit / (item.shares * item.avgCost)) * 100;
-
-                        return (
-                          <TableRow key={item.symbol || index}>
-                            <TableCell className="font-medium">
-                              {item.symbol}
-                            </TableCell>
-                            <TableCell>{item.shares}</TableCell>
-                            <TableCell>${item.avgCost.toFixed(2)}</TableCell>
-                            <TableCell>
-                              ${item.currentPrice.toFixed(2)}
-                            </TableCell>
-                            <TableCell>${marketValue.toFixed(2)}</TableCell>
-                            <TableCell
-                              className={
-                                profit >= 0 ? "text-green-600" : "text-red-600"
-                              }
-                            >
-                              ${profit.toFixed(2)} ({profitPercent?.toFixed(2)}%)
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
-                    </TableBody>
-                  </Table>
-                ) : (
-                  <div className="text-center py-12">
-                    <Briefcase className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-1">
-                      Your portfolio is empty
-                    </h3>
-                    <p className="text-gray-500 mb-4">
-                      Start building your portfolio by buying some stocks!
-                    </p>
-                    <Button asChild variant="outline">
-                      <a href="#market">Browse Market</a>
-                    </Button>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-            
           </div>
         </div>
       </main>
